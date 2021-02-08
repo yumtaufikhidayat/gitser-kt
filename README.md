@@ -3,6 +3,7 @@ This application is a simple Github user search app using Kotlin. This applicati
 - Material design
 - Kotlin language
 - View Model architecture
+- LiveData
 - Retrofit
 - View Binding
 

@@ -91,7 +91,7 @@ class SearchActivity : AppCompatActivity() {
             val query = etSearchQuery.text.toString()
 
             if (query.isEmpty()) {
-                Toasty.info(this@SearchActivity, "Silakan mengisi kolom pencarian", Toast.LENGTH_SHORT, true).show();
+                Toasty.info(this@SearchActivity, "Silakan mengisi kolom pencarian", Toast.LENGTH_SHORT, true).show()
             }
 
             showLoading(true)
