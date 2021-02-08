@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface Api {
 
     @GET(Utils.SEARCH_USERS)
-    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN}")
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun searchUsers(
             @Query("q") query: String
     ): Call<UserResponse>
