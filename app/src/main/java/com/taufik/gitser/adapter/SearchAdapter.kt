@@ -43,7 +43,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(listUsers[position])
         holder.itemView.setOnClickListener {
-            Toasty.success(holder.itemView.context, "" + listUsers[position].login).show()
+            Toasty.success(holder.itemView.context, " ${listUsers[position].login}").show()
         }
     }
 
