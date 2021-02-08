@@ -28,6 +28,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
                 Glide.with(itemView)
                     .load(user.avatarUrl)
                     .placeholder(R.color.purple_500)
+                    .centerCrop()
                     .into(imgUserProfile)
 
                 tvUsernameProfile.text = user.login
