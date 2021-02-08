@@ -65,3 +65,7 @@ This application is a simple Github user search app using Kotlin. This applicati
 
 - Glide
         - implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+- Circle image
+
+        - implementation 'de.hdodenhof:circleimageview:3.1.0'
