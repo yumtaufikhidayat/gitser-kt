@@ -6,6 +6,7 @@ This application is a simple Github user search app using Kotlin. This applicati
 - LiveData
 - Retrofit
 - View Binding
+- Java8 support
 
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
