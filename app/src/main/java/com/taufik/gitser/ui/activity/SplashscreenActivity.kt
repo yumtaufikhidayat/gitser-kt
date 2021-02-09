@@ -26,6 +26,6 @@ class SplashscreenActivity : AppCompatActivity() {
         handler.postDelayed({
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
-        }, 3000)
+        }, 1000)
     }
 }
