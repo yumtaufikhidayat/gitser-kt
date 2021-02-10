@@ -1,12 +1,12 @@
 package com.taufik.gitser.ui.activity.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.taufik.gitser.databinding.ActivitySplashscreenBinding
-import com.taufik.gitser.ui.activity.search.SearchActivity
+import com.taufik.gitser.ui.activity.main.MainActivity
 
 class SplashscreenActivity : AppCompatActivity() {
 
@@ -25,7 +25,7 @@ class SplashscreenActivity : AppCompatActivity() {
 
         handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent = Intent(this, SearchActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }, 1000)
     }

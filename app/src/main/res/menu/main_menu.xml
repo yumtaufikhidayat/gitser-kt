@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_search_main"
+        android:title="@string/tvSearch"
+        android:icon="@drawable/ic_search_white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="@string/tvOtherMenus"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_more">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_favorite"
+                android:title="@string/tvFavorite"
+                android:icon="@drawable/ic_favorite"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/nav_settings"
+                android:title="@string/tvSettings"
+                android:icon="@drawable/ic_settings"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/nav_profile"
+                android:title="@string/tvProfile"
+                android:icon="@drawable/ic_person"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+</menu>

@@ -3,6 +3,7 @@ package com.taufik.gitser.ui.activity.search
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -23,28 +24,37 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setInit()
-    }
-
-    private fun setInit() {
+        initActionBar()
 
         setAdapter()
+
+        setViewModel()
+
+        setData()
+
+        setOnClickAction()
+    }
+
+    private fun initActionBar() {
+
+        val actionBar = supportActionBar
+
+        if (actionBar != null) {
+            actionBar.title = "Cari"
+            actionBar.setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     private fun setAdapter() {
 
         adapter = SearchAdapter()
         adapter.notifyDataSetChanged()
-
-        setViewModel()
     }
 
     private fun setViewModel() {
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
                 .get(SearchViewModel::class.java)
-
-        setData()
     }
 
     private fun setData() {
@@ -53,8 +63,6 @@ class SearchActivity : AppCompatActivity() {
             rvSearchUsers.layoutManager = LinearLayoutManager(this@SearchActivity)
             rvSearchUsers.setHasFixedSize(true)
             rvSearchUsers.adapter = adapter
-
-            setOnClickAction()
         }
     }
 
@@ -107,5 +115,12 @@ class SearchActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

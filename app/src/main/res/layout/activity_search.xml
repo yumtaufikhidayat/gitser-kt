@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:hint="@string/tvSearch"
+            android:hint="@string/tvSearchUser"
             android:textColorHint="#cccccc"
             android:background="@null"
             android:autofillHints="@null"

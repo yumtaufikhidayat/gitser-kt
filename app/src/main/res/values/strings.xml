@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Gitser</string>
-    <string name="tvSearch">Cari nama pengguna…</string>
+    <string name="tvSearchUser">Cari nama pengguna…</string>
+    <string name="tvSearch">Cari</string>
     <string name="tvNull">Null</string>
     <string name="tvFollowing">Mengikuti</string>
     <string name="tvFollowingNumber">0</string>
@@ -9,5 +10,8 @@
     <string name="tvRepository">Repositori</string>
     <string name="tvRepositoryNumber">0</string>
     <string name="tvLanguage">Bahasa</string>
-
+    <string name="tvOtherMenus">Menu Lainnya</string>
+    <string name="tvFavorite">Favorit</string>
+    <string name="tvSettings">Pengaturan</string>
+    <string name="tvProfile">Profil</string>
 </resources>
