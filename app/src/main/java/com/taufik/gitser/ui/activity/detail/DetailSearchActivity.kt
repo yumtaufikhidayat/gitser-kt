@@ -7,6 +7,7 @@ import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -29,6 +30,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSearchBinding
     private lateinit var viewModel: DetailSearchViewModel
     private lateinit var bundle: Bundle
+    private lateinit var username: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +38,31 @@ class DetailSearchActivity : AppCompatActivity() {
         binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setParcelableData()
+
+        initActionBar()
+
         setViewModel()
 
         setViewPager()
     }
 
-    private fun setViewModel() {
+    private fun setParcelableData() {
 
-        val username = intent.getStringExtra(EXTRA_USERNAME)
+        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+    }
+
+    private fun initActionBar() {
+
+        val actionBar = supportActionBar
+
+        if (actionBar != null) {
+            actionBar.title = username
+            actionBar.setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    private fun setViewModel() {
 
         bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
@@ -52,47 +71,45 @@ class DetailSearchActivity : AppCompatActivity() {
             ViewModelProvider.NewInstanceFactory())
             .get(DetailSearchViewModel::class.java)
 
-        if (username != null) {
-            viewModel.setDetailSearch(username)
-            viewModel.getDetailSearch().observe(this, {
-                if (it != null) {
-                    binding.apply {
+        viewModel.setDetailSearch(username)
+        viewModel.getDetailSearch().observe(this, {
+            if (it != null) {
+                binding.apply {
 
-                        Glide.with(this@DetailSearchActivity)
-                            .load(it.avatar_url)
-                            .placeholder(R.color.purple_500)
-                            .into(imgProfileDetailSearch)
+                    Glide.with(this@DetailSearchActivity)
+                        .load(it.avatar_url)
+                        .placeholder(R.color.purple_500)
+                        .into(imgProfileDetailSearch)
 
-                        tvNameDetailSearch.text = it.name
-                        tvUsernameDetailSearch.text = it.login
-                        tvFollowingDetailSearch.text = it.following.toString()
-                        tvFollowersDetailSearch.text = it.followers.toString()
-                        tvRepositoryDetailSearch.text = it.public_repos.toString()
-                        tvLocationDetailSearch.text = it.location
-                        tvCompanyDetailSearch.text = it.company
+                    tvNameDetailSearch.text = it.name
+                    tvUsernameDetailSearch.text = it.login
+                    tvFollowingDetailSearch.text = it.following.toString()
+                    tvFollowersDetailSearch.text = it.followers.toString()
+                    tvRepositoryDetailSearch.text = it.public_repos.toString()
+                    tvLocationDetailSearch.text = it.location
+                    tvCompanyDetailSearch.text = it.company
 
-                        val link = it.blog
-                        tvLinkDetailSearch.text = link
+                    val link = it.blog
+                    tvLinkDetailSearch.text = link
 
-                        tvLinkDetailSearch.makeLinks(Pair(it.blog, View.OnClickListener {
-                            try {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-                                startActivity(Intent.createChooser(intent, "Open with:"))
-                            } catch (e: Exception) {
-                                Toasty.warning(
-                                    this@DetailSearchActivity,
-                                    "Silakan install browser terlebih dulu.",
-                                    Toast.LENGTH_SHORT,
-                                    true
-                                ).show()
+                    tvLinkDetailSearch.makeLinks(Pair(it.blog, View.OnClickListener {
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                            startActivity(Intent.createChooser(intent, "Open with:"))
+                        } catch (e: Exception) {
+                            Toasty.warning(
+                                this@DetailSearchActivity,
+                                "Silakan install browser terlebih dulu.",
+                                Toast.LENGTH_SHORT,
+                                true
+                            ).show()
 
-                                Log.e("errorLink", "setViewModel: ${e.localizedMessage}" )
-                            }
-                        }))
-                    }
+                            Log.e("errorLink", "setViewModel: ${e.localizedMessage}" )
+                        }
+                    }))
                 }
-            })
-        }
+            }
+        })
     }
 
     private fun setViewPager() {
@@ -131,5 +148,12 @@ class DetailSearchActivity : AppCompatActivity() {
 
         this.movementMethod = LinkMovementMethod.getInstance()
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
