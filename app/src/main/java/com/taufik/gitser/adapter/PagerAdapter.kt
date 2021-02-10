@@ -4,14 +4,14 @@ import android.content.Context
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.taufik.gitser.R
 import com.taufik.gitser.ui.fragment.followers.FollowersFragment
 import com.taufik.gitser.ui.fragment.following.FollowingFragment
 import com.taufik.gitser.ui.fragment.repository.RepositoryFragment
 
 class PagerAdapter(private val context: Context, fragmentManager: FragmentManager)
-    : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    : FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     @StringRes
     private val tabsTitle = intArrayOf(R.string.tvFollowing, R.string.tvFollowers, R.string.tvRepository)
