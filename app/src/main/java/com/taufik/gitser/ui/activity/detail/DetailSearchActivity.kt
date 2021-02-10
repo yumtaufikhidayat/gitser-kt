@@ -17,6 +17,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailSearchBinding
     private lateinit var viewModel: DetailSearchViewModel
+    private lateinit var bundle: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,9 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setViewModel() {
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
+
+        bundle = Bundle()
+        bundle.putString(EXTRA_USERNAME, username)
 
         viewModel = ViewModelProvider(this,
             ViewModelProvider.NewInstanceFactory())
@@ -64,7 +68,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
     private fun setViewPager() {
 
-        val pagerAdapter = PagerAdapter(this, supportFragmentManager)
+        val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
             viewPagerDetailSearch.adapter = pagerAdapter
             tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
