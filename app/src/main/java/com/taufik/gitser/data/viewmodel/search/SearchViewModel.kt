@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.viewmodel
+package com.taufik.gitser.data.viewmodel.search
 
 import android.util.Log
 import androidx.lifecycle.LiveData

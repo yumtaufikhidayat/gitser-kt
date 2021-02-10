@@ -1,5 +1,6 @@
 package com.taufik.gitser.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.taufik.gitser.R
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
-import es.dmoral.toasty.Toasty
+import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
 
@@ -41,9 +42,13 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(listUsers[position])
+
+        val pos = listUsers[position]
+        holder.bind(pos)
         holder.itemView.setOnClickListener {
-            Toasty.success(holder.itemView.context, " ${listUsers[position].login}").show()
+            val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java)
+            intent.putExtra(DetailSearchActivity.EXTRA_USERNAME, pos.login)
+            holder.itemView.context.startActivity(intent)
         }
     }
 

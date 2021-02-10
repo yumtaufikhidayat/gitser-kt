@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.adapter.SearchAdapter
-import com.taufik.gitser.data.viewmodel.SearchViewModel
+import com.taufik.gitser.data.viewmodel.search.SearchViewModel
 import com.taufik.gitser.databinding.ActivitySearchBinding
 import es.dmoral.toasty.Toasty
 

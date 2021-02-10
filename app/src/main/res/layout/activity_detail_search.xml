@@ -20,10 +20,6 @@
             android:orientation="vertical"
             android:background="@android:color/white">
 
-            <include
-                android:id="@+id/toolbarDetailMain"
-                layout="@layout/toolbar_custom"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +64,7 @@
                             app:layout_constraintTop_toBottomOf="@id/imgProfileDetailSearch"/>
 
                         <TextView
-                            android:id="@+id/tvUsernameMain"
+                            android:id="@+id/tvUsernameDetailSearch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -282,24 +278,6 @@
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
                 app:tabSelectedTextColor="@color/purple_500"
                 app:tabIconTint="@color/color">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_outline_person"
-                    android:text="@string/tvFollowing"/>
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_outline_person"
-                    android:text="@string/tvFollowers"/>
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/ic_outline_repo"
-                    android:text="@string/tvRepository"/>
 
             </com.google.android.material.tabs.TabLayout>
 
