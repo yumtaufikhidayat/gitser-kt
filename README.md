@@ -1,4 +1,4 @@
-# gitser-kt`
+# gitser-kt
 This application is a simple Github user search app using Kotlin. This application using:
 - Material design
 - Kotlin language

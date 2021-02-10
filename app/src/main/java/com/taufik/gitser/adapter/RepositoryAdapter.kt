@@ -1,5 +1,7 @@
 package com.taufik.gitser.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +56,10 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.MyViewHolder>()
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val pos = listRepository[position]
         holder.bind(pos)
+        holder.itemView.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pos.html_url))
+            holder.itemView.context.startActivity(Intent.createChooser(intent, "Open with:"))
+        }
     }
 
     override fun getItemCount(): Int = listRepository.size
