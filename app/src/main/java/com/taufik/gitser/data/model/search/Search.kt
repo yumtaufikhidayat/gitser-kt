@@ -1,8 +1,8 @@
-package com.taufik.gitser.data.model
+package com.taufik.gitser.data.model.search
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class Search(
     @SerializedName("id")
     val id: Int,
     @SerializedName("login")

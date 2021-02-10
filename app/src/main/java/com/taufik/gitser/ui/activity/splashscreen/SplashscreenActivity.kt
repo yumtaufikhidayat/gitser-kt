@@ -1,4 +1,4 @@
-package com.taufik.gitser.ui.activity
+package com.taufik.gitser.ui.activity.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.taufik.gitser.databinding.ActivitySplashscreenBinding
+import com.taufik.gitser.ui.activity.search.SearchActivity
 
 class SplashscreenActivity : AppCompatActivity() {
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".ui.activity.DetailSearchActivity">
+    tools:context=".ui.activity.detail.DetailSearchActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                         android:layout_marginBottom="10dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/imgMain"
+                            android:id="@+id/imgProfileDetailSearch"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
@@ -55,7 +55,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/tvNameMain"
+                            android:id="@+id/tvNameDetailSearch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -63,9 +63,9 @@
                             android:textStyle="bold"
                             android:textColor="@android:color/black"
                             android:text="@string/tvNull"
-                            app:layout_constraintStart_toStartOf="@id/imgMain"
-                            app:layout_constraintEnd_toEndOf="@id/imgMain"
-                            app:layout_constraintTop_toBottomOf="@id/imgMain"/>
+                            app:layout_constraintStart_toStartOf="@id/imgProfileDetailSearch"
+                            app:layout_constraintEnd_toEndOf="@id/imgProfileDetailSearch"
+                            app:layout_constraintTop_toBottomOf="@id/imgProfileDetailSearch"/>
 
                         <TextView
                             android:id="@+id/tvUsernameMain"
@@ -73,9 +73,9 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:text="@string/tvNull"
-                            app:layout_constraintStart_toStartOf="@id/tvNameMain"
-                            app:layout_constraintEnd_toEndOf="@id/tvNameMain"
-                            app:layout_constraintTop_toBottomOf="@id/tvNameMain"
+                            app:layout_constraintStart_toStartOf="@id/tvNameDetailSearch"
+                            app:layout_constraintEnd_toEndOf="@id/tvNameDetailSearch"
+                            app:layout_constraintTop_toBottomOf="@id/tvNameDetailSearch"
                             app:layout_constraintBottom_toBottomOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,7 +100,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/tvFollowingMain"
+                        android:id="@+id/tvFollowingDetailSearch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -133,7 +133,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/tvFollowersMain"
+                        android:id="@+id/tvFollowersDetailSearch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -166,7 +166,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/tvRepositoryMain"
+                        android:id="@+id/tvRepositoryDetailSearch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
@@ -206,7 +206,7 @@
                     app:layout_constraintBottom_toTopOf="@id/imgCompany"/>
 
                 <TextView
-                    android:id="@+id/tvLocationMain"
+                    android:id="@+id/tvLocationDetailSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -217,7 +217,7 @@
                     android:text="@string/tvNull"
                     app:layout_constraintStart_toEndOf="@id/imgLocation"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvCompanyMain"/>
+                    app:layout_constraintBottom_toTopOf="@id/tvCompanyDetailSearch"/>
 
                 <ImageView
                     android:id="@+id/imgCompany"
@@ -231,7 +231,7 @@
                     app:layout_constraintBottom_toTopOf="@id/imgLink"/>
 
                 <TextView
-                    android:id="@+id/tvCompanyMain"
+                    android:id="@+id/tvCompanyDetailSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -241,8 +241,8 @@
                     android:textColor="@android:color/black"
                     android:text="@string/tvNull"
                     app:layout_constraintStart_toEndOf="@id/imgCompany"
-                    app:layout_constraintTop_toBottomOf="@id/tvLocationMain"
-                    app:layout_constraintBottom_toTopOf="@id/tvLinkMain"/>
+                    app:layout_constraintTop_toBottomOf="@id/tvLocationDetailSearch"
+                    app:layout_constraintBottom_toTopOf="@id/tvLinkDetailSearch"/>
 
                 <ImageView
                     android:id="@+id/imgLink"
@@ -256,7 +256,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <TextView
-                    android:id="@+id/tvLinkMain"
+                    android:id="@+id/tvLinkDetailSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -266,13 +266,13 @@
                     android:textColor="@android:color/black"
                     android:text="@string/tvNull"
                     app:layout_constraintStart_toEndOf="@id/imgLink"
-                    app:layout_constraintTop_toBottomOf="@id/tvCompanyMain"
+                    app:layout_constraintTop_toBottomOf="@id/tvCompanyDetailSearch"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayoutDetailMain"
+                android:id="@+id/tabLayoutDetailSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabGravity="fill"
@@ -308,7 +308,7 @@
     </ScrollView>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerDetailMain"
+        android:id="@+id/viewPagerDetailSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

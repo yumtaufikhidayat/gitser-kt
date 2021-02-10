@@ -5,32 +5,32 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.taufik.gitser.R
-import com.taufik.gitser.data.model.User
+import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
 import es.dmoral.toasty.Toasty
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
 
-    private val listUsers = ArrayList<User>()
+    private val listUsers = ArrayList<Search>()
 
-    fun setSearchUserList(users: ArrayList<User>) {
+    fun setSearchUserList(searches: ArrayList<Search>) {
         listUsers.clear()
-        listUsers.addAll(users)
+        listUsers.addAll(searches)
         notifyDataSetChanged()
     }
 
     inner class MyViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(user: User) {
+        fun bind(search: Search) {
 
             binding.apply {
 
                 Glide.with(itemView)
-                    .load(user.avatarUrl)
+                    .load(search.avatarUrl)
                     .placeholder(R.color.purple_500)
                     .into(imgUserProfile)
 
-                tvUsernameProfile.text = user.login
+                tvUsernameProfile.text = search.login
             }
         }
     }

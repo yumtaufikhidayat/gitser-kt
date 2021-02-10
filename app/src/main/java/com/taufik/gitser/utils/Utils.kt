@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.utils
+package com.taufik.gitser.utils
 
 object Utils {
     const val BASE_URL = "https://api.github.com/"

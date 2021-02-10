@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gitser">
-        <activity android:name=".ui.activity.DetailSearchActivity"></activity>
+        <activity android:name=".ui.activity.detail.DetailSearchActivity"></activity>
         <activity
-            android:name=".ui.activity.SplashscreenActivity"
+            android:name=".ui.activity.splashscreen.SplashscreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SearchActivity" />
+        <activity android:name=".ui.activity.search.SearchActivity" />
     </application>
 
 </manifest>

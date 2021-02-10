@@ -1,4 +1,4 @@
-package com.taufik.gitser.ui.activity
+package com.taufik.gitser.ui.activity.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
