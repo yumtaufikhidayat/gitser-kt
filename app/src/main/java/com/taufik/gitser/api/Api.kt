@@ -2,6 +2,7 @@ package com.taufik.gitser.api
 
 import com.taufik.gitser.BuildConfig
 import com.taufik.gitser.data.model.detail.DetailSearchResponse
+import com.taufik.gitser.data.model.repository.RepositoryResponse
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.data.model.search.SearchResponse
 import com.taufik.gitser.utils.Utils
@@ -16,7 +17,7 @@ interface Api {
     @GET(Utils.SEARCH_USERS)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun searchUsers(
-            @Query("q") query: String
+        @Query("q") query: String
     ): Call<SearchResponse>
 
     @GET(Utils.DETAIL_PROFILE_URL)
@@ -37,5 +38,9 @@ interface Api {
         @Path("username") username: String
     ): Call<ArrayList<Search>>
 
-
+    @GET(Utils.REPOSITORY_URL)
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
+    fun getRepository(
+        @Path("username") username: String
+    ): Call<ArrayList<RepositoryResponse>>
 }

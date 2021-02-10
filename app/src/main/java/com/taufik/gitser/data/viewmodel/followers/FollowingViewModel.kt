@@ -25,6 +25,7 @@ class FollowingViewModel : ViewModel() {
                     if (response.isSuccessful) {
                         listOfFollowing.postValue(response.body())
                     }
+
                     Log.e("followingSuccess", "onResponse: ${response.body()}")
                 }
 

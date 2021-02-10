@@ -8,7 +8,6 @@
     <string name="tvFollowerNumber">0</string>
     <string name="tvRepository">Repositori</string>
     <string name="tvRepositoryNumber">0</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tvLanguage">Bahasa</string>
 
 </resources>
