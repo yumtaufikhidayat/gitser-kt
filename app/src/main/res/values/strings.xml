@@ -14,4 +14,6 @@
     <string name="tvFavorite">Favorit</string>
     <string name="tvSettings">Pengaturan</string>
     <string name="tvProfile">Profil</string>
+    <string name="tvShare">Bagikan</string>
+    <string name="tvOpenInBrowser">Buka di Peramban</string>
 </resources>

@@ -7,6 +7,7 @@ import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -16,10 +17,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
+import com.taufik.gitser.data.model.detail.DetailSearchResponse
 import com.taufik.gitser.data.viewmodel.detail.DetailSearchViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
 import es.dmoral.toasty.Toasty
-import java.lang.Exception
 
 class DetailSearchActivity : AppCompatActivity() {
 
@@ -31,6 +32,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private lateinit var viewModel: DetailSearchViewModel
     private lateinit var bundle: Bundle
     private lateinit var username: String
+    private lateinit var data: DetailSearchResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +75,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
         viewModel.setDetailSearch(username)
         viewModel.getDetailSearch().observe(this, {
+            data = it
             if (it != null) {
                 binding.apply {
 
@@ -150,9 +153,39 @@ class DetailSearchActivity : AppCompatActivity() {
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.detail_search_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
+
+            R.id.nav_share -> {
+
+                try {
+
+                    val body = "Visit this awesome user \n${data.html_url}"
+
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, body)
+                    startActivity(Intent.createChooser(shareIntent, "Share with:"))
+                } catch (e: Exception) {
+                    Log.e("shareFailed", "onOptionsItemSelected: ${e.localizedMessage}")
+                }
+            }
+
+            R.id.nav_open_in_browser -> {
+                try {
+                    val intentBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(data.html_url))
+                    startActivity(Intent.createChooser(intentBrowser, "Open with:"))
+                } catch (e: java.lang.Exception) {
+                    Log.e("errorIntent", "onBindViewHolder: ${e.localizedMessage}")
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -2,11 +2,13 @@ package com.taufik.gitser.adapter
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.taufik.gitser.data.model.repository.RepositoryResponse
 import com.taufik.gitser.databinding.ItemRepositoryBinding
+import java.lang.Exception
 import kotlin.math.roundToInt
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.MyViewHolder>(){
@@ -57,8 +59,12 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.MyViewHolder>()
         val pos = listRepository[position]
         holder.bind(pos)
         holder.itemView.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pos.html_url))
-            holder.itemView.context.startActivity(Intent.createChooser(intent, "Open with:"))
+            try {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pos.html_url))
+                holder.itemView.context.startActivity(Intent.createChooser(intent, "Open with:"))
+            } catch (e: Exception) {
+                Log.e("errorIntent", "onBindViewHolder: ${e.localizedMessage}")
+            }
         }
     }
 
