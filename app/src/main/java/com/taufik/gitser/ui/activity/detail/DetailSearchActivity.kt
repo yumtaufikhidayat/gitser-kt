@@ -21,17 +21,24 @@ import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.properties.Delegates
 
 class DetailSearchActivity : AppCompatActivity() {
 
     companion object{
         const val EXTRA_USERNAME = "com.taufik.gitser.ui.activity.detail.EXTRA_USERNAME"
+        const val EXTRA_ID = "com.taufik.gitser.ui.activity.detail.EXTRA_ID"
     }
 
     private lateinit var binding: ActivityDetailSearchBinding
     private lateinit var viewModel: DetailViewModel
     private lateinit var bundle: Bundle
     private lateinit var username: String
+    private var id by Delegates.notNull<Int>()
     private lateinit var data: DetailResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +59,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setParcelableData() {
 
         username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        id = intent.getIntExtra(EXTRA_ID, 0)
     }
 
     private fun initActionBar() {
@@ -69,9 +77,7 @@ class DetailSearchActivity : AppCompatActivity() {
         bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
-        viewModel = ViewModelProvider(this,
-            ViewModelProvider.NewInstanceFactory())
-            .get(DetailViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         viewModel.setDetailSearch(username)
         viewModel.getDetailSearch().observe(this, {
@@ -113,6 +119,33 @@ class DetailSearchActivity : AppCompatActivity() {
                 }
             }
         })
+
+        var isChecked = false
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = viewModel.checkUserFavorite(id)
+            withContext(Dispatchers.Main){
+                if (count != null) {
+                    if (count > 0) {
+                        binding.toggleFavoriteDetailSearch.isChecked = true
+                        isChecked = true
+                    } else {
+                        binding.toggleFavoriteDetailSearch.isChecked = false
+                        isChecked = false
+                    }
+                }
+            }
+        }
+
+        binding.toggleFavoriteDetailSearch.setOnClickListener{
+            isChecked = !isChecked
+            if (isChecked) {
+                viewModel.addToFavorite(username, id)
+            } else {
+                viewModel.remoteFromFavorite(id)
+            }
+
+            binding.toggleFavoriteDetailSearch.isChecked = isChecked
+        }
     }
 
     private fun setViewPager() {

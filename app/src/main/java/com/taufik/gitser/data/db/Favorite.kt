@@ -1,0 +1,13 @@
+package com.taufik.gitser.data.db
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.io.Serializable
+
+@Entity(tableName = "favorite_user")
+data class Favorite(
+
+    @PrimaryKey
+    val id: Int,
+    val login: String
+): Serializable
