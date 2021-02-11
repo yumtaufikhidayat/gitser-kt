@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.ProfilePagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
-import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
+import com.taufik.gitser.data.viewmodel.profile.ProfileViewModel
 import com.taufik.gitser.databinding.ActivityProfileBinding
 import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo
 import es.dmoral.toasty.Toasty
@@ -31,7 +31,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityProfileBinding
-    private lateinit var viewModel: DetailViewModel
+    private lateinit var viewModel: ProfileViewModel
     private lateinit var bundle: Bundle
     private lateinit var username: String
     private lateinit var data: DetailResponse
@@ -75,10 +75,10 @@ class ProfileActivity : AppCompatActivity() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )
-            .get(DetailViewModel::class.java)
+            .get(ProfileViewModel::class.java)
 
-        viewModel.setDetailSearch(username)
-        viewModel.getDetailSearch().observe(this, {
+        viewModel.setProfile(username)
+        viewModel.getProfile().observe(this, {
             data = it
             if (it != null) {
                 binding.apply {

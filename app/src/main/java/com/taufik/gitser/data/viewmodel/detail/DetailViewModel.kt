@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.taufik.gitser.api.ApiClient
 import com.taufik.gitser.data.db.Favorite
 import com.taufik.gitser.data.db.FavoriteDao
@@ -23,10 +22,9 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     val user = MutableLiveData<DetailResponse>()
 
     private var userDao: FavoriteDao?
-    private var userDb: UserDatabase?
+    private var userDb: UserDatabase? = UserDatabase.getDatabase(application)
 
     init {
-        userDb = UserDatabase.getDatabase(application)
         userDao = userDb?.favoriteUserDao()
     }
 
@@ -57,7 +55,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     fun addToFavorite(username: String, id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            var user = Favorite(
+            val user = Favorite(
                 id,
                 username
             )
