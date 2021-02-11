@@ -1,4 +1,4 @@
-package com.taufik.gitser.ui.activity.detail
+package com.taufik.gitser.ui.activity.profile
 
 import android.content.Intent
 import android.net.Uri
@@ -13,22 +13,24 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.taufik.gitser.R
-import com.taufik.gitser.adapter.PagerAdapter
+import com.taufik.gitser.adapter.ProfilePagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
-import com.taufik.gitser.databinding.ActivityDetailSearchBinding
+import com.taufik.gitser.databinding.ActivityProfileBinding
+import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo
 import es.dmoral.toasty.Toasty
 
-class DetailSearchActivity : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
     companion object{
-        const val EXTRA_USERNAME = "com.taufik.gitser.ui.activity.detail.EXTRA_USERNAME"
+        const val PROFILE_USERNAME = "yumtaufikhidayat"
     }
 
-    private lateinit var binding: ActivityDetailSearchBinding
+    private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: DetailViewModel
     private lateinit var bundle: Bundle
     private lateinit var username: String
@@ -37,10 +39,10 @@ class DetailSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityDetailSearchBinding.inflate(layoutInflater)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setParcelableData()
+        setInitData()
 
         initActionBar()
 
@@ -49,9 +51,9 @@ class DetailSearchActivity : AppCompatActivity() {
         setViewPager()
     }
 
-    private fun setParcelableData() {
+    private fun setInitData() {
 
-        username = intent.getStringExtra(EXTRA_USERNAME).toString()
+        username = PROFILE_USERNAME
     }
 
     private fun initActionBar() {
@@ -59,7 +61,7 @@ class DetailSearchActivity : AppCompatActivity() {
         val actionBar = supportActionBar
 
         if (actionBar != null) {
-            actionBar.title = username
+            actionBar.title = "Profil"
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
     }
@@ -67,10 +69,12 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setViewModel() {
 
         bundle = Bundle()
-        bundle.putString(EXTRA_USERNAME, username)
+        bundle.putString(PROFILE_USERNAME, username)
 
-        viewModel = ViewModelProvider(this,
-            ViewModelProvider.NewInstanceFactory())
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )
             .get(DetailViewModel::class.java)
 
         viewModel.setDetailSearch(username)
@@ -79,35 +83,35 @@ class DetailSearchActivity : AppCompatActivity() {
             if (it != null) {
                 binding.apply {
 
-                    Glide.with(this@DetailSearchActivity)
+                    Glide.with(this@ProfileActivity)
                         .load(it.avatar_url)
                         .placeholder(R.color.purple_500)
-                        .into(imgProfileDetailSearch)
+                        .into(imgProfile)
 
-                    tvNameDetailSearch.text = it.name
-                    tvUsernameDetailSearch.text = it.login
-                    tvFollowingDetailSearch.text = it.following.toString()
-                    tvFollowersDetailSearch.text = it.followers.toString()
-                    tvRepositoryDetailSearch.text = it.public_repos.toString()
-                    tvLocationDetailSearch.text = it.location
-                    tvCompanyDetailSearch.text = it.company
+                    tvProfileName.text = it.name
+                    tvProfileUsername.text = it.login
+                    tvFollowingProfile.text = it.following.toString()
+                    tvFollowersProfile.text = it.followers.toString()
+                    tvRepositoryProfile.text = it.public_repos.toString()
+                    tvLocationProfile.text = it.location
+                    tvCompanyProfile.text = it.company
 
                     val link = it.blog
-                    tvLinkDetailSearch.text = link
+                    tvLinkProfile.text = link
 
-                    tvLinkDetailSearch.makeLinks(Pair(it.blog, View.OnClickListener {
+                    tvLinkProfile.makeLinks(Pair(it.blog, View.OnClickListener {
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                             startActivity(Intent.createChooser(intent, "Open with:"))
                         } catch (e: Exception) {
                             Toasty.warning(
-                                this@DetailSearchActivity,
+                                this@ProfileActivity,
                                 "Silakan install browser terlebih dulu.",
                                 Toast.LENGTH_SHORT,
                                 true
                             ).show()
 
-                            Log.e("errorLink", "setViewModel: ${e.localizedMessage}" )
+                            Log.e("errorLink", "setViewModel: ${e.localizedMessage}")
                         }
                     }))
                 }
@@ -117,10 +121,10 @@ class DetailSearchActivity : AppCompatActivity() {
 
     private fun setViewPager() {
 
-        val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
+        val profilePageAdapter = ProfilePagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
-            viewPagerDetailSearch.adapter = pagerAdapter
-            tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
+            viewPagerProfile.adapter = profilePageAdapter
+            tabLayoutProfile.setupWithViewPager(viewPagerProfile)
         }
     }
 
@@ -145,7 +149,10 @@ class DetailSearchActivity : AppCompatActivity() {
 
             startIndexOfLink = this.text.toString().indexOf(link.first, startIndexOfLink + 1)
             spannableString.setSpan(
-                clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                clickableSpan,
+                startIndexOfLink,
+                startIndexOfLink + link.first.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
 
@@ -155,7 +162,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.detail_menu, menu)
+        inflater.inflate(R.menu.profile_menu, menu)
         return true
     }
 
@@ -163,12 +170,22 @@ class DetailSearchActivity : AppCompatActivity() {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
 
-            R.id.nav_share -> {
+            R.id.nav_detail_profile -> {
+
+                val profileInfo = BottomSheetProfileInfo()
+
+                profileInfo.setStyle(
+                    DialogFragment.STYLE_NORMAL,
+                    R.style.BaseBottomSheetMenu
+                )
+
+                profileInfo.show(supportFragmentManager, "profileInfoBottomSheet")
+            }
+
+            R.id.nav_share_profile -> {
 
                 try {
-
                     val body = "Visit this awesome user \n${data.html_url}"
-
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_TEXT, body)
@@ -178,7 +195,7 @@ class DetailSearchActivity : AppCompatActivity() {
                 }
             }
 
-            R.id.nav_open_in_browser -> {
+            R.id.nav_open_in_browser_profile -> {
                 try {
                     val intentBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(data.html_url))
                     startActivity(Intent.createChooser(intentBrowser, "Open with:"))
@@ -187,6 +204,7 @@ class DetailSearchActivity : AppCompatActivity() {
                 }
             }
         }
+
         return super.onOptionsItemSelected(item)
     }
 }

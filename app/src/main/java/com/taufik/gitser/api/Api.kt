@@ -1,7 +1,7 @@
 package com.taufik.gitser.api
 
 import com.taufik.gitser.BuildConfig
-import com.taufik.gitser.data.model.detail.DetailSearchResponse
+import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.model.repository.RepositoryResponse
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.data.model.search.SearchResponse
@@ -24,7 +24,7 @@ interface Api {
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getDetailUsers(
         @Path("username") username: String
-    ): Call<DetailSearchResponse>
+    ): Call<DetailResponse>
 
     @GET(Utils.FOLLOWERS_URL)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_detail_profile"
+        android:title="@string/tvShare"
+        android:icon="@drawable/ic_info_outline_white_24dp"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="@string/tvOtherMenus"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_more">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_share_profile"
+                android:title="@string/tvShare"
+                android:icon="@drawable/ic_share"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/nav_open_in_browser_profile"
+                android:title="@string/tvOpenInBrowser"
+                android:icon="@drawable/ic_language"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+
+</menu>

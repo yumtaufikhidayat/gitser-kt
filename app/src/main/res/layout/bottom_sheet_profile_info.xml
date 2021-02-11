@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bottom_sheet_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvProfileInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="20dp"
+            android:text="@string/tvAppInfo"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvProfileInfoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/tvInfoDesc"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileInfo"/>
+
+        <ImageView
+            android:id="@+id/imgProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_email"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileInfoDesc"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvProfileInfoEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/tvDeveloperEmail"
+            android:textColor="@color/colorBlue"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintTop_toTopOf="@id/imgProfileEmail"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfileEmail"
+            app:layout_constraintStart_toEndOf="@+id/imgProfileEmail"/>
+
+        <ImageView
+            android:id="@+id/imgProfileRepository"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_outline_repo"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfileEmail"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvProfileInfoGithubUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/tvDeveloperGithubUrl"
+            android:textColor="@color/colorBlue"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintTop_toTopOf="@id/imgProfileRepository"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfileRepository"
+            app:layout_constraintStart_toEndOf="@+id/imgProfileRepository"/>
+
+        <ImageView
+            android:id="@+id/imgProfileInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_info"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfileRepository"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@android:color/black"
+            android:text="@string/tvAppVersion"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintTop_toTopOf="@id/imgProfileInfo"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfileInfo"
+            app:layout_constraintStart_toEndOf="@+id/imgProfileInfo"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -3,7 +3,7 @@ package com.taufik.gitser.data.model.detail
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class DetailSearchResponse(
+data class DetailResponse(
 
     @Expose
     @SerializedName("login")

@@ -5,21 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.taufik.gitser.api.ApiClient
-import com.taufik.gitser.data.model.detail.DetailSearchResponse
+import com.taufik.gitser.data.model.detail.DetailResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailSearchViewModel : ViewModel() {
+class DetailViewModel : ViewModel() {
 
-    val user = MutableLiveData<DetailSearchResponse>()
+    val user = MutableLiveData<DetailResponse>()
 
     fun setDetailSearch(username: String) {
         ApiClient.apiInstance.getDetailUsers(username)
-            .enqueue(object : Callback<DetailSearchResponse> {
+            .enqueue(object : Callback<DetailResponse> {
                 override fun onResponse(
-                    call: Call<DetailSearchResponse>,
-                    response: Response<DetailSearchResponse>
+                    call: Call<DetailResponse>,
+                    response: Response<DetailResponse>
                 ) {
                     if (response.isSuccessful) {
                         user.postValue(response.body())
@@ -28,14 +28,14 @@ class DetailSearchViewModel : ViewModel() {
                     Log.e("detailSuccess", "onResponse: ${response.body()}")
                 }
 
-                override fun onFailure(call: Call<DetailSearchResponse>, t: Throwable) {
+                override fun onFailure(call: Call<DetailResponse>, t: Throwable) {
                     Log.e("detailFailed", "onFailure: ${t.localizedMessage}")
                 }
 
             })
     }
 
-    fun getDetailSearch(): LiveData<DetailSearchResponse> {
+    fun getDetailSearch(): LiveData<DetailResponse> {
         return user
     }
 }
