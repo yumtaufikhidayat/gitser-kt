@@ -7,6 +7,8 @@ This application is a simple Github user search app using Kotlin. This applicati
 - Retrofit
 - View Binding
 - Java8 support
+- Room Persistent Database
+- Coroutine
 
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
@@ -78,3 +80,14 @@ This application is a simple Github user search app using Kotlin. This applicati
 - Toasty
 
         - implementation 'com.github.GrenderG:Toasty:1.5.0'
+
+- Room DB
+        - def room_version = '2.2.6'
+        - implementation "androidx.room:room-runtime:$room_version"
+        - implementation "androidx.room:room-ktx:$room_version"
+        - testImplementation "androidx.room:room-testing:$room_version"
+        - kapt "androidx.room:room-compiler:$room_version"
+
+- Coroutine
+        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
