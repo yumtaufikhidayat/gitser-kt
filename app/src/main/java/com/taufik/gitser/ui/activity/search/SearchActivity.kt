@@ -1,13 +1,17 @@
 package com.taufik.gitser.ui.activity.search
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.taufik.gitser.R
 import com.taufik.gitser.adapter.SearchAdapter
 import com.taufik.gitser.data.viewmodel.search.SearchViewModel
 import com.taufik.gitser.databinding.ActivitySearchBinding
@@ -31,8 +35,6 @@ class SearchActivity : AppCompatActivity() {
         setViewModel()
 
         setData()
-
-        setOnClickAction()
     }
 
     private fun initActionBar() {
@@ -66,48 +68,6 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnClickAction() {
-
-        binding.apply {
-            imgSearch.setOnClickListener{
-                searchUser()
-            }
-
-            etSearchQuery.setOnKeyListener { v, keyCode, event ->
-
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                    searchUser()
-                    return@setOnKeyListener true
-                }
-
-                return@setOnKeyListener false
-            }
-
-            viewModel.getSearchUsers().observe(this@SearchActivity, {
-                if (it != null) {
-                    adapter.setSearchUserList(it)
-                    showLoading(false)
-                }
-            })
-        }
-    }
-
-    private fun searchUser() {
-
-        binding.apply {
-
-            val query = etSearchQuery.text.toString()
-
-            if (query.isEmpty()) {
-                Toasty.info(this@SearchActivity, "Silakan mengisi kolom pencarian", Toast.LENGTH_SHORT, true).show()
-            }
-
-            showLoading(true)
-
-            viewModel.setSearchUsers(query)
-        }
-    }
-
     private fun showLoading(state: Boolean) {
 
         if (state) {
@@ -115,6 +75,48 @@ class SearchActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        showLoading(true)
+
+        val inflater = menuInflater
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView = menu.findItem(R.id.search).actionView as SearchView
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.queryHint = resources.getString(R.string.tvSearchUser)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                searchUser(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
+        return true
+    }
+
+    private fun searchUser(query: String) {
+
+        if (query.isEmpty()) {
+            Toasty.normal(this@SearchActivity, "Silakan mengisi pencarian", Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.setSearchUsers(query)
+        viewModel.getSearchUsers().observe(this@SearchActivity, {
+            if (it != null) {
+                adapter.setSearchUserList(it)
+                showLoading(false)
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

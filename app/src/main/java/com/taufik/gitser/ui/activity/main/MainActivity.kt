@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             
             R.id.nav_search_main -> {
-                val intent = Intent(this, SearchActivity::class.java)
+                val intent = Intent(this@MainActivity, SearchActivity::class.java)
                 startActivity(intent)
             }
 
