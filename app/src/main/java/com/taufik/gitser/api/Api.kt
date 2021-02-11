@@ -43,4 +43,8 @@ interface Api {
     fun getRepository(
         @Path("username") username: String
     ): Call<ArrayList<RepositoryResponse>>
+
+    @GET(Utils.ALL_USERS)
+    @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
+    fun getAllUsers() : Call<ArrayList<Search>>
 }

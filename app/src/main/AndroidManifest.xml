@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gitser">
-        <activity android:name=".ui.activity.profile.ProfileActivity"></activity>
+        <activity android:name=".ui.activity.profile.ProfileActivity"/>
         <activity android:name=".ui.activity.main.MainActivity" />
         <activity android:name=".ui.activity.detail.DetailSearchActivity" />
         <activity
