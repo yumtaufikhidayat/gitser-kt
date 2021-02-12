@@ -49,6 +49,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
             val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java)
             intent.putExtra(DetailSearchActivity.EXTRA_USERNAME, pos.login)
             intent.putExtra(DetailSearchActivity.EXTRA_ID, pos.id)
+            intent.putExtra(DetailSearchActivity.EXTRA_AVATAR, pos.avatarUrl)
             holder.itemView.context.startActivity(intent)
         }
     }

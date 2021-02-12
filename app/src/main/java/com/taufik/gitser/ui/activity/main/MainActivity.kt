@@ -12,6 +12,7 @@ import com.taufik.gitser.R
 import com.taufik.gitser.adapter.SearchAdapter
 import com.taufik.gitser.data.viewmodel.main.MainViewModel
 import com.taufik.gitser.databinding.ActivityMainBinding
+import com.taufik.gitser.ui.activity.favorite.FavoriteActivity
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 import com.taufik.gitser.ui.activity.search.SearchActivity
 import es.dmoral.toasty.Toasty
@@ -90,7 +91,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            R.id.nav_favorite -> Toasty.normal(this, "Favorite", R.drawable.ic_favorite).show()
+            R.id.nav_favorite -> {
+                val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+
             R.id.nav_settings -> Toasty.normal(this, "Settings", R.drawable.ic_settings).show()
 
             R.id.nav_profile -> {

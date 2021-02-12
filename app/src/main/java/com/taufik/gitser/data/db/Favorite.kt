@@ -9,5 +9,6 @@ data class Favorite(
 
     @PrimaryKey
     val id: Int,
-    val login: String
+    val login: String,
+    val avatarUrl: String
 ): Serializable

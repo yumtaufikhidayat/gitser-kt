@@ -32,6 +32,7 @@ class DetailSearchActivity : AppCompatActivity() {
     companion object{
         const val EXTRA_USERNAME = "com.taufik.gitser.ui.activity.detail.EXTRA_USERNAME"
         const val EXTRA_ID = "com.taufik.gitser.ui.activity.detail.EXTRA_ID"
+        const val EXTRA_AVATAR = "com.taufik.gitser.ui.activity.detail.EXTRA_AVATAR"
     }
 
     private lateinit var binding: ActivityDetailSearchBinding
@@ -39,6 +40,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private lateinit var bundle: Bundle
     private lateinit var username: String
     private var id by Delegates.notNull<Int>()
+    private lateinit var avatarUrl: String
     private lateinit var data: DetailResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +62,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
         username = intent.getStringExtra(EXTRA_USERNAME).toString()
         id = intent.getIntExtra(EXTRA_ID, 0)
+        avatarUrl = intent.getStringExtra(EXTRA_AVATAR).toString()
     }
 
     private fun initActionBar() {
@@ -139,7 +142,7 @@ class DetailSearchActivity : AppCompatActivity() {
         binding.toggleFavoriteDetailSearch.setOnClickListener{
             isChecked = !isChecked
             if (isChecked) {
-                viewModel.addToFavorite(username, id)
+                viewModel.addToFavorite(id, username, avatarUrl)
                 Toasty.success(this@DetailSearchActivity, "Ditambahkan ke favorit", Toast.LENGTH_SHORT, true).show()
             } else {
                 viewModel.remoteFromFavorite(id)
