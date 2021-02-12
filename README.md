@@ -1,12 +1,12 @@
 # gitser-kt
 This application is a simple Github user search app using Kotlin. This application using:
-- Material design
-- Kotlin language
-- View Model architecture
+- Material Design
+- Kotlin
+- View Model (MVVM)
 - LiveData
 - Retrofit
 - View Binding
-- Java8 support
+- Java8 Support
 - Room Persistent Database
 - Coroutine
 
