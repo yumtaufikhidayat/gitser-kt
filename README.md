@@ -18,7 +18,7 @@ This application is a simple Github user search app using Kotlin. This applicati
 |:-----------:|:--------:|:--------:|
 | *splash screen* | *main* | *detail* |
 
-|<img src=share.jpg align="center" height="400" width="248" ></a> |<img src=search.jpg  align="center" height="400" width="248" ></a>|<img src=favorite.jpg  align="center" height="400" width="248" ></a>|
+|<img src=share.jpg align="center" height="400" width="248" ></a> |<img src=search.jpg  align="center" height="400" width="248" ></a>|<img src=favorites.jpg  align="center" height="400" width="248" ></a>|
 |:-----------:|:--------:|:--------:|
 | *share* | *search* | *favorite* |
 
