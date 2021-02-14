@@ -61,7 +61,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
                     avatarUrl
             )
 
-            userDao?.addToFavorite(user)
+            userDao?.addUserToFavorite(user)
         }
     }
 
@@ -69,7 +69,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     fun remoteFromFavorite(id: Int){
         CoroutineScope(Dispatchers.IO).launch {
-            userDao?.remoteFromFavorite(id)
+            userDao?.removeUserFromFavorite(id)
         }
     }
 }
