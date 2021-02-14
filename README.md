@@ -13,6 +13,19 @@ This application is a simple Github user search app using Kotlin. This applicati
 - Shared Preference
 - Content Provider
 
+### Overview
+|<img src=splashscreen.jpg align="center" height="400" width="248" ></a> |<img src=main.jpg  align="center" height="400" width="248" ></a>|<img src=detail.jpg  align="center" height="400" width="248" ></a>|
+|:-----------:|:--------:|:--------:|
+| *splash screen* | *main* | *detail* |
+
+|<img src=share.jpg align="center" height="400" width="248" ></a> |<img src=search.jpg  align="center" height="400" width="248" ></a>|<img src=favorite.jpg  align="center" height="400" width="248" ></a>|
+|:-----------:|:--------:|:--------:|
+| *share* | *search* | *favorite* |
+
+|<img src=settings.jpg align="center" height="400" width="248" ></a> |<img src=notification.jpg  align="center" height="400" width="248" ></a>|<img src=profile.jpg  align="center" height="400" width="248" ></a>|
+|:-----------:|:--------:|:--------:|
+| *settings* | *notification* | *profile* |
+
 
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
