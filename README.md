@@ -96,3 +96,9 @@ This application is a simple Github user search app using Kotlin. This applicati
 
         - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
         - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+
+
+|<img src=dashboard.gif  align="center" height="400" width="248" ></a> |<img src=dashboardwithswiperefresh.gif  align="center" height="400" width="248" ></a>|<img src=dashboardwithdetail.gif  align="center" height="400" width="248" ></a>|
+|:-----------:|:--------:|:--------:|
+| *dashboard* | *dashboard + swipe refresh*|*dashboard + detail* |
+
