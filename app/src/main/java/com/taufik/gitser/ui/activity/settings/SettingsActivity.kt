@@ -49,7 +49,7 @@ class SettingsActivity : AppCompatActivity() {
         binding.swAlarm.setOnCheckedChangeListener{_, isChecked ->
             if (isChecked) {
                 saveReminder(true)
-                alarmReceiver.repeatAlarm(this, "07:00")
+                alarmReceiver.repeatAlarm(this, "09:00")
             } else {
                 saveReminder(false)
                 alarmReceiver.cancelAlarm(this)

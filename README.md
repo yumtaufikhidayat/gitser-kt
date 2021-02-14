@@ -9,6 +9,9 @@ This application is a simple Github user search app using Kotlin. This applicati
 - Java8 Support
 - Room Persistent Database
 - Coroutine
+- Alarm Manager
+- Shared Preference
+- Content Provider
 
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
