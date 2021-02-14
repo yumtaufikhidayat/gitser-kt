@@ -22,4 +22,7 @@
     <string name="tvDeveloperGithubUrl">https://github.com/yumtaufikhidayat/gitser-kt</string>
     <string name="tvDeveloperEmail">yumtaufik1997@gmail.com</string>
     <string name="tvInstallEmailApp">Silakan install aplikasi Email terlebih dahulu</string>
+    <string name="tvSetReminder">Atur pengingat</string>
+    <string name="tvSwitchOn">On</string>
+    <string name="tvSwitchOff">Off</string>
 </resources>
