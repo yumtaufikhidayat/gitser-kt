@@ -29,7 +29,8 @@
         <activity android:name=".ui.activity.main.MainActivity" />
         <activity android:name=".ui.activity.detail.DetailSearchActivity" />
         <activity
-            android:name=".ui.activity.splashscreen.SplashscreenActivity">
+            android:name=".ui.activity.splashscreen.SplashscreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
