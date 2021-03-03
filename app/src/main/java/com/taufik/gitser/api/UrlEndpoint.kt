@@ -1,6 +1,6 @@
 package com.taufik.gitser.api
 
-object Utils {
+object UrlEndpoint {
     const val BASE_URL = "https://api.github.com/"
     const val SEARCH_USERS = "search/users"
     const val DETAIL_PROFILE_URL = "users/{username}"

@@ -13,37 +13,37 @@ import retrofit2.http.Query
 
 interface Api {
 
-    @GET(Utils.SEARCH_USERS)
+    @GET(UrlEndpoint.SEARCH_USERS)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun searchUsers(
         @Query("q") query: String
     ): Call<SearchResponse>
 
-    @GET(Utils.DETAIL_PROFILE_URL)
+    @GET(UrlEndpoint.DETAIL_PROFILE_URL)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getDetailUsers(
         @Path("username") username: String
     ): Call<DetailResponse>
 
-    @GET(Utils.FOLLOWERS_URL)
+    @GET(UrlEndpoint.FOLLOWERS_URL)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getFollowersUsers(
         @Path("username") username: String
     ): Call<ArrayList<Search>>
 
-    @GET(Utils.FOLLOWING_URL)
+    @GET(UrlEndpoint.FOLLOWING_URL)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getFollowingUsers(
         @Path("username") username: String
     ): Call<ArrayList<Search>>
 
-    @GET(Utils.REPOSITORY_URL)
+    @GET(UrlEndpoint.REPOSITORY_URL)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getRepository(
         @Path("username") username: String
     ): Call<ArrayList<RepositoryResponse>>
 
-    @GET(Utils.ALL_USERS)
+    @GET(UrlEndpoint.ALL_USERS)
     @Headers("Authorization: token ${BuildConfig.GITHUB_TOKEN_PAT}")
     fun getAllUsers() : Call<ArrayList<Search>>
 }
