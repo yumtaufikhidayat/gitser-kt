@@ -67,7 +67,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     suspend fun checkUserFavorite(id: Int) = userDao?.checkUserFavorite(id)
 
-    fun remoteFromFavorite(id: Int){
+    fun removeFromFavorite(id: Int){
         CoroutineScope(Dispatchers.IO).launch {
             userDao?.removeUserFromFavorite(id)
         }

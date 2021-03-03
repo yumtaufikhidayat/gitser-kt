@@ -308,7 +308,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialiconsoutlined/search/outline_search_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialiconsoutlined/notifications_active/outline_notifications_active_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -318,7 +318,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_outline_search" />
+                            <entry key="color" value="800066" />
+                            <entry key="outputName" value="ic_notifications" />
                           </map>
                         </option>
                       </PersistentState>

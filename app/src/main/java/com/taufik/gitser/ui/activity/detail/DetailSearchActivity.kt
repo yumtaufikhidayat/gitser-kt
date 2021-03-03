@@ -145,7 +145,7 @@ class DetailSearchActivity : AppCompatActivity() {
                 viewModel.addToFavorite(id, username, avatarUrl)
                 Toasty.success(this@DetailSearchActivity, "Ditambahkan ke favorit", Toast.LENGTH_SHORT, true).show()
             } else {
-                viewModel.remoteFromFavorite(id)
+                viewModel.removeFromFavorite(id)
                 Toasty.success(this@DetailSearchActivity, "Dihapus dari favorit", Toast.LENGTH_SHORT, true).show()
             }
 

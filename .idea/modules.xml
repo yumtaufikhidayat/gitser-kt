@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gitser.iml" filepath="$PROJECT_DIR$/.idea/modules/Gitser.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Gitser.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Gitser.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.iml" />
     </modules>
   </component>
 </project>
