@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
-import com.taufik.gitser.adapter.SearchAdapter
+import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.following.FollowersViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
 import com.taufik.gitser.ui.activity.profile.ProfileActivity

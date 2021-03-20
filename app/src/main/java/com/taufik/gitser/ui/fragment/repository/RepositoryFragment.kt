@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
-import com.taufik.gitser.adapter.RepositoryAdapter
+import com.taufik.gitser.adapter.repository.RepositoryAdapter
 import com.taufik.gitser.data.viewmodel.repository.RepositoryViewModel
 import com.taufik.gitser.databinding.FragmentRepositoryBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity

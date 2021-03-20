@@ -1,4 +1,4 @@
-package com.taufik.gitser.adapter
+package com.taufik.gitser.adapter.repository
 
 import android.content.Intent
 import android.net.Uri

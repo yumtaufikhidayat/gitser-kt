@@ -1,4 +1,4 @@
-package com.taufik.gitser.adapter
+package com.taufik.gitser.adapter.profile
 
 import android.content.Context
 import android.os.Bundle
@@ -7,11 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.taufik.gitser.R
-import com.taufik.gitser.ui.fragment.followers.FollowersFragment
 import com.taufik.gitser.ui.fragment.followers.FollowersProfileFragment
-import com.taufik.gitser.ui.fragment.following.FollowingFragment
 import com.taufik.gitser.ui.fragment.following.FollowingProfileFragment
-import com.taufik.gitser.ui.fragment.repository.RepositoryFragment
 import com.taufik.gitser.ui.fragment.repository.RepositoryProfileFragment
 
 class ProfilePagerAdapter(private val context: Context, fragmentManager: FragmentManager, bundleData: Bundle)

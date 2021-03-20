@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.taufik.gitser.adapter.SearchAdapter
+import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.db.Favorite
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.data.viewmodel.favorite.FavoriteViewModel

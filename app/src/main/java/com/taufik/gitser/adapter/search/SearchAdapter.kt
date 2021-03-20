@@ -1,4 +1,4 @@
-package com.taufik.gitser.adapter
+package com.taufik.gitser.adapter.search
 
 import android.content.Intent
 import android.view.LayoutInflater

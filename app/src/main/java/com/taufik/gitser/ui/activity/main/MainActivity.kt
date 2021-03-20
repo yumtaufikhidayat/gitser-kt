@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
-import com.taufik.gitser.adapter.SearchAdapter
+import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.main.MainViewModel
 import com.taufik.gitser.databinding.ActivityMainBinding
 import com.taufik.gitser.ui.activity.settings.SettingsActivity
