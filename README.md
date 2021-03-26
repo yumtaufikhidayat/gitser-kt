@@ -91,7 +91,7 @@ This application is a simple Github user search app using Kotlin. Built using th
 - View Model
 
         - implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-        - implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+        - implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
 
 - Glide
 
