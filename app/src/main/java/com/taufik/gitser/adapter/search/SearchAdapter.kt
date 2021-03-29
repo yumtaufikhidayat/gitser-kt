@@ -3,9 +3,10 @@ package com.taufik.gitser.adapter.search
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.taufik.gitser.R
+import com.bumptech.glide.request.RequestOptions
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
@@ -25,15 +26,18 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
         fun bind(search: Search) {
 
             binding.apply {
-
-                Glide.with(itemView)
-                    .load(search.avatarUrl)
-                    .placeholder(R.color.purple_500)
-                    .into(imgUserProfile)
-
+                imgUserProfile.loadImage(search.avatarUrl)
                 tvUsernameProfile.text = search.login
             }
         }
+    }
+
+    private fun ImageView.loadImage(url: String?) {
+        Glide.with(this.context)
+                .load(url)
+                .apply(RequestOptions().override(500, 500))
+                .centerCrop()
+                .into(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -46,11 +50,12 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
         val pos = listUsers[position]
         holder.bind(pos)
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java)
-            intent.putExtra(DetailSearchActivity.EXTRA_USERNAME, pos.login)
-            intent.putExtra(DetailSearchActivity.EXTRA_ID, pos.id)
-            intent.putExtra(DetailSearchActivity.EXTRA_AVATAR, pos.avatarUrl)
-            holder.itemView.context.startActivity(intent)
+            val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java).apply {
+                putExtra(DetailSearchActivity.EXTRA_USERNAME, pos.login)
+                putExtra(DetailSearchActivity.EXTRA_ID, pos.id)
+                putExtra(DetailSearchActivity.EXTRA_AVATAR, pos.avatarUrl)
+            }
+            it.context.startActivity(intent)
         }
     }
 

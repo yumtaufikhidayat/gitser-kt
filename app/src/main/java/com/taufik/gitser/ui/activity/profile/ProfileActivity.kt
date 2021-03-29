@@ -10,12 +10,14 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.profile.ProfilePagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
@@ -58,12 +60,8 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun initActionBar() {
 
-        val actionBar = supportActionBar
-
-        if (actionBar != null) {
-            actionBar.title = "Profil"
-            actionBar.setDisplayHomeAsUpEnabled(true)
-        }
+        supportActionBar?.title = "Profil"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setViewModel() {
@@ -83,10 +81,7 @@ class ProfileActivity : AppCompatActivity() {
             if (it != null) {
                 binding.apply {
 
-                    Glide.with(this@ProfileActivity)
-                        .load(it.avatar_url)
-                        .placeholder(R.color.purple_500)
-                        .into(imgProfile)
+                    imgProfile.loadImage(it.avatar_url)
 
                     tvProfileName.text = it.name
                     tvProfileUsername.text = it.login
@@ -126,6 +121,14 @@ class ProfileActivity : AppCompatActivity() {
             viewPagerProfile.adapter = profilePageAdapter
             tabLayoutProfile.setupWithViewPager(viewPagerProfile)
         }
+    }
+
+    private fun ImageView.loadImage(url: String?) {
+        Glide.with(this.context)
+                .load(url)
+                .apply(RequestOptions().override(500, 500))
+                .centerCrop()
+                .into(this)
     }
 
     private fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>){
