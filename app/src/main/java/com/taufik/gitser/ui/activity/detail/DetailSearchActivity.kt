@@ -4,14 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.*
-import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +19,7 @@ import com.taufik.gitser.adapter.PagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
+import com.taufik.gitser.utils.Utils.Companion.makeLinks
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -85,13 +83,13 @@ class DetailSearchActivity : AppCompatActivity() {
             if (it != null) {
                 binding.apply {
 
-                    imgProfileDetailSearch.loadImage(it.avatar_url)
+                    imgProfileDetailSearch.loadImage(it.avatarUrl)
 
                     tvNameDetailSearch.text = it.name
                     tvUsernameDetailSearch.text = it.login
                     tvFollowingDetailSearch.text = it.following.toString()
                     tvFollowersDetailSearch.text = it.followers.toString()
-                    tvRepositoryDetailSearch.text = it.public_repos.toString()
+                    tvRepositoryDetailSearch.text = it.publicRepos.toString()
                     tvLocationDetailSearch.text = it.location
                     tvCompanyDetailSearch.text = it.company
 
@@ -164,35 +162,6 @@ class DetailSearchActivity : AppCompatActivity() {
                 .into(this)
     }
 
-    private fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>){
-        val spannableString = SpannableString(this.text)
-        var startIndexOfLink = -1
-
-        for (link in links) {
-            val clickableSpan = object : ClickableSpan(){
-
-                override fun updateDrawState(ds: TextPaint) {
-                    ds.color = ds.linkColor
-                    ds.isUnderlineText = false
-                }
-
-                override fun onClick(view: View) {
-                    Selection.setSelection((view as TextView).text as Spannable, 0)
-                    view.invalidate()
-                    link.second.onClick(view)
-                }
-            }
-
-            startIndexOfLink = this.text.toString().indexOf(link.first, startIndexOfLink + 1)
-            spannableString.setSpan(
-                clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
-
-        this.movementMethod = LinkMovementMethod.getInstance()
-        this.setText(spannableString, TextView.BufferType.SPANNABLE)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.detail_menu, menu)
@@ -207,7 +176,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
                 try {
 
-                    val body = "Visit this awesome user \n${data.html_url}"
+                    val body = "Visit this awesome user \n${data.htmlUrl}"
 
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
@@ -220,7 +189,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
             R.id.nav_open_in_browser -> {
                 try {
-                    val intentBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(data.html_url))
+                    val intentBrowser = Intent(Intent.ACTION_VIEW, Uri.parse(data.htmlUrl))
                     startActivity(Intent.createChooser(intentBrowser, "Open with:"))
                 } catch (e: java.lang.Exception) {
                     Log.e("errorIntent", "onBindViewHolder: ${e.localizedMessage}")

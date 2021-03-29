@@ -13,52 +13,52 @@ data class DetailResponse(
     var id: Int,
     @Expose
     @SerializedName("node_id")
-    val node_id: String,
+    val nodeId: String,
     @Expose
     @SerializedName("avatar_url")
-    val avatar_url: String,
+    val avatarUrl: String,
     @Expose
     @SerializedName("gravatar_id")
-    val gravatar_id: String,
+    val gravatarId: String,
     @Expose
     @SerializedName("url")
     val url: String,
     @Expose
     @SerializedName("html_url")
-    val html_url: String,
+    val htmlUrl: String,
     @Expose
     @SerializedName("followers_url")
-    val followers_url: String,
+    val followersUrl: String,
     @Expose
     @SerializedName("following_url")
-    val following_url: String,
+    val followingUrl: String,
     @Expose
     @SerializedName("gists_url")
-    val gists_url: String,
+    val gistsUrl: String,
     @Expose
     @SerializedName("starred_url")
-    val starred_url: String,
+    val starredUrl: String,
     @Expose
     @SerializedName("subscriptions_url")
-    val subscriptions_url: String,
+    val subscriptionsUrl: String,
     @Expose
     @SerializedName("organizations_url")
-    val organizations_url: String,
+    val organizationsUrl: String,
     @Expose
     @SerializedName("repos_url")
-    val repos_url: String,
+    val reposUrl: String,
     @Expose
     @SerializedName("events_url")
-    val events_url: String,
+    val eventsUrl: String,
     @Expose
     @SerializedName("received_events_url")
-    val received_events_url: String,
+    val receivedEventsUrl: String,
     @Expose
     @SerializedName("type")
     val type: String,
     @Expose
     @SerializedName("site_admin")
-    var site_admin: Boolean,
+    var siteAdmin: Boolean,
     @Expose
     @SerializedName("name")
     val name: String,
@@ -76,10 +76,10 @@ data class DetailResponse(
     val bio: String,
     @Expose
     @SerializedName("public_repos")
-    var public_repos: Int,
+    var publicRepos: Int,
     @Expose
     @SerializedName("public_gists")
-    var public_gists: Int,
+    var publicGists: Int,
     @Expose
     @SerializedName("followers")
     var followers: Int,
@@ -88,8 +88,8 @@ data class DetailResponse(
     var following: Int,
     @Expose
     @SerializedName("created_at")
-    val created_at: String,
+    val createdAt: String,
     @Expose
     @SerializedName("updated_at")
-    val updated_at: String
+    val updatedAt: String
 )
