@@ -25,7 +25,7 @@ This application is a simple Github user search app using Kotlin. Built using th
 |:-----------:|:--------:|:--------:|
 | *splash screen* | *main* | *detail* |
 
-|<img src=share.png align="center" height="400" width="200" ></a> |<img src=search.png  align="center" height="400" width="200" ></a>|<img src=favorites.png  align="center" height="400" width="200" ></a>|
+|<img src=share.png align="center" height="400" width="200" ></a> |<img src=search.png  align="center" height="400" width="200" ></a>|<img src=favorite.png  align="center" height="400" width="200" ></a>|
 |:-----------:|:--------:|:--------:|
 | *share* | *search* | *favorite* |
 
