@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_detail_search.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/bottom_sheet_profile_info.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout/fragment_follows.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.15" />
       </map>
