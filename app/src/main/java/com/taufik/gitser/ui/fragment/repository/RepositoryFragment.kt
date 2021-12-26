@@ -17,7 +17,7 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: RepositoryViewModel
-    private lateinit var adapter: RepositoryAdapter
+    private lateinit var repositoryAdapter: RepositoryAdapter
     private lateinit var username: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,20 +39,17 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setAdapter() {
-
-        adapter = RepositoryAdapter()
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun setViewModel() {
-
+        repositoryAdapter = RepositoryAdapter()
         binding.apply {
             with(rvRepos) {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireActivity())
-                adapter = adapter
+                adapter = repositoryAdapter
             }
         }
+    }
+
+    private fun setViewModel() {
 
         showLoading(true)
 
@@ -65,7 +62,7 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
         viewModel.setListOfRepository(username)
         viewModel.getListOfRepository().observe(viewLifecycleOwner, {
             if (it != null) {
-                adapter.setRepositoryList(it)
+                repositoryAdapter.setRepositoryList(it)
                 showLoading(false)
             }
         })

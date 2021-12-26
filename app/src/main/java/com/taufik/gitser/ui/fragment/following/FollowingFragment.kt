@@ -17,7 +17,7 @@ class FollowingFragment : Fragment(R.layout.fragment_follows) {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: FollowingViewModel
-    private lateinit var adapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
     private lateinit var username: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,19 +39,16 @@ class FollowingFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun setAdapter() {
-
-        adapter = SearchAdapter()
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun setViewModel() {
-
+        searchAdapter = SearchAdapter()
         binding.apply {
             with(rvFollows) {setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireActivity())
-                adapter = adapter
+                adapter = searchAdapter
             }
         }
+    }
+
+    private fun setViewModel() {
 
         showLoading(true)
 
@@ -63,7 +60,7 @@ class FollowingFragment : Fragment(R.layout.fragment_follows) {
         viewModel.setListOfFollowing(username)
         viewModel.getListOfFollowing().observe(viewLifecycleOwner, {
             if (it != null) {
-                adapter.setSearchUserList(it)
+                searchAdapter.setSearchUserList(it)
                 showLoading(false)
             }
         })
