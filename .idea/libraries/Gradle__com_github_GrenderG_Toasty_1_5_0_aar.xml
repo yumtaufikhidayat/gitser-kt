@@ -1,12 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.GrenderG:Toasty:1.5.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fe5abaa4a6cc6192052cbe97e777146d/jetified-Toasty-1.5.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a793ab6e388f54453edc13b62803f280/transformed/jetified-Toasty-1.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a793ab6e388f54453edc13b62803f280/transformed/jetified-Toasty-1.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a793ab6e388f54453edc13b62803f280/transformed/jetified-Toasty-1.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

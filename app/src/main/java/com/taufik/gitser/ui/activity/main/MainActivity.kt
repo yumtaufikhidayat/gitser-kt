@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
-    private lateinit var adapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
-        adapter = SearchAdapter()
-        adapter.notifyDataSetChanged()
+        searchAdapter = SearchAdapter()
     }
 
     private fun setViewModel() {
@@ -55,13 +53,13 @@ class MainActivity : AppCompatActivity() {
             with(rvMain) {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 setHasFixedSize(true)
-                adapter = adapter
+                adapter = searchAdapter
             }
 
             viewModel.setAllUsers()
             viewModel.getAllUsers().observe(this@MainActivity, {
                 if (it != null) {
-                    adapter.setSearchUserList(it)
+                    searchAdapter.setSearchUserList(it)
                     showLoading(false)
                 }
             })

@@ -21,7 +21,7 @@ class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
     private lateinit var viewModel: SearchViewModel
-    private lateinit var adapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,24 +45,20 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
-        adapter = SearchAdapter()
-        adapter.notifyDataSetChanged()
+        searchAdapter = SearchAdapter()
     }
 
     private fun setViewModel() {
-
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
                 .get(SearchViewModel::class.java)
     }
 
     private fun setData() {
-
         binding.apply {
             with(rvSearchUsers) {
                 layoutManager = LinearLayoutManager(this@SearchActivity)
                 setHasFixedSize(true)
-                adapter = adapter
+                adapter = searchAdapter
             }
         }
     }
@@ -91,7 +87,6 @@ class SearchActivity : AppCompatActivity() {
         searchView.queryHint = resources.getString(R.string.tvSearchUser)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-
                 searchUser(query)
                 return true
             }
@@ -113,7 +108,7 @@ class SearchActivity : AppCompatActivity() {
         viewModel.setSearchUsers(query)
         viewModel.getSearchUsers().observe(this@SearchActivity, {
             if (it != null) {
-                adapter.setSearchUserList(it)
+                searchAdapter.setSearchUserList(it)
                 showLoading(false)
             }
         })
