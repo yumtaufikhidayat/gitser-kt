@@ -39,7 +39,6 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setAdapter() {
-
         repositoryAdapter = RepositoryAdapter()
         binding.apply {
             with(rvRepos) {
