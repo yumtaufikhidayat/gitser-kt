@@ -15,7 +15,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
     private lateinit var viewModel: FavoriteViewModel
-    private lateinit var adapter: SearchAdapter
+    private lateinit var searchdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +40,14 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-
-        adapter = SearchAdapter()
-        adapter.notifyDataSetChanged()
+        searchdapter = SearchAdapter()
+        binding.apply {
+            with(rvFavorite) {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(this@FavoriteActivity)
+                adapter = searchdapter
+            }
+        }
     }
 
     private fun setViewModel() {
@@ -50,18 +55,10 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setData() {
-        binding.apply {
-            with(rvFavorite) {
-                setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(this@FavoriteActivity)
-                adapter = adapter
-            }
-        }
-
         viewModel.getFavoriteUser()?.observe(this, {
             if (it != null) {
                 val list = mapList(it)
-                adapter.setSearchUserList(list)
+                searchdapter.setSearchUserList(list)
             }
         })
     }

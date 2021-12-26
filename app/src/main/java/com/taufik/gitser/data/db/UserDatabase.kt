@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Favorite::class], version = 1)
+@Database(entities = [Favorite::class], version = 2)
 abstract class UserDatabase : RoomDatabase(){
 
     companion object{
@@ -18,6 +18,7 @@ abstract class UserDatabase : RoomDatabase(){
                         context.applicationContext,
                         UserDatabase::class.java,
                         "user_database")
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
             }
