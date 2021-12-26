@@ -95,6 +95,7 @@ class SearchActivity : AppCompatActivity() {
 
                     query.isEmpty() -> {
                         Toasty.normal(this@SearchActivity, "Silakan mengisi pencarian", Toast.LENGTH_SHORT).show()
+                        searchView.clearFocus()
                     }
                 }
 
