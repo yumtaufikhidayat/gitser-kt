@@ -87,7 +87,17 @@ class SearchActivity : AppCompatActivity() {
         searchView.queryHint = resources.getString(R.string.tvSearchUser)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                searchUser(query)
+                when {
+                    query.isNotEmpty() -> {
+                        searchUser(query)
+                        searchView.clearFocus()
+                    }
+
+                    query.isEmpty() -> {
+                        Toasty.normal(this@SearchActivity, "Silakan mengisi pencarian", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
                 return true
             }
 
@@ -100,10 +110,6 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun searchUser(query: String) {
-
-        if (query.isEmpty()) {
-            Toasty.normal(this@SearchActivity, "Silakan mengisi pencarian", Toast.LENGTH_SHORT).show()
-        }
 
         viewModel.setSearchUsers(query)
         viewModel.getSearchUsers().observe(this@SearchActivity, {
