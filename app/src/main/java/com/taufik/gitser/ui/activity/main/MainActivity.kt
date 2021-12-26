@@ -52,9 +52,11 @@ class MainActivity : AppCompatActivity() {
         showLoading(true)
 
         binding.apply {
-            rvMain.layoutManager = LinearLayoutManager(this@MainActivity)
-            rvMain.setHasFixedSize(true)
-            rvMain.adapter = adapter
+            with(rvMain) {
+                layoutManager = LinearLayoutManager(this@MainActivity)
+                setHasFixedSize(true)
+                adapter = adapter
+            }
 
             viewModel.setAllUsers()
             viewModel.getAllUsers().observe(this@MainActivity, {
@@ -68,10 +70,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun showLoading(state: Boolean) {
 
-        if (state) {
-            binding.progressBarMain.visibility = View.VISIBLE
-        } else {
-            binding.progressBarMain.visibility = View.GONE
+        binding.apply {
+            if (state) {
+                progressBarMain.visibility = View.VISIBLE
+            } else {
+                progressBarMain.visibility = View.GONE
+            }
         }
     }
 

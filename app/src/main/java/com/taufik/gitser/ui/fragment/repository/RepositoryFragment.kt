@@ -47,9 +47,11 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     private fun setViewModel() {
 
         binding.apply {
-            rvRepos.setHasFixedSize(true)
-            rvRepos.layoutManager = LinearLayoutManager(requireActivity())
-            rvRepos.adapter = adapter
+            with(rvRepos) {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireActivity())
+                adapter = adapter
+            }
         }
 
         showLoading(true)
@@ -70,11 +72,12 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun showLoading(state: Boolean) {
-
-        if (state) {
-            binding.progressBarFollows.visibility = View.VISIBLE
-        } else {
-            binding.progressBarFollows.visibility = View.GONE
+        binding.apply {
+            if (state) {
+                progressBarFollows.visibility = View.VISIBLE
+            } else {
+                progressBarFollows.visibility = View.GONE
+            }
         }
     }
 

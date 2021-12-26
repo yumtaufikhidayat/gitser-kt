@@ -38,12 +38,9 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initActionBar() {
-
-        val actionBar = supportActionBar
-
-        if (actionBar != null) {
-            actionBar.title = "Cari"
-            actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            title = "Cari"
+            setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -62,18 +59,21 @@ class SearchActivity : AppCompatActivity() {
     private fun setData() {
 
         binding.apply {
-            rvSearchUsers.layoutManager = LinearLayoutManager(this@SearchActivity)
-            rvSearchUsers.setHasFixedSize(true)
-            rvSearchUsers.adapter = adapter
+            with(rvSearchUsers) {
+                layoutManager = LinearLayoutManager(this@SearchActivity)
+                setHasFixedSize(true)
+                adapter = adapter
+            }
         }
     }
 
     private fun showLoading(state: Boolean) {
-
-        if (state) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
+        binding.apply {
+            if (state) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+            }
         }
     }
 

@@ -47,9 +47,10 @@ class FollowingFragment : Fragment(R.layout.fragment_follows) {
     private fun setViewModel() {
 
         binding.apply {
-            rvFollows.setHasFixedSize(true)
-            rvFollows.layoutManager = LinearLayoutManager(requireActivity())
-            rvFollows.adapter = adapter
+            with(rvFollows) {setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireActivity())
+                adapter = adapter
+            }
         }
 
         showLoading(true)
@@ -69,11 +70,12 @@ class FollowingFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun showLoading(state: Boolean) {
-
-        if (state) {
-            binding.progressBarFollows.visibility = View.VISIBLE
-        } else {
-            binding.progressBarFollows.visibility = View.GONE
+        binding.apply {
+            if (state) {
+                progressBarFollows.visibility = View.VISIBLE
+            } else {
+                progressBarFollows.visibility = View.GONE
+            }
         }
     }
 

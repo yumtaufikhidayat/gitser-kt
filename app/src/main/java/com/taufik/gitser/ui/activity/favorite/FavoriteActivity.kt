@@ -33,12 +33,9 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun initActionBar() {
-
-        val actionBar = supportActionBar
-
-        if (actionBar != null) {
-            actionBar.title = "Favorit"
-            actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            title = "Favorit"
+            setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -49,17 +46,16 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-
-        viewModel = ViewModelProvider(this)
-                .get(FavoriteViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
     }
 
     private fun setData() {
-
         binding.apply {
-            rvFavorite.setHasFixedSize(true)
-            rvFavorite.layoutManager = LinearLayoutManager(this@FavoriteActivity)
-            rvFavorite.adapter = adapter
+            with(rvFavorite) {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(this@FavoriteActivity)
+                adapter = adapter
+            }
         }
 
         viewModel.getFavoriteUser()?.observe(this, {
@@ -73,15 +69,12 @@ class FavoriteActivity : AppCompatActivity() {
     private fun mapList(users: List<Favorite>): ArrayList<Search> {
 
         val listOfUsers = ArrayList<Search>()
-
         for (user in users) {
-
             val userMapped = Search (
                 user.id,
                 user.login,
                 user.avatarUrl
             )
-
             listOfUsers.add(userMapped)
         }
 

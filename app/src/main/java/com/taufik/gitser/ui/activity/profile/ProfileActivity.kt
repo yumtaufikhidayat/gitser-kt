@@ -52,26 +52,25 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setInitData() {
-
         username = PROFILE_USERNAME
     }
 
     private fun initActionBar() {
 
-        supportActionBar?.title = "Profil"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            title = "Profil"
+            setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     private fun setViewModel() {
-
         bundle = Bundle()
         bundle.putString(PROFILE_USERNAME, username)
 
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        )
-            .get(ProfileViewModel::class.java)
+        ).get(ProfileViewModel::class.java)
 
         viewModel.setProfile(username)
         viewModel.getProfile().observe(this, {
@@ -113,7 +112,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setViewPager() {
-
         val profilePageAdapter = ProfilePagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
             viewPagerProfile.adapter = profilePageAdapter

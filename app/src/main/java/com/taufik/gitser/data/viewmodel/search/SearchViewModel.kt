@@ -29,7 +29,6 @@ class SearchViewModel : ViewModel() {
                     override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                         Log.e("errorRetrofit", "onFailure: ${t.localizedMessage}")
                     }
-
                 })
     }
 

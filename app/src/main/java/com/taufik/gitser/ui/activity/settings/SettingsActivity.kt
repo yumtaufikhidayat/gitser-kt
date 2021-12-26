@@ -28,12 +28,9 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun initActionBar() {
-
-        val actionBar = supportActionBar
-
-        if (actionBar != null) {
-            actionBar.title = "Pengaturan"
-            actionBar.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.apply {
+            title = "Pengaturan"
+            setDisplayHomeAsUpEnabled(true)
         }
     }
 
