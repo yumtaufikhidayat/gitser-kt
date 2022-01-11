@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@color/colorGrey</item>
+        <item name="colorPrimary">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
 </resources>
