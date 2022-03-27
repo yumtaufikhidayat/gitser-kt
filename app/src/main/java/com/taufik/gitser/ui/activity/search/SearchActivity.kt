@@ -62,9 +62,9 @@ class SearchActivity : AppCompatActivity() {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                progressBar.visibility = View.VISIBLE
+                pbLoading.visibility = View.VISIBLE
             } else {
-                progressBar.visibility = View.GONE
+                pbLoading.visibility = View.GONE
             }
         }
     }

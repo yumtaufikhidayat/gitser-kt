@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="progressBar, viewResults, tvResultsCount"/>
+        app:constraint_referenced_ids="pbLoading, viewResults, tvResultsCount"/>
 
     <View
         android:id="@+id/viewResults"
@@ -43,9 +43,10 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/pbLoading"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:indeterminateTint="@color/purple_700"
         style="?android:attr/progressBarStyle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
