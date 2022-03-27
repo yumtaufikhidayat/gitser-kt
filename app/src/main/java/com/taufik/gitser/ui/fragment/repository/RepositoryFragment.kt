@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.taufik.gitser.R
 import com.taufik.gitser.adapter.repository.RepositoryAdapter
 import com.taufik.gitser.data.viewmodel.repository.RepositoryViewModel
 import com.taufik.gitser.databinding.FragmentRepositoryBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
 
-class RepositoryFragment : Fragment(R.layout.fragment_repository) {
+class RepositoryFragment : Fragment() {
 
     private var _binding: FragmentRepositoryBinding? = null
     private val binding get() = _binding!!

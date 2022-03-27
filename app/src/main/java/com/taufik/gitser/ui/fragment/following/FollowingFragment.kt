@@ -13,7 +13,7 @@ import com.taufik.gitser.data.viewmodel.followers.FollowingViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
 
-class FollowingFragment : Fragment(R.layout.fragment_follows) {
+class FollowingFragment : Fragment() {
 
     private var _binding: FragmentFollowsBinding? = null
     private val binding get() = _binding!!

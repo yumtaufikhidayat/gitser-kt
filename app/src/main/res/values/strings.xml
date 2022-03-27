@@ -27,4 +27,5 @@
     <string name="tvSetReminder">Atur pengingat</string>
     <string name="tvSwitchOn">On</string>
     <string name="tvSwitchOff">Off</string>
+    <string name="tvUserNotFound">Pengguna tidak ditemukan</string>
 </resources>

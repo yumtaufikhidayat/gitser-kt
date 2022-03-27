@@ -63,13 +63,32 @@ class SearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 pbLoading.visibility = View.VISIBLE
+                imgNoData.visibility = View.GONE
+                tvNoData.visibility = View.GONE
             } else {
                 pbLoading.visibility = View.GONE
+                imgNoData.visibility = View.VISIBLE
+                tvNoData.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showEmptyResult(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                imgNoData.visibility = View.VISIBLE
+                tvNoData.visibility = View.VISIBLE
+            } else {
+                imgNoData.visibility = View.GONE
+                tvNoData.visibility = View.GONE
             }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        showEmptyResult(true)
+
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
@@ -112,17 +131,26 @@ class SearchActivity : AppCompatActivity() {
         showLoading(true)
         viewModel.setSearchUsers(query)
         viewModel.getSearchUsers().observe(this@SearchActivity) {
-                binding.apply {
+            binding.apply {
                 if (it != null) {
-                    viewResultsVisibility.visibility = View.VISIBLE
-                    tvResultsCount.text = String.format(
-                        "%s %s %s",
-                        getString(R.string.tvShowing),
-                        it.size.toString(),
-                        getString(R.string.tvResult)
-                    )
-                    searchAdapter.setSearchUserList(it)
+                    if (it.size != 0) {
+                        viewResultsVisibility.visibility = View.VISIBLE
+                        tvResultsCount.text = String.format(
+                            "%s %s %s",
+                            getString(R.string.tvShowing),
+                            it.size.toString(),
+                            getString(R.string.tvResult)
+                        )
+                        searchAdapter.setSearchUserList(it)
+                        showLoading(false)
+                        showEmptyResult(false)
+                    } else {
+                        showLoading(false)
+                        showEmptyResult(true)
+                    }
+                } else {
                     showLoading(false)
+                    showEmptyResult(true)
                 }
             }
         }
