@@ -46,14 +46,11 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         val pos = listUsers[position]
         holder.bind(pos)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailSearchActivity::class.java).apply {
-                putExtra(DetailSearchActivity.EXTRA_USERNAME, pos.login)
-                putExtra(DetailSearchActivity.EXTRA_ID, pos.id)
-                putExtra(DetailSearchActivity.EXTRA_AVATAR, pos.avatarUrl)
+                putExtra(DetailSearchActivity.EXTRA_DATA, pos)
             }
             it.context.startActivity(intent)
         }
