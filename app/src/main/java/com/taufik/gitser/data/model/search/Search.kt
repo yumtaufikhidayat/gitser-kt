@@ -1,7 +1,10 @@
 package com.taufik.gitser.data.model.search
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Search(
     @SerializedName("id")
     val id: Int,
@@ -9,4 +12,4 @@ data class Search(
     val login: String,
     @SerializedName("avatar_url")
     val avatarUrl: String
-)
+): Parcelable
