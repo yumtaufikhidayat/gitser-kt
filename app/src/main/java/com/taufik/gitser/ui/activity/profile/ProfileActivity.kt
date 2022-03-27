@@ -20,7 +20,7 @@ import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.profile.ProfileViewModel
 import com.taufik.gitser.databinding.ActivityProfileBinding
 import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo
-import com.taufik.gitser.utils.Utils.Companion.makeLinks
+import com.taufik.gitser.utils.Utils.makeLinks
 import es.dmoral.toasty.Toasty
 
 class ProfileActivity : AppCompatActivity() {

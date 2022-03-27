@@ -7,19 +7,17 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
-import com.taufik.gitser.utils.Utils.Companion.makeLinks
+import com.taufik.gitser.utils.Utils.loadImage
+import com.taufik.gitser.utils.Utils.makeLinks
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -144,14 +142,6 @@ class DetailSearchActivity : AppCompatActivity() {
             viewPagerDetailSearch.adapter = pagerAdapter
             tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
         }
-    }
-
-    private fun ImageView.loadImage(url: String?) {
-        Glide.with(this.context)
-                .load(url)
-                .apply(RequestOptions().override(500, 500))
-                .centerCrop()
-                .into(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

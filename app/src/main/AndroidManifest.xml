@@ -23,11 +23,17 @@
             android:name=".receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="true" />
-        <activity android:name=".ui.activity.settings.SettingsActivity" />
-        <activity android:name=".ui.activity.favorite.FavoriteActivity" />
-        <activity android:name=".ui.activity.profile.ProfileActivity" />
-        <activity android:name=".ui.activity.main.MainActivity" />
-        <activity android:name=".ui.activity.detail.DetailSearchActivity" />
+        <activity
+            android:name=".ui.activity.settings.SettingsActivity"
+            android:exported="true"/>
+        <activity android:name=".ui.activity.favorite.FavoriteActivity"
+            android:exported="true"/>
+        <activity android:name=".ui.activity.profile.ProfileActivity"
+            android:exported="true"/>
+        <activity android:name=".ui.activity.main.MainActivity"
+            android:exported="true"/>
+        <activity android:name=".ui.activity.detail.DetailSearchActivity"
+            android:exported="true"/>
         <activity
             android:name=".ui.activity.splashscreen.SplashscreenActivity"
             android:exported="true"
