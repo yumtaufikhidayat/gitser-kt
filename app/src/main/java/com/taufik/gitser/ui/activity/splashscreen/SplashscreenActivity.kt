@@ -14,12 +14,12 @@ class SplashscreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashscreenBinding
     private lateinit var handler: Handler
+    private val splashTime = 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSplashscreen()
         setAppVersion()
     }
@@ -31,7 +31,7 @@ class SplashscreenActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }, splashTime)
     }
 
     private fun setAppVersion() {

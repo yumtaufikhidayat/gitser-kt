@@ -19,16 +19,12 @@ class FavoriteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initActionBar()
-
         setAdapter()
-
         setViewModel()
-
         setData()
     }
 
@@ -51,20 +47,19 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
     }
 
     private fun setData() {
-        viewModel.getFavoriteUser()?.observe(this, {
+        viewModel.getFavoriteUser()?.observe(this) {
             if (it != null) {
                 val list = mapList(it)
                 searchdapter.setSearchUserList(list)
             }
-        })
+        }
     }
 
     private fun mapList(users: List<Favorite>): ArrayList<Search> {
-
         val listOfUsers = ArrayList<Search>()
         for (user in users) {
             val userMapped = Search (

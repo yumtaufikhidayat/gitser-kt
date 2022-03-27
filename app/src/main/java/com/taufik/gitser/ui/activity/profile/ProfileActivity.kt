@@ -3,7 +3,6 @@ package com.taufik.gitser.ui.activity.profile
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.*
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -25,10 +24,6 @@ import com.taufik.gitser.utils.Utils.Companion.makeLinks
 import es.dmoral.toasty.Toasty
 
 class ProfileActivity : AppCompatActivity() {
-
-    companion object{
-        const val PROFILE_USERNAME = "yumtaufikhidayat"
-    }
 
     private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: ProfileViewModel
@@ -64,22 +59,16 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        bundle = Bundle()
-        bundle.putString(PROFILE_USERNAME, username)
+        binding.apply {
+            bundle = Bundle()
+            bundle.putString(PROFILE_USERNAME, username)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(ProfileViewModel::class.java)
-
-        viewModel.setProfile(username)
-        viewModel.getProfile().observe(this, {
-            data = it
-            if (it != null) {
-                binding.apply {
-
+            viewModel = ViewModelProvider(this@ProfileActivity)[ProfileViewModel::class.java]
+            viewModel.setProfile(username)
+            viewModel.getProfile().observe(this@ProfileActivity) {
+                data = it
+                if (it != null) {
                     imgProfile.loadImage(it.avatarUrl)
-
                     tvProfileName.text = it.name
                     tvProfileUsername.text = it.login
                     tvFollowingProfile.text = it.following.toString()
@@ -90,7 +79,6 @@ class ProfileActivity : AppCompatActivity() {
 
                     val link = it.blog
                     tvLinkProfile.text = link
-
                     tvLinkProfile.makeLinks(Pair(it.blog, View.OnClickListener {
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
@@ -102,13 +90,12 @@ class ProfileActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT,
                                 true
                             ).show()
-
                             Log.e("errorLink", "setViewModel: ${e.localizedMessage}")
                         }
                     }))
                 }
             }
-        })
+        }
     }
 
     private fun setViewPager() {
@@ -138,19 +125,15 @@ class ProfileActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
 
             R.id.nav_detail_profile -> {
-
                 val profileInfo = BottomSheetProfileInfo()
-
                 profileInfo.setStyle(
                     DialogFragment.STYLE_NORMAL,
                     R.style.BaseBottomSheetMenu
                 )
-
                 profileInfo.show(supportFragmentManager, "profileInfoBottomSheet")
             }
 
             R.id.nav_share_profile -> {
-
                 try {
                     val body = "Visit this awesome user \n${data.htmlUrl}"
                     val shareIntent = Intent(Intent.ACTION_SEND)
@@ -173,5 +156,9 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object{
+        const val PROFILE_USERNAME = "yumtaufikhidayat"
     }
 }

@@ -22,18 +22,14 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setArgument()
-
         _binding = FragmentFollowsBinding.bind(view)
 
+        setArgument()
         setAdapter()
-
         setViewModel()
     }
 
     private fun setArgument() {
-
         val argument = arguments
         username = argument?.getString(ProfileActivity.PROFILE_USERNAME).toString()
     }
@@ -50,26 +46,21 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun setViewModel() {
-
         showLoading(true)
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory())
-            .get(FollowingViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
 
         viewModel.setListOfFollowing(username)
-        viewModel.getListOfFollowing().observe(viewLifecycleOwner, {
+        viewModel.getListOfFollowing().observe(viewLifecycleOwner) {
             if (it != null) {
                 searchAdapter.setSearchUserList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
-    private fun showLoading(state: Boolean) {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
+            if (isShow) {
                 progressBarFollows.visibility = View.VISIBLE
             } else {
                 progressBarFollows.visibility = View.GONE

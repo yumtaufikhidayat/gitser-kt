@@ -29,11 +29,8 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initActionBar()
-
         setAdapter()
-
         setViewModel()
-
         setData()
     }
 
@@ -49,8 +46,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-                .get(SearchViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
     }
 
     private fun setData() {
@@ -63,9 +59,9 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(state: Boolean) {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
+            if (isShow) {
                 progressBar.visibility = View.VISIBLE
             } else {
                 progressBar.visibility = View.GONE
@@ -113,12 +109,12 @@ class SearchActivity : AppCompatActivity() {
     private fun searchUser(query: String) {
 
         viewModel.setSearchUsers(query)
-        viewModel.getSearchUsers().observe(this@SearchActivity, {
+        viewModel.getSearchUsers().observe(this@SearchActivity) {
             if (it != null) {
                 searchAdapter.setSearchUserList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

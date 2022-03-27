@@ -1,7 +1,9 @@
 package com.taufik.gitser.ui.fragment.repository
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,22 +22,25 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     private lateinit var repositoryAdapter: RepositoryAdapter
     private lateinit var username: String
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRepositoryBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setArguments()
-
-        _binding = FragmentRepositoryBinding.bind(view)
-
         setAdapter()
-
         setViewModel()
     }
 
     private fun setArguments() {
-
         val argument = arguments
-        username = argument?.getString(DetailSearchActivity.EXTRA_USERNAME).toString()
+        username = argument?.getString(DetailSearchActivity.EXTRA_DATA).toString()
     }
 
     private fun setAdapter() {
@@ -50,27 +55,20 @@ class RepositoryFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setViewModel() {
-
         showLoading(true)
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory())
-            .get(RepositoryViewModel::class.java
-        )
-
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
         viewModel.setListOfRepository(username)
-        viewModel.getListOfRepository().observe(viewLifecycleOwner, {
+        viewModel.getListOfRepository().observe(viewLifecycleOwner) {
             if (it != null) {
                 repositoryAdapter.setRepositoryList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
-    private fun showLoading(state: Boolean) {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
+            if (isShow) {
                 progressBarFollows.visibility = View.VISIBLE
             } else {
                 progressBarFollows.visibility = View.GONE

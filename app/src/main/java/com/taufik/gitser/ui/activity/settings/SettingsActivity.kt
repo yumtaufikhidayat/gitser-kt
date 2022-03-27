@@ -16,14 +16,11 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initActionBar()
-
         setReminderPreferences()
-
         setAlarmReceiver()
     }
 
@@ -35,13 +32,11 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setReminderPreferences() {
-
         val reminderPreferences = ReminderPreferences(this)
         binding.swAlarm.isChecked = reminderPreferences.getReminder().isReminded
     }
 
     private fun setAlarmReceiver() {
-
         alarmReceiver = AlarmReceiver()
         binding.swAlarm.setOnCheckedChangeListener{_, isChecked ->
             if (isChecked) {
@@ -54,11 +49,10 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveReminder(state: Boolean) {
-
+    private fun saveReminder(isSave: Boolean) {
         val reminderPreferences = ReminderPreferences(this)
         reminder = Reminder()
-        reminder.isReminded = state
+        reminder.isReminded = isSave
         reminderPreferences.setReminder(reminder)
     }
 
