@@ -63,7 +63,7 @@ class ProfileActivity : AppCompatActivity() {
             bundle = Bundle()
             bundle.putString(PROFILE_USERNAME, username)
 
-            viewModel = ViewModelProvider(this@ProfileActivity)[ProfileViewModel::class.java]
+            viewModel = ViewModelProvider(this@ProfileActivity, ViewModelProvider.NewInstanceFactory())[ProfileViewModel::class.java]
             viewModel.setProfile(username)
             viewModel.getProfile().observe(this@ProfileActivity) {
                 data = it
