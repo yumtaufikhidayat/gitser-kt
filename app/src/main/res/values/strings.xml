@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Gitser</string>
-    <string name="tvAppVersion">Versi 1.6</string>
+    <string name="tvAppVersion">1.6</string>
     <string name="tvSearchUser">Cari nama pengguna…</string>
     <string name="tvShowing">Menampilkan</string>
     <string name="tvResult">hasil</string>
