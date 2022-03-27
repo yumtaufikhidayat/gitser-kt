@@ -13,7 +13,15 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:visibility="visible"
-        app:constraint_referenced_ids="pbLoading, viewResults, tvResultsCount, imgNoData, tvNoData"/>
+        app:constraint_referenced_ids="viewResults, tvResultsCount"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/viewNoDataVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="imgNoData, tvNoData"/>
 
     <View
         android:id="@+id/viewResults"
@@ -47,6 +55,7 @@
         android:id="@+id/pbLoading"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:visibility="gone"
         android:indeterminateTint="@color/purple_700"
         style="?android:attr/progressBarStyle"
         app:layout_constraintTop_toTopOf="parent"

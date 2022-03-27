@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/bottom_sheet_profile_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_follows.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/fragment_repository.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.15" />
       </map>
     </option>

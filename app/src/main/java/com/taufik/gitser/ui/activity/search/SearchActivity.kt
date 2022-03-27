@@ -63,12 +63,10 @@ class SearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 pbLoading.visibility = View.VISIBLE
-                imgNoData.visibility = View.GONE
-                tvNoData.visibility = View.GONE
+                viewNoDataVisibility.visibility = View.GONE
             } else {
                 pbLoading.visibility = View.GONE
-                imgNoData.visibility = View.VISIBLE
-                tvNoData.visibility = View.VISIBLE
+                viewNoDataVisibility.visibility = View.VISIBLE
             }
         }
     }
@@ -76,11 +74,13 @@ class SearchActivity : AppCompatActivity() {
     private fun showEmptyResult(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                imgNoData.visibility = View.VISIBLE
-                tvNoData.visibility = View.VISIBLE
+                viewNoDataVisibility.visibility = View.VISIBLE
+                rvSearchUsers.visibility = View.GONE
+                viewResultsVisibility.visibility = View.GONE
             } else {
-                imgNoData.visibility = View.GONE
-                tvNoData.visibility = View.GONE
+                viewNoDataVisibility.visibility = View.GONE
+                rvSearchUsers.visibility = View.VISIBLE
+                viewResultsVisibility.visibility = View.VISIBLE
             }
         }
     }
