@@ -33,9 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setAdapter()
-
         setViewModel()
-
         setData()
     }
 
@@ -44,15 +42,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setViewModel() {
-
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
     }
 
     private fun setData() {
-
         showLoading(true)
-
         binding.apply {
             with(rvMain) {
                 layoutManager = LinearLayoutManager(this@MainActivity)
@@ -61,19 +55,18 @@ class MainActivity : AppCompatActivity() {
             }
 
             viewModel.setAllUsers()
-            viewModel.getAllUsers().observe(this@MainActivity, {
+            viewModel.getAllUsers().observe(this@MainActivity) {
                 if (it != null) {
                     searchAdapter.setSearchUserList(it)
                     showLoading(false)
                 }
-            })
+            }
         }
     }
 
-    private fun showLoading(state: Boolean) {
-
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
+            if (isShow) {
                 progressBarMain.visibility = View.VISIBLE
             } else {
                 progressBarMain.visibility = View.GONE
@@ -82,16 +75,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
-
             R.id.nav_search_main -> {
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
