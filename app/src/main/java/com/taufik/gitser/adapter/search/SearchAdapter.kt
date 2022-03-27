@@ -3,13 +3,11 @@ package com.taufik.gitser.adapter.search
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
+import com.taufik.gitser.utils.Utils.loadImage
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
 
@@ -21,23 +19,14 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class MyViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    inner class MyViewHolder(private val binding: ItemUserBinding)
+        : RecyclerView.ViewHolder(binding.root) {
         fun bind(search: Search) {
-
             binding.apply {
                 imgUserProfile.loadImage(search.avatarUrl)
                 tvUsernameProfile.text = search.login
             }
         }
-    }
-
-    private fun ImageView.loadImage(url: String?) {
-        Glide.with(this.context)
-                .load(url)
-                .apply(RequestOptions().override(500, 500))
-                .centerCrop()
-                .into(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
