@@ -2,6 +2,8 @@
     <string name="app_name">Gitser</string>
     <string name="tvAppVersion">Versi 1.6</string>
     <string name="tvSearchUser">Cari nama pengguna…</string>
+    <string name="tvShowing">Menampilkan</string>
+    <string name="tvResult">hasil</string>
     <string name="tvSearch">Cari</string>
     <string name="tvNull">Null</string>
     <string name="tvFollowing">Mengikuti</string>

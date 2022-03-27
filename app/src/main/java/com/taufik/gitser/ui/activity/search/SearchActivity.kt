@@ -70,49 +70,60 @@ class SearchActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
-        showLoading(true)
-
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = menu.findItem(R.id.search).actionView as SearchView
+        searchView.apply {
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            queryHint = resources.getString(R.string.tvSearchUser)
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    when {
+                        query.isNotEmpty() -> {
+                            searchUser(query)
+                            clearFocus()
+                        }
 
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.tvSearchUser)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                when {
-                    query.isNotEmpty() -> {
-                        searchUser(query)
-                        searchView.clearFocus()
+                        query.isEmpty() -> {
+                            Toasty.normal(
+                                this@SearchActivity,
+                                "Silakan mengisi pencarian",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            clearFocus()
+                        }
                     }
 
-                    query.isEmpty() -> {
-                        Toasty.normal(this@SearchActivity, "Silakan mengisi pencarian", Toast.LENGTH_SHORT).show()
-                        searchView.clearFocus()
-                    }
+                    return true
                 }
 
-                return true
-            }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+            })
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-
-        return true
+            return true
+        }
     }
 
     private fun searchUser(query: String) {
-
+        showLoading(true)
         viewModel.setSearchUsers(query)
         viewModel.getSearchUsers().observe(this@SearchActivity) {
-            if (it != null) {
-                searchAdapter.setSearchUserList(it)
-                showLoading(false)
+                binding.apply {
+                if (it != null) {
+                    viewResultsVisibility.visibility = View.VISIBLE
+                    tvResultsCount.text = String.format(
+                        "%s %s %s",
+                        getString(R.string.tvShowing),
+                        it.size.toString(),
+                        getString(R.string.tvResult)
+                    )
+                    searchAdapter.setSearchUserList(it)
+                    showLoading(false)
+                }
             }
         }
     }
