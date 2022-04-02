@@ -1,5 +1,8 @@
 package com.taufik.gitser.utils
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
 import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
@@ -45,5 +48,11 @@ object Utils {
             .apply(RequestOptions().override(500, 500))
             .centerCrop()
             .into(this)
+    }
+
+    fun isNetworkEnabled(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+        val currentNetwork: Network? = connectivityManager.activeNetwork
+        return currentNetwork != null
     }
 }

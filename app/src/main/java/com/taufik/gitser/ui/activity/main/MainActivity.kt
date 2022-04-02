@@ -1,9 +1,6 @@
 package com.taufik.gitser.ui.activity.main
 
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.Network
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -22,6 +19,7 @@ import com.taufik.gitser.ui.activity.favorite.FavoriteActivity
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 import com.taufik.gitser.ui.activity.search.SearchActivity
 import com.taufik.gitser.ui.activity.settings.SettingsActivity
+import com.taufik.gitser.utils.Utils.isNetworkEnabled
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,12 +44,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             showNoNetworkConnection(true)
         }
-    }
-
-    private fun isNetworkEnabled(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(ConnectivityManager::class.java) as ConnectivityManager
-        val currentNetwork: Network? = connectivityManager.activeNetwork
-        return currentNetwork != null
     }
 
     private fun setData() {
