@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_rounded_corners.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/bg_splashscreen.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/first_layer.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/second_layer.xml" value="0.1215" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/layout/fragment_follows.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_repository.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/item_user_shimmer.xml" value="0.18" />
       </map>
     </option>
   </component>

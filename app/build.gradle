@@ -84,4 +84,7 @@ dependencies {
 
     // Shared preferences
     implementation 'androidx.preference:preference-ktx:1.2.0'
+
+    // Shimmer layout
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

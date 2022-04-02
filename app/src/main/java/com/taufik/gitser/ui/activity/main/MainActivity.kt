@@ -67,9 +67,11 @@ class MainActivity : AppCompatActivity() {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                progressBarMain.visibility = View.VISIBLE
+                shimmerLoadingMain.visibility = View.VISIBLE
+                rvMain.visibility = View.GONE
             } else {
-                progressBarMain.visibility = View.GONE
+                shimmerLoadingMain.visibility = View.GONE
+                rvMain.visibility = View.VISIBLE
             }
         }
     }

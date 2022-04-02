@@ -12,20 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         android:overScrollMode="never"
         tools:listitem="@layout/item_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ProgressBar
-        android:id="@+id/progressBarMain"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:indeterminateTint="@color/purple_700"
-        style="?android:attr/progressBarStyle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLoadingMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/item_user_shimmer"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

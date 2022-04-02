@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <View
+        android:id="@+id/viewShimmerOne"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/viewShimmerTwo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerOne"/>
+
+    <View
+        android:id="@+id/viewShimmerThree"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerTwo"/>
+
+    <View
+        android:id="@+id/viewShimmerFour"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerThree"/>
+
+    <View
+        android:id="@+id/viewShimmerFive"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerFour"/>
+
+    <View
+        android:id="@+id/viewShimmerSix"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerFive"/>
+
+    <View
+        android:id="@+id/viewShimmerSeven"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerSix"/>
+
+    <View
+        android:id="@+id/viewShimmerEight"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerSeven"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
