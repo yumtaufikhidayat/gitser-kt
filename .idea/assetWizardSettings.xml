@@ -308,7 +308,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/do_not_disturb/baseline_do_not_disturb_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialiconsoutlined/wifi_tethering_off/outline_wifi_tethering_off_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -319,7 +319,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="800066" />
-                            <entry key="outputName" value="ic_no_data" />
+                            <entry key="outputName" value="ic_outline_wifi_off" />
                           </map>
                         </option>
                       </PersistentState>

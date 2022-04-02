@@ -1,6 +1,9 @@
 package com.taufik.gitser.ui.activity.main
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,10 +18,10 @@ import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.main.MainViewModel
 import com.taufik.gitser.databinding.ActivityMainBinding
-import com.taufik.gitser.ui.activity.settings.SettingsActivity
 import com.taufik.gitser.ui.activity.favorite.FavoriteActivity
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 import com.taufik.gitser.ui.activity.search.SearchActivity
+import com.taufik.gitser.ui.activity.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,26 +29,33 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var searchAdapter: SearchAdapter
     private var doubleBackToExitPressedOnce = false
+    private val delayTime = 2000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setAdapter()
-        setViewModel()
-        setData()
+        checkConnectionEnabled()
     }
 
-    private fun setAdapter() {
-        searchAdapter = SearchAdapter()
+    private fun checkConnectionEnabled() {
+        if (isNetworkEnabled(this)) {
+            showNoNetworkConnection(false)
+            setData()
+        } else {
+            showNoNetworkConnection(true)
+        }
     }
 
-    private fun setViewModel() {
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
+    private fun isNetworkEnabled(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+        val currentNetwork: Network? = connectivityManager.activeNetwork
+        return currentNetwork != null
     }
 
     private fun setData() {
+        searchAdapter = SearchAdapter()
         showLoading(true)
         binding.apply {
             with(rvMain) {
@@ -54,12 +64,31 @@ class MainActivity : AppCompatActivity() {
                 adapter = searchAdapter
             }
 
+            viewModel = ViewModelProvider(this@MainActivity, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
             viewModel.setAllUsers()
             viewModel.getAllUsers().observe(this@MainActivity) {
                 if (it != null) {
                     searchAdapter.setSearchUserList(it)
+                    showNoNetworkConnection(false)
                     showLoading(false)
                 }
+            }
+        }
+    }
+
+    private fun showNoNetworkConnection(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingMain.visibility = View.GONE
+                rvMain.visibility = View.GONE
+                layoutNoConnection.visibility = View.VISIBLE
+                btnRetryConnection.setOnClickListener {
+                    setData()
+                }
+            } else {
+                shimmerLoadingMain.visibility = View.VISIBLE
+                rvMain.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.GONE
             }
         }
     }
@@ -69,9 +98,11 @@ class MainActivity : AppCompatActivity() {
             if (isShow) {
                 shimmerLoadingMain.visibility = View.VISIBLE
                 rvMain.visibility = View.GONE
+                layoutNoConnection.visibility = View.GONE
             } else {
                 shimmerLoadingMain.visibility = View.GONE
                 rvMain.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.GONE
             }
         }
     }
@@ -119,6 +150,6 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper())
             .postDelayed({
                 doubleBackToExitPressedOnce = false
-            }, 2000)
+            }, delayTime)
     }
 }

@@ -69,4 +69,20 @@
         android:background="@drawable/bg_rounded_corners"
         app:layout_constraintTop_toBottomOf="@id/viewShimmerSeven"/>
 
+    <View
+        android:id="@+id/viewShimmerNine"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerEight"/>
+
+    <View
+        android:id="@+id/viewShimmerTen"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_corners"
+        app:layout_constraintTop_toBottomOf="@id/viewShimmerNine"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

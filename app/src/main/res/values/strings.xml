@@ -28,4 +28,7 @@
     <string name="tvSwitchOn">On</string>
     <string name="tvSwitchOff">Off</string>
     <string name="tvUserNotFound">Pengguna tidak ditemukan</string>
+    <string name="tvNoConnectionTitle">Tidak ada sambungan internet</string>
+    <string name="tvNoConnectionDesc">Periksa sambungan koneksi internet kamu dan coba lagi!</string>
+    <string name="tvTryAgain">Coba Lagi</string>
 </resources>
