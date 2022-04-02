@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         checkConnectionEnabled()
+        setSwipeRefresh()
     }
 
     private fun checkConnectionEnabled() {
@@ -43,6 +44,30 @@ class MainActivity : AppCompatActivity() {
             setData()
         } else {
             showNoNetworkConnection(true)
+        }
+    }
+
+    private fun setSwipeRefresh() {
+        binding.apply {
+            swipeRefreshMain.setOnRefreshListener {
+                checkConnectionEnabled()
+            }
+        }
+    }
+
+    private fun showNoNetworkConnection(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingMain.visibility = View.GONE
+                rvMain.visibility = View.GONE
+                layoutNoConnection.visibility = View.VISIBLE
+                swipeRefreshMain.isRefreshing = false
+            } else {
+                shimmerLoadingMain.visibility = View.VISIBLE
+                rvMain.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.GONE
+                swipeRefreshMain.isRefreshing = true
+            }
         }
     }
 
@@ -68,33 +93,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showNoNetworkConnection(isShow: Boolean) {
-        binding.apply {
-            if (isShow) {
-                shimmerLoadingMain.visibility = View.GONE
-                rvMain.visibility = View.GONE
-                layoutNoConnection.visibility = View.VISIBLE
-                btnRetryConnection.setOnClickListener {
-                    setData()
-                }
-            } else {
-                shimmerLoadingMain.visibility = View.VISIBLE
-                rvMain.visibility = View.VISIBLE
-                layoutNoConnection.visibility = View.GONE
-            }
-        }
-    }
-
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
                 shimmerLoadingMain.visibility = View.VISIBLE
                 rvMain.visibility = View.GONE
                 layoutNoConnection.visibility = View.GONE
+                swipeRefreshMain.isRefreshing = true
             } else {
                 shimmerLoadingMain.visibility = View.GONE
                 rvMain.visibility = View.VISIBLE
                 layoutNoConnection.visibility = View.GONE
+                swipeRefreshMain.isRefreshing = false
             }
         }
     }

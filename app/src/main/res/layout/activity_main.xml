@@ -1,84 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.main.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMain"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:visibility="gone"
-        android:overScrollMode="never"
-        tools:listitem="@layout/item_user"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLoadingMain"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            layout="@layout/item_user_shimmer"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:overScrollMode="never"
+            tools:listitem="@layout/item_user"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLoadingMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/layoutNoConnection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:constraint_referenced_ids="imgNoNetworkConnection, tvNoConnectionTitle, tvNoConnectionDesc, btnRetryConnection"/>
+            <include
+                layout="@layout/item_user_shimmer"/>
 
-    <ImageView
-        android:id="@+id/imgNoNetworkConnection"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:contentDescription="@string/tvNull"
-        android:src="@drawable/ic_outline_wifi_off"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <TextView
-        android:id="@+id/tvNoConnectionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tvNoConnectionTitle"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toBottomOf="@id/imgNoNetworkConnection"
-        app:layout_constraintStart_toStartOf="@id/imgNoNetworkConnection"
-        app:layout_constraintEnd_toEndOf="@id/imgNoNetworkConnection"/>
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/layoutNoConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:constraint_referenced_ids="imgNoNetworkConnection, tvNoConnectionTitle, tvNoConnectionDesc"/>
 
-    <TextView
-        android:id="@+id/tvNoConnectionDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tvNoConnectionDesc"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tvNoConnectionTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageView
+            android:id="@+id/imgNoNetworkConnection"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/tvNull"
+            android:src="@drawable/ic_outline_wifi_off"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btnRetryConnection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/tvTryAgain"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/tvNoConnectionDesc"
-        app:layout_constraintStart_toStartOf="@id/tvNoConnectionTitle"
-        app:layout_constraintEnd_toEndOf="@id/tvNoConnectionTitle"/>
+        <TextView
+            android:id="@+id/tvNoConnectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvNoConnectionTitle"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@id/imgNoNetworkConnection"
+            app:layout_constraintStart_toStartOf="@id/imgNoNetworkConnection"
+            app:layout_constraintEnd_toEndOf="@id/imgNoNetworkConnection"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvNoConnectionDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvNoConnectionDesc"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintTop_toBottomOf="@id/tvNoConnectionTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
