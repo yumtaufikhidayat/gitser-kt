@@ -10,12 +10,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.model.search.Search
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
+import com.taufik.gitser.utils.Utils.isNetworkEnabled
 import com.taufik.gitser.utils.Utils.loadImage
 import com.taufik.gitser.utils.Utils.makeLinks
 import es.dmoral.toasty.Toasty
@@ -38,11 +41,52 @@ class DetailSearchActivity : AppCompatActivity() {
         binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        checkConnectionEnabled()
+        setSwipeRefresh()
+    }
+
+    private fun checkConnectionEnabled() {
+        if (isNetworkEnabled(this)) {
+            showNoNetworkConnection(false)
+            setData()
+        } else {
+            showNoNetworkConnection(true)
+        }
+    }
+
+    private fun setSwipeRefresh() {
+        binding.apply {
+            with(swipeRefreshDetail) {
+                setColorSchemeColors(getColor(R.color.purple_700))
+                setOnRefreshListener { checkConnectionEnabled() }
+            }
+        }
+    }
+
+    private fun setData() {
         getParcelableData()
         initActionBar()
-        setViewModel()
         setBundleData()
+        showDetailData()
         setViewPager()
+        saveToFavorite()
+    }
+
+    private fun showNoNetworkConnection(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingDetail.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.VISIBLE
+                swipeRefreshDetail.isRefreshing = false
+                viewDetail.visibility = View.GONE
+            } else {
+                shimmerLoadingDetail.visibility = View.GONE
+                layoutNoConnection.visibility = View.GONE
+                swipeRefreshDetail.isRefreshing = true
+                viewDetail.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun getParcelableData() {
@@ -61,51 +105,71 @@ class DetailSearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun setViewModel() {
+    private fun showDetailData() {
+        showLoading(true)
         binding.apply {
             viewModel = ViewModelProvider(this@DetailSearchActivity)[DetailViewModel::class.java]
-            viewModel.setDetailSearch(dataParcel.login)
-            viewModel.getDetailSearch().observe(this@DetailSearchActivity) {
-                data = it
-                if (it != null) {
-                    imgProfileDetailSearch.loadImage(it.avatarUrl)
-                    tvNameDetailSearch.text = it.name
-                    tvUsernameDetailSearch.text = it.login
-                    tvFollowingDetailSearch.text = it.following.toString()
-                    tvFollowersDetailSearch.text = it.followers.toString()
-                    tvRepositoryDetailSearch.text = it.publicRepos.toString()
+            viewModel.apply {
+                setDetailSearch(dataParcel.login)
+                getDetailSearch().observe(this@DetailSearchActivity) {
+                    data = it
+                    if (isNetworkEnabled(this@DetailSearchActivity)) {
+                        if (it != null) {
+                            imgProfileDetailSearch.loadImage(it.avatarUrl)
+                            tvNameDetailSearch.text = it.name
+                            tvUsernameDetailSearch.text = it.login
+                            tvFollowingDetailSearch.text = it.following.toString()
+                            tvFollowersDetailSearch.text = it.followers.toString()
+                            tvRepositoryDetailSearch.text = it.publicRepos.toString()
 
-                    if (it.location.isNullOrEmpty() || it.company.isNullOrEmpty() || it.blog.isNullOrEmpty()) {
-                        link = ""
-                        tvLocationDetailSearch.text = "-"
-                        tvCompanyDetailSearch.text = "-"
-                        tvLinkDetailSearch.text = "-"
-                        Log.e("TAGSearch", "it: $it")
-                    } else {
-                        link = it.blog
-                        tvLocationDetailSearch.text = it.location
-                        tvCompanyDetailSearch.text = it.company
-                        tvLinkDetailSearch.text = link
-                        Log.e("TAGSearch2", "it: $it")
-                    }
+                            if (it.location.isNullOrEmpty() || it.company.isNullOrEmpty() || it.blog.isNullOrEmpty()) {
+                                link = ""
+                                tvLocationDetailSearch.text = "-"
+                                tvCompanyDetailSearch.text = "-"
+                                tvLinkDetailSearch.text = "-"
+                                Log.e("TAGSearch", "it: $it")
+                            } else {
+                                link = it.blog
+                                tvLocationDetailSearch.text = it.location
+                                tvCompanyDetailSearch.text = it.company
+                                tvLinkDetailSearch.text = link
+                                Log.e("TAGSearch2", "it: $it")
+                            }
 
-                    tvLinkDetailSearch.makeLinks(Pair(link, View.OnClickListener {
-                        try {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-                            startActivity(Intent.createChooser(intent, "Open with:"))
-                        } catch (e: Exception) {
-                            Toasty.warning(
-                                this@DetailSearchActivity,
-                                "Silakan install browser terlebih dulu.",
-                                Toast.LENGTH_SHORT,
-                                true
-                            ).show()
-                            Log.e("errorLink", "setViewModel: ${e.localizedMessage}")
+                            tvLinkDetailSearch.makeLinks(Pair(link, View.OnClickListener {
+                                try {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                                    startActivity(Intent.createChooser(intent, "Open with:"))
+                                } catch (e: Exception) {
+                                    Toasty.warning(
+                                        this@DetailSearchActivity,
+                                        "Silakan install browser terlebih dulu.",
+                                        Toast.LENGTH_SHORT,
+                                        true
+                                    ).show()
+                                    Log.e("errorLink", "showDetailData: ${e.localizedMessage}")
+                                }
+                            }))
+                            showNoNetworkConnection(false)
+                            showLoading(false)
+                        } else {
+                            if (isNetworkEnabled(this@DetailSearchActivity)) {
+                                showNoNetworkConnection(false)
+                                showLoading(false)
+                            } else {
+                                showNoNetworkConnection(true)
+                            }
                         }
-                    }))
+                    } else {
+                        showNoNetworkConnection(true)
+                    }
                 }
             }
+        }
+    }
 
+    private fun saveToFavorite() {
+        binding.apply {
             var isChecked = false
             CoroutineScope(Dispatchers.IO).launch {
                 val count = viewModel.checkUserFavorite(dataParcel.id)
@@ -125,7 +189,11 @@ class DetailSearchActivity : AppCompatActivity() {
             toggleFavoriteDetailSearch.setOnClickListener {
                 isChecked = !isChecked
                 if (isChecked) {
-                    viewModel.addToFavorite(dataParcel.id, dataParcel.login, dataParcel.avatarUrl)
+                    viewModel.addToFavorite(
+                        dataParcel.id,
+                        dataParcel.login,
+                        dataParcel.avatarUrl
+                    )
                     Toasty.success(
                         this@DetailSearchActivity,
                         "Ditambahkan ke favorit",
@@ -150,8 +218,35 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
-            viewPagerDetailSearch.adapter = pagerAdapter
+            viewPagerDetailSearch.apply {
+                addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(tabLayoutDetailSearch){
+                    override fun onPageScrollStateChanged(state: Int) {
+                        toggleRefreshing(state == ViewPager.SCROLL_STATE_IDLE)
+                    }
+                })
+                adapter = pagerAdapter
+            }
             tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
+        }
+    }
+
+    private fun toggleRefreshing(isEnabled: Boolean) {
+        binding.apply {
+            swipeRefreshDetail.isEnabled = isEnabled
+        }
+    }
+
+    private fun showLoading(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingDetail.visibility = View.VISIBLE
+                swipeRefreshDetail.isRefreshing = true
+                viewDetail.visibility = View.GONE
+            } else {
+                shimmerLoadingDetail.visibility = View.GONE
+                swipeRefreshDetail.isRefreshing = false
+                viewDetail.visibility = View.VISIBLE
+            }
         }
     }
 
