@@ -10,8 +10,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
 import com.taufik.gitser.data.model.detail.DetailResponse
@@ -41,47 +39,37 @@ class DetailSearchActivity : AppCompatActivity() {
         binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         checkConnectionEnabled()
-        setSwipeRefresh()
     }
 
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
             showNoNetworkConnection(false)
-            setData()
+            getParcelableData()
+            setBundleData()
+            initActionBar()
+            showDetailData()
+            setViewPager()
+            saveToFavorite()
         } else {
             showNoNetworkConnection(true)
-        }
-    }
-
-    private fun setSwipeRefresh() {
-        binding.apply {
-            with(swipeRefreshDetail) {
-                setColorSchemeColors(getColor(R.color.purple_700))
-                setOnRefreshListener { checkConnectionEnabled() }
+            supportActionBar?.apply {
+                title = ""
+                setDisplayHomeAsUpEnabled(true)
             }
         }
-    }
-
-    private fun setData() {
-        getParcelableData()
-        initActionBar()
-        setBundleData()
-        showDetailData()
-        setViewPager()
-        saveToFavorite()
     }
 
     private fun showNoNetworkConnection(isShow: Boolean) {
         binding.apply {
             if (isShow) {
                 layoutNoConnection.visibility = View.VISIBLE
-                swipeRefreshDetail.isRefreshing = false
                 viewDetail.visibility = View.GONE
+                btnRetry.setOnClickListener {
+                    checkConnectionEnabled()
+                }
             } else {
                 layoutNoConnection.visibility = View.GONE
-                swipeRefreshDetail.isRefreshing = true
                 viewDetail.visibility = View.VISIBLE
             }
         }
@@ -216,21 +204,8 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
-            with(viewPagerDetailSearch) {
-                addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(tabLayoutDetailSearch){
-                    override fun onPageScrollStateChanged(state: Int) {
-                        toggleRefreshing(state == ViewPager.SCROLL_STATE_IDLE)
-                    }
-                })
-                adapter = pagerAdapter
-            }
+            viewPagerDetailSearch.adapter = pagerAdapter
             tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
-        }
-    }
-
-    private fun toggleRefreshing(isEnabled: Boolean) {
-        binding.apply {
-            swipeRefreshDetail.isEnabled = isEnabled
         }
     }
 
@@ -238,11 +213,9 @@ class DetailSearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 shimmerLoadingDetail.visibility = View.VISIBLE
-                swipeRefreshDetail.isRefreshing = true
                 viewDetail.visibility = View.GONE
             } else {
                 shimmerLoadingDetail.visibility = View.GONE
-                swipeRefreshDetail.isRefreshing = false
                 viewDetail.visibility = View.VISIBLE
             }
         }
