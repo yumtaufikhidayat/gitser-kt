@@ -45,7 +45,7 @@
             android:id="@+id/imgNoNetworkConnection"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:contentDescription="@string/tvNull"
+            android:contentDescription="@string/tvNoConnectionTitle"
             android:src="@drawable/ic_outline_wifi_off"
             app:layout_constraintVertical_bias="0.4"
             app:layout_constraintTop_toTopOf="parent"

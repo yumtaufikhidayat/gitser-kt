@@ -68,12 +68,12 @@ class ProfileActivity : AppCompatActivity() {
                     tvFollowingProfile.text = it.following.toString()
                     tvFollowersProfile.text = it.followers.toString()
                     tvRepositoryProfile.text = it.publicRepos.toString()
-                    tvLocationProfile.text = it.location
-                    tvCompanyProfile.text = it.company
+                    tvProfileLocation.text = it.location
+                    tvProfileCompany.text = it.company
 
                     val link = it.blog
-                    tvLinkProfile.text = link
-                    tvLinkProfile.makeLinks(Pair(it.blog, View.OnClickListener {
+                    tvProfileLink.text = link
+                    tvProfileLink.makeLinks(Pair(it.blog, View.OnClickListener {
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                             startActivity(Intent.createChooser(intent, "Open with:"))
