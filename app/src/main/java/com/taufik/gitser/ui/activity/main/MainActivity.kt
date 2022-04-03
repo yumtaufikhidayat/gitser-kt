@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSwipeRefresh() {
         binding.apply {
+            swipeRefreshMain.setColorSchemeColors(getColor(R.color.purple_700))
             swipeRefreshMain.setOnRefreshListener {
                 checkConnectionEnabled()
             }
