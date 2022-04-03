@@ -31,6 +31,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private lateinit var bundle: Bundle
     private lateinit var dataParcel: Search
     private lateinit var data: DetailResponse
+    private lateinit var link: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,19 +75,21 @@ class DetailSearchActivity : AppCompatActivity() {
                     tvFollowersDetailSearch.text = it.followers.toString()
                     tvRepositoryDetailSearch.text = it.publicRepos.toString()
 
-                    val link = it.blog
-
                     if (it.location.isNullOrEmpty() || it.company.isNullOrEmpty() || it.blog.isNullOrEmpty()) {
+                        link = ""
                         tvLocationDetailSearch.text = "-"
                         tvCompanyDetailSearch.text = "-"
                         tvLinkDetailSearch.text = "-"
+                        Log.e("TAGSearch", "it: $it")
                     } else {
+                        link = it.blog
                         tvLocationDetailSearch.text = it.location
                         tvCompanyDetailSearch.text = it.company
-                        tvLinkDetailSearch.text = it.blog
+                        tvLinkDetailSearch.text = link
+                        Log.e("TAGSearch2", "it: $it")
                     }
 
-                    tvLinkDetailSearch.makeLinks(Pair(it.blog, View.OnClickListener {
+                    tvLinkDetailSearch.makeLinks(Pair(link, View.OnClickListener {
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
                             startActivity(Intent.createChooser(intent, "Open with:"))
