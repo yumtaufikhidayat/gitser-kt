@@ -158,9 +158,11 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showSearchData(query: String) {
         binding.apply {
+
             showLoading(true)
             showNoSearchUser(false)
             showEmptyResult(false)
+
             viewModel = ViewModelProvider(this@SearchActivity, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
             viewModel.apply {
                 setSearchUsers(query)

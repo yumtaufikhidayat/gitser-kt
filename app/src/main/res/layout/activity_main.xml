@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <include
-                layout="@layout/item_user_shimmer"/>
+                layout="@layout/shimmer_item_user"/>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -70,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tvNoConnectionDesc"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:paddingHorizontal="24dp"
