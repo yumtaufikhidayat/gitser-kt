@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible"
-            app:constraint_referenced_ids="imgNoNetworkConnection, tvNoConnectionTitle, tvNoConnectionDesc"/>
+            app:constraint_referenced_ids="imgNoNetworkConnection, tvNoConnectionTitle,
+            tvNoConnectionDesc, btnRetry"/>
 
         <ImageView
             android:id="@+id/imgNoNetworkConnection"
@@ -47,7 +48,7 @@
             android:layout_height="80dp"
             android:contentDescription="@string/tvNoConnectionTitle"
             android:src="@drawable/ic_outline_wifi_off"
-            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintVertical_bias="0.35"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +78,17 @@
             app:layout_constraintTop_toBottomOf="@id/tvNoConnectionTitle"
             app:layout_constraintStart_toStartOf="@+id/shimmerLoadingMain"
             app:layout_constraintEnd_toEndOf="@id/shimmerLoadingMain"/>
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAllCaps="false"
+            android:text="@string/tvRetry"
+            app:layout_constraintTop_toBottomOf="@id/tvNoConnectionDesc"
+            app:layout_constraintStart_toStartOf="@id/imgNoNetworkConnection"
+            app:layout_constraintEnd_toEndOf="@id/imgNoNetworkConnection"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

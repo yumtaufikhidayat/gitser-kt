@@ -63,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                 rvMain.visibility = View.GONE
                 layoutNoConnection.visibility = View.VISIBLE
                 swipeRefreshMain.isRefreshing = false
+                btnRetry.setOnClickListener {
+                    checkConnectionEnabled()
+                }
             } else {
                 shimmerLoadingMain.visibility = View.VISIBLE
                 rvMain.visibility = View.VISIBLE
