@@ -76,12 +76,10 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun showNoNetworkConnection(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                shimmerLoadingDetail.visibility = View.VISIBLE
                 layoutNoConnection.visibility = View.VISIBLE
                 swipeRefreshDetail.isRefreshing = false
                 viewDetail.visibility = View.GONE
             } else {
-                shimmerLoadingDetail.visibility = View.GONE
                 layoutNoConnection.visibility = View.GONE
                 swipeRefreshDetail.isRefreshing = true
                 viewDetail.visibility = View.VISIBLE
@@ -127,13 +125,11 @@ class DetailSearchActivity : AppCompatActivity() {
                                 tvLocationDetailSearch.text = "-"
                                 tvCompanyDetailSearch.text = "-"
                                 tvLinkDetailSearch.text = "-"
-                                Log.e("TAGSearch", "it: $it")
                             } else {
                                 link = it.blog
                                 tvLocationDetailSearch.text = it.location
                                 tvCompanyDetailSearch.text = it.company
                                 tvLinkDetailSearch.text = link
-                                Log.e("TAGSearch2", "it: $it")
                             }
 
                             tvLinkDetailSearch.makeLinks(Pair(link, View.OnClickListener {
@@ -158,10 +154,12 @@ class DetailSearchActivity : AppCompatActivity() {
                                 showLoading(false)
                             } else {
                                 showNoNetworkConnection(true)
+                                showLoading(false)
                             }
                         }
                     } else {
                         showNoNetworkConnection(true)
+                        showLoading(false)
                     }
                 }
             }
@@ -218,7 +216,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun setViewPager() {
         val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
-            viewPagerDetailSearch.apply {
+            with(viewPagerDetailSearch) {
                 addOnPageChangeListener(object : TabLayout.TabLayoutOnPageChangeListener(tabLayoutDetailSearch){
                     override fun onPageScrollStateChanged(state: Int) {
                         toggleRefreshing(state == ViewPager.SCROLL_STATE_IDLE)
