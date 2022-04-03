@@ -43,11 +43,11 @@
 
         <ImageView
             android:id="@+id/imgNoNetworkConnection"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:contentDescription="@string/tvNull"
             android:src="@drawable/ic_outline_wifi_off"
-            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintVertical_bias="0.4"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,10 +70,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tvNoConnectionDesc"
-            android:layout_marginHorizontal="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:paddingHorizontal="24dp"
             app:layout_constraintTop_toBottomOf="@id/tvNoConnectionTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/shimmerLoadingMain"
+            app:layout_constraintEnd_toEndOf="@id/shimmerLoadingMain"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
