@@ -55,6 +55,9 @@ class SearchActivity : AppCompatActivity() {
                 shimmerLoadingSearch.visibility = View.GONE
                 rvSearchUsers.visibility = View.GONE
                 layoutNoConnection.visibility = View.VISIBLE
+                btnRetry.setOnClickListener {
+                    checkConnectionEnabled()
+                }
             } else {
                 shimmerLoadingSearch.visibility = View.VISIBLE
                 rvSearchUsers.visibility = View.VISIBLE
