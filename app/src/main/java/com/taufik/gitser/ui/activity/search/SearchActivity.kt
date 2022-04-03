@@ -23,7 +23,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
-    private var textQuery: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,6 @@ class SearchActivity : AppCompatActivity() {
 
         initActionBar()
         checkConnectionEnabled()
-        showNoSearchUser(true)
     }
 
     private fun initActionBar() {
@@ -105,17 +103,8 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun showNoSearchUser(isShow: Boolean) {
-        binding.apply {
-            if (isShow) {
-                viewNoSearchUser.visibility = View.VISIBLE
-            } else {
-                viewNoSearchUser.visibility = View.GONE
-            }
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        checkConnectionEnabled()
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
@@ -128,8 +117,6 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     when {
                         query.isNotEmpty() -> {
-                            textQuery = query
-                            checkConnectionEnabled()
                             showSearchData(query)
                             clearFocus()
                         }
@@ -158,35 +145,49 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showSearchData(query: String) {
         binding.apply {
-
             showLoading(true)
-            showNoSearchUser(false)
             showEmptyResult(false)
-
             viewModel = ViewModelProvider(this@SearchActivity, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
             viewModel.apply {
                 setSearchUsers(query)
                 getSearchUsers().observe(this@SearchActivity) {
-                    if (it != null) {
-                        if (it.size != 0) {
-                            viewResultsVisibility.visibility = View.VISIBLE
-                            tvResultsCount.text = String.format(
-                                getString(R.string.tvShowing),
-                                it.size.toString()
-                            )
-                            searchAdapter.setSearchUserList(it)
-                            showLoading(false)
-                            showEmptyResult(false)
-                            showNoSearchUser(false)
+                    if (isNetworkEnabled(this@SearchActivity)) {
+                        if (it != null) {
+                            if (it.size != 0) {
+                                viewResultsVisibility.visibility = View.VISIBLE
+                                tvResultsCount.text = String.format(
+                                    getString(R.string.tvShowing),
+                                    it.size.toString()
+                                )
+                                searchAdapter.setSearchUserList(it)
+                                showLoading(false)
+                                showEmptyResult(false)
+                            } else {
+                                if (isNetworkEnabled(this@SearchActivity)) {
+                                    showNoNetworkConnection(false)
+                                    showLoading(false)
+                                    showEmptyResult(true)
+                                } else {
+                                    viewResultsVisibility.visibility = View.GONE
+                                    showNoNetworkConnection(true)
+                                }
+                            }
                         } else {
-                            showLoading(false)
-                            showEmptyResult(true)
-                            showNoSearchUser(false)
+                            if (isNetworkEnabled(this@SearchActivity)) {
+                                showLoading(false)
+                                showEmptyResult(true)
+                                viewResultsVisibility.visibility = View.GONE
+                                showNoNetworkConnection(false)
+                            } else {
+                                showLoading(false)
+                                showEmptyResult(false)
+                                viewResultsVisibility.visibility = View.GONE
+                                showNoNetworkConnection(true)
+                            }
                         }
                     } else {
-                        showLoading(false)
-                        showEmptyResult(true)
-                        showNoSearchUser(false)
+                        viewResultsVisibility.visibility = View.GONE
+                        showNoNetworkConnection(true)
                     }
                 }
             }

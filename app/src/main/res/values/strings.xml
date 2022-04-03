@@ -3,9 +3,13 @@
     <string name="tvAppVersion">1.6</string>
     <string name="tvSearchUser">Cari nama pengguna…</string>
     <string name="tvShowing">Menampilkan %s hasil</string>
-    <string name="tvResult">hasil</string>
+    <string name="tvUsername">Username</string>
     <string name="tvSearch">Cari</string>
     <string name="tvNull">Null</string>
+    <string name="tvLocation">Lokasi</string>
+    <string name="tvOffice">Kantor</string>
+    <string name="tvUrl">Url</string>
+    <string name="tvDetailUser">Detail pengguna</string>
     <string name="tvFollowing">Mengikuti</string>
     <string name="tvFollowingNumber">0</string>
     <string name="tvFollowers">Pengikut</string>
