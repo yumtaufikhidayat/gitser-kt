@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSwipeRefresh() {
         binding.apply {
-            swipeRefreshMain.setColorSchemeColors(getColor(R.color.purple_700))
-            swipeRefreshMain.setOnRefreshListener {
-                checkConnectionEnabled()
+            with(swipeRefreshMain) {
+                setColorSchemeColors(getColor(R.color.purple_700))
+                setOnRefreshListener { checkConnectionEnabled() }
             }
         }
     }
@@ -99,12 +99,10 @@ class MainActivity : AppCompatActivity() {
             if (isShow) {
                 shimmerLoadingMain.visibility = View.VISIBLE
                 rvMain.visibility = View.GONE
-                layoutNoConnection.visibility = View.GONE
                 swipeRefreshMain.isRefreshing = true
             } else {
                 shimmerLoadingMain.visibility = View.GONE
                 rvMain.visibility = View.VISIBLE
-                layoutNoConnection.visibility = View.GONE
                 swipeRefreshMain.isRefreshing = false
             }
         }
