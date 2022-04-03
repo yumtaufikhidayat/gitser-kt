@@ -73,11 +73,19 @@ class DetailSearchActivity : AppCompatActivity() {
                     tvFollowingDetailSearch.text = it.following.toString()
                     tvFollowersDetailSearch.text = it.followers.toString()
                     tvRepositoryDetailSearch.text = it.publicRepos.toString()
-                    tvLocationDetailSearch.text = it.location
-                    tvCompanyDetailSearch.text = it.company
 
                     val link = it.blog
-                    tvLinkDetailSearch.text = link
+
+                    if (it.location.isNullOrEmpty() || it.company.isNullOrEmpty() || it.blog.isNullOrEmpty()) {
+                        tvLocationDetailSearch.text = "-"
+                        tvCompanyDetailSearch.text = "-"
+                        tvLinkDetailSearch.text = "-"
+                    } else {
+                        tvLocationDetailSearch.text = it.location
+                        tvCompanyDetailSearch.text = it.company
+                        tvLinkDetailSearch.text = it.blog
+                    }
+
                     tvLinkDetailSearch.makeLinks(Pair(it.blog, View.OnClickListener {
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
