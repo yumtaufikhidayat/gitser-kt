@@ -15,6 +15,7 @@ import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.search.SearchViewModel
 import com.taufik.gitser.databinding.ActivitySearchBinding
+import com.taufik.gitser.utils.Utils.isNetworkEnabled
 import es.dmoral.toasty.Toasty
 
 class SearchActivity : AppCompatActivity() {
@@ -22,6 +23,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
+    private var textQuery: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +31,8 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initActionBar()
-        setAdapter()
-        setViewModel()
-        setData()
+        checkConnectionEnabled()
+        showNoSearchUser(true)
     }
 
     private fun initActionBar() {
@@ -41,15 +42,32 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkConnectionEnabled() {
+        if (isNetworkEnabled(this)) {
+            showNoNetworkConnection(false)
+            setAdapter()
+        } else {
+            showNoNetworkConnection(true)
+        }
+    }
+
+    private fun showNoNetworkConnection(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingSearch.visibility = View.GONE
+                rvSearchUsers.visibility = View.GONE
+                layoutNoConnection.visibility = View.VISIBLE
+            } else {
+                shimmerLoadingSearch.visibility = View.VISIBLE
+                rvSearchUsers.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.GONE
+            }
+        }
+    }
+
     private fun setAdapter() {
         searchAdapter = SearchAdapter()
-    }
-
-    private fun setViewModel() {
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
-    }
-
-    private fun setData() {
+        showLoading(false)
         binding.apply {
             with(rvSearchUsers) {
                 layoutManager = LinearLayoutManager(this@SearchActivity)
@@ -62,11 +80,15 @@ class SearchActivity : AppCompatActivity() {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                pbLoading.visibility = View.VISIBLE
+                shimmerLoadingSearch.visibility = View.VISIBLE
+                rvSearchUsers.visibility = View.GONE
+                layoutNoConnection.visibility = View.GONE
                 viewNoDataVisibility.visibility = View.GONE
             } else {
-                pbLoading.visibility = View.GONE
-                viewNoDataVisibility.visibility = View.VISIBLE
+                shimmerLoadingSearch.visibility = View.GONE
+                rvSearchUsers.visibility = View.VISIBLE
+                layoutNoConnection.visibility = View.GONE
+                viewNoDataVisibility.visibility = View.GONE
             }
         }
     }
@@ -75,20 +97,25 @@ class SearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 viewNoDataVisibility.visibility = View.VISIBLE
-                rvSearchUsers.visibility = View.GONE
                 viewResultsVisibility.visibility = View.GONE
             } else {
                 viewNoDataVisibility.visibility = View.GONE
-                rvSearchUsers.visibility = View.VISIBLE
                 viewResultsVisibility.visibility = View.VISIBLE
             }
         }
     }
 
+    private fun showNoSearchUser(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                viewNoSearchUser.visibility = View.VISIBLE
+            } else {
+                viewNoSearchUser.visibility = View.GONE
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
-        showEmptyResult(true)
-
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
@@ -101,7 +128,9 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     when {
                         query.isNotEmpty() -> {
-                            searchUser(query)
+                            textQuery = query
+                            checkConnectionEnabled()
+                            showSearchData(query)
                             clearFocus()
                         }
 
@@ -127,30 +156,36 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchUser(query: String) {
-        showLoading(true)
-        viewModel.setSearchUsers(query)
-        viewModel.getSearchUsers().observe(this@SearchActivity) {
-            binding.apply {
-                if (it != null) {
-                    if (it.size != 0) {
-                        viewResultsVisibility.visibility = View.VISIBLE
-                        tvResultsCount.text = String.format(
-                            "%s %s %s",
-                            getString(R.string.tvShowing),
-                            it.size.toString(),
-                            getString(R.string.tvResult)
-                        )
-                        searchAdapter.setSearchUserList(it)
-                        showLoading(false)
-                        showEmptyResult(false)
+    private fun showSearchData(query: String) {
+        binding.apply {
+            showLoading(true)
+            showNoSearchUser(false)
+            showEmptyResult(false)
+            viewModel = ViewModelProvider(this@SearchActivity, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
+            viewModel.apply {
+                setSearchUsers(query)
+                getSearchUsers().observe(this@SearchActivity) {
+                    if (it != null) {
+                        if (it.size != 0) {
+                            viewResultsVisibility.visibility = View.VISIBLE
+                            tvResultsCount.text = String.format(
+                                getString(R.string.tvShowing),
+                                it.size.toString()
+                            )
+                            searchAdapter.setSearchUserList(it)
+                            showLoading(false)
+                            showEmptyResult(false)
+                            showNoSearchUser(false)
+                        } else {
+                            showLoading(false)
+                            showEmptyResult(true)
+                            showNoSearchUser(false)
+                        }
                     } else {
                         showLoading(false)
                         showEmptyResult(true)
+                        showNoSearchUser(false)
                     }
-                } else {
-                    showLoading(false)
-                    showEmptyResult(true)
                 }
             }
         }

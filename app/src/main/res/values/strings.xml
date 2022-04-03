@@ -2,7 +2,7 @@
     <string name="app_name">Gitser</string>
     <string name="tvAppVersion">1.6</string>
     <string name="tvSearchUser">Cari nama pengguna…</string>
-    <string name="tvShowing">Menampilkan</string>
+    <string name="tvShowing">Menampilkan %s hasil</string>
     <string name="tvResult">hasil</string>
     <string name="tvSearch">Cari</string>
     <string name="tvNull">Null</string>
@@ -30,5 +30,6 @@
     <string name="tvUserNotFound">Pengguna tidak ditemukan</string>
     <string name="tvNoConnectionTitle">Tidak ada sambungan internet</string>
     <string name="tvNoConnectionDesc">Periksa sambungan koneksi internet kamu dan coba lagi!</string>
-    <string name="tvTryAgain">Coba Lagi</string>
+    <string name="tvOops">Oops…</string>
+    <string name="tvLetsSearchUserDesc">Kamu belum mencari pengguna…</string>
 </resources>
