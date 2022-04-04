@@ -61,16 +61,16 @@ class MainActivity : AppCompatActivity() {
             if (isShow) {
                 shimmerLoadingMain.visibility = View.GONE
                 rvMain.visibility = View.GONE
-                layoutNoConnection.visibility = View.VISIBLE
                 swipeRefreshMain.isRefreshing = false
-                btnRetry.setOnClickListener {
+                layoutNoConnectionVisibility.visibility = View.VISIBLE
+                layoutNoConnection.btnRetry.setOnClickListener {
                     checkConnectionEnabled()
                 }
             } else {
                 shimmerLoadingMain.visibility = View.VISIBLE
                 rvMain.visibility = View.VISIBLE
-                layoutNoConnection.visibility = View.GONE
                 swipeRefreshMain.isRefreshing = true
+                layoutNoConnectionVisibility.visibility = View.GONE
             }
         }
     }

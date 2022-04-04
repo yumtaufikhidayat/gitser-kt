@@ -30,7 +30,7 @@
     <string name="tvSetReminder">Atur pengingat</string>
     <string name="tvSwitchOn">On</string>
     <string name="tvSwitchOff">Off</string>
-    <string name="tvUserNotFound">Pengguna tidak ditemukan</string>
+    <string name="tvUserNotFound">Pengguna yang kamu cari tidak ditemukan</string>
     <string name="tvNoConnectionTitle">Tidak ada sambungan internet</string>
     <string name="tvNoConnectionDesc">Periksa sambungan koneksi internet kamu dan coba lagi.</string>
     <string name="tvNoResult">Tidak ada hasil…</string>

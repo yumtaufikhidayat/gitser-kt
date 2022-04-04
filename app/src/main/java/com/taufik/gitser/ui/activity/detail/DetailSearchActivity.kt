@@ -63,14 +63,14 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun showNoNetworkConnection(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                layoutNoConnection.visibility = View.VISIBLE
-                viewDetail.visibility = View.GONE
-                btnRetry.setOnClickListener {
+                layoutNoConnectionVisibility.visibility = View.VISIBLE
+                viewDetailVisibility.visibility = View.GONE
+                layoutNoConnection.btnRetry.setOnClickListener {
                     checkConnectionEnabled()
                 }
             } else {
-                layoutNoConnection.visibility = View.GONE
-                viewDetail.visibility = View.VISIBLE
+                layoutNoConnectionVisibility.visibility = View.GONE
+                viewDetailVisibility.visibility = View.VISIBLE
             }
         }
     }
@@ -213,10 +213,10 @@ class DetailSearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 shimmerLoadingDetail.visibility = View.VISIBLE
-                viewDetail.visibility = View.GONE
+                viewDetailVisibility.visibility = View.GONE
             } else {
                 shimmerLoadingDetail.visibility = View.GONE
-                viewDetail.visibility = View.VISIBLE
+                viewDetailVisibility.visibility = View.VISIBLE
             }
         }
     }

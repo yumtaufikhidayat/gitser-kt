@@ -54,14 +54,14 @@ class SearchActivity : AppCompatActivity() {
             if (isShow) {
                 shimmerLoadingSearch.visibility = View.GONE
                 rvSearchUsers.visibility = View.GONE
-                layoutNoConnection.visibility = View.VISIBLE
-                btnRetry.setOnClickListener {
+                layoutNoConnectionVisibility.visibility = View.VISIBLE
+                layoutNoConnection.btnRetry.setOnClickListener {
                     checkConnectionEnabled()
                 }
             } else {
                 shimmerLoadingSearch.visibility = View.VISIBLE
                 rvSearchUsers.visibility = View.VISIBLE
-                layoutNoConnection.visibility = View.GONE
+                layoutNoConnectionVisibility.visibility = View.GONE
             }
         }
     }
@@ -83,13 +83,13 @@ class SearchActivity : AppCompatActivity() {
             if (isShow) {
                 shimmerLoadingSearch.visibility = View.VISIBLE
                 rvSearchUsers.visibility = View.GONE
-                layoutNoConnection.visibility = View.GONE
-                viewNoDataVisibility.visibility = View.GONE
+                layoutNoConnectionVisibility.visibility = View.GONE
+                layoutNoDataVisibility.visibility = View.GONE
             } else {
                 shimmerLoadingSearch.visibility = View.GONE
                 rvSearchUsers.visibility = View.VISIBLE
-                layoutNoConnection.visibility = View.GONE
-                viewNoDataVisibility.visibility = View.GONE
+                layoutNoConnectionVisibility.visibility = View.GONE
+                layoutNoDataVisibility.visibility = View.GONE
             }
         }
     }
@@ -97,10 +97,10 @@ class SearchActivity : AppCompatActivity() {
     private fun showEmptyResult(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                viewNoDataVisibility.visibility = View.VISIBLE
+                layoutNoDataVisibility.visibility = View.VISIBLE
                 viewResultsVisibility.visibility = View.GONE
             } else {
-                viewNoDataVisibility.visibility = View.GONE
+                layoutNoDataVisibility.visibility = View.GONE
                 viewResultsVisibility.visibility = View.VISIBLE
             }
         }
