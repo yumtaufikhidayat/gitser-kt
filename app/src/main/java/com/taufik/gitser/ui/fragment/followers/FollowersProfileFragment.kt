@@ -22,25 +22,20 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setArgument()
-
         _binding = FragmentFollowsBinding.bind(view)
 
+        setArgument()
         setAdapter()
-
         setViewModel()
     }
 
     private fun setArgument() {
-
         val argument = arguments
         username = argument?.getString(ProfileActivity.PROFILE_USERNAME).toString()
     }
 
     private fun setAdapter() {
         searchAdapter = SearchAdapter()
-
         binding.apply {
             with(rvFollows) {
                 setHasFixedSize(true)
@@ -51,29 +46,27 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun setViewModel() {
-
         showLoading(true)
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory())
-            .get(FollowersViewModel::class.java)
-
-        viewModel.setListOfFollowers(username)
-        viewModel.getListOfFollowers().observe(viewLifecycleOwner) {
-            if (it != null) {
-                searchAdapter.setSearchUserList(it)
-                showLoading(false)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowersViewModel::class.java)
+        viewModel.apply {
+            setListOfFollowers(username)
+            getListOfFollowers().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    searchAdapter.setSearchUserList(it)
+                    showLoading(false)
+                }
             }
         }
     }
 
-    private fun showLoading(state: Boolean) {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
-                progressBarFollows.visibility = View.VISIBLE
+            if (isShow) {
+                shimmerLoading.visibility = View.VISIBLE
+                rvFollows.visibility = View.GONE
             } else {
-                progressBarFollows.visibility = View.GONE
+                shimmerLoading.visibility = View.GONE
+                rvFollows.visibility = View.VISIBLE
             }
         }
     }

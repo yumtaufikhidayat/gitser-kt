@@ -32,6 +32,7 @@ class FollowersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setArgument()
         setAdapter()
         setViewModel()
@@ -55,11 +56,13 @@ class FollowersFragment : Fragment() {
     private fun setViewModel() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowersViewModel::class.java]
-        viewModel.setListOfFollowers(username)
-        viewModel.getListOfFollowers().observe(viewLifecycleOwner) {
-            if (it != null) {
-                searchAdapter.setSearchUserList(it)
-                showLoading(false)
+        viewModel.apply {
+            setListOfFollowers(username)
+            getListOfFollowers().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    searchAdapter.setSearchUserList(it)
+                    showLoading(false)
+                }
             }
         }
     }
@@ -67,9 +70,11 @@ class FollowersFragment : Fragment() {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                progressBarFollows.visibility = View.VISIBLE
+                shimmerLoading.visibility = View.VISIBLE
+                rvFollows.visibility = View.GONE
             } else {
-                progressBarFollows.visibility = View.GONE
+                shimmerLoading.visibility = View.GONE
+                rvFollows.visibility = View.VISIBLE
             }
         }
     }

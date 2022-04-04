@@ -48,12 +48,13 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
     private fun setViewModel() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
-
-        viewModel.setListOfFollowing(username)
-        viewModel.getListOfFollowing().observe(viewLifecycleOwner) {
-            if (it != null) {
-                searchAdapter.setSearchUserList(it)
-                showLoading(false)
+        viewModel.apply {
+            setListOfFollowing(username)
+            getListOfFollowing().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    searchAdapter.setSearchUserList(it)
+                    showLoading(false)
+                }
             }
         }
     }
@@ -61,9 +62,11 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                progressBarFollows.visibility = View.VISIBLE
+                shimmerLoading.visibility = View.VISIBLE
+                rvFollows.visibility = View.GONE
             } else {
-                progressBarFollows.visibility = View.GONE
+                shimmerLoading.visibility = View.GONE
+                rvFollows.visibility = View.VISIBLE
             }
         }
     }

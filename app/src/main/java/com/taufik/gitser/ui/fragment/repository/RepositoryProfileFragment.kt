@@ -50,30 +50,27 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setViewModel() {
-
         showLoading(true)
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory())
-            .get(RepositoryViewModel::class.java
-        )
-
-        viewModel.setListOfRepository(username)
-        viewModel.getListOfRepository().observe(viewLifecycleOwner) {
-            if (it != null) {
-                repositoryAdapter.setRepositoryList(it)
-                showLoading(false)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
+        viewModel.apply {
+            setListOfRepository(username)
+            getListOfRepository().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    repositoryAdapter.setRepositoryList(it)
+                    showLoading(false)
+                }
             }
         }
     }
 
-    private fun showLoading(state: Boolean) {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
-            if (state) {
-                progressBarFollows.visibility = View.VISIBLE
+            if (isShow) {
+                shimmerLoading.visibility = View.VISIBLE
+                rvRepos.visibility = View.GONE
             } else {
-                progressBarFollows.visibility = View.GONE
+                shimmerLoading.visibility = View.GONE
+                rvRepos.visibility = View.VISIBLE
             }
         }
     }

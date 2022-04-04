@@ -32,6 +32,7 @@ class RepositoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setArguments()
         setAdapter()
         setViewModel()
@@ -56,11 +57,13 @@ class RepositoryFragment : Fragment() {
     private fun setViewModel() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
-        viewModel.setListOfRepository(username)
-        viewModel.getListOfRepository().observe(viewLifecycleOwner) {
-            if (it != null) {
-                repositoryAdapter.setRepositoryList(it)
-                showLoading(false)
+        viewModel.apply {
+            setListOfRepository(username)
+            getListOfRepository().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    repositoryAdapter.setRepositoryList(it)
+                    showLoading(false)
+                }
             }
         }
     }
@@ -68,9 +71,11 @@ class RepositoryFragment : Fragment() {
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
-                progressBarFollows.visibility = View.VISIBLE
+                shimmerLoading.visibility = View.VISIBLE
+                rvRepos.visibility = View.GONE
             } else {
-                progressBarFollows.visibility = View.GONE
+                shimmerLoading.visibility = View.GONE
+                rvRepos.visibility = View.VISIBLE
             }
         }
     }
