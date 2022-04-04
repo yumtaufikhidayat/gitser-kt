@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.model.detail
+package com.taufik.gitser.data.response.detail
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

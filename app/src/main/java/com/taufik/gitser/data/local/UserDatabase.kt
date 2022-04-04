@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.db
+package com.taufik.gitser.data.local
 
 import android.content.Context
 import androidx.room.Database

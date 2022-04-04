@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.model.settings
+package com.taufik.gitser.data.response.settings
 
 data class Reminder(
     var isReminded: Boolean = false

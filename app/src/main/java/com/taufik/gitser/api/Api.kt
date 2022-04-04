@@ -1,9 +1,9 @@
 package com.taufik.gitser.api
 
-import com.taufik.gitser.data.model.detail.DetailResponse
-import com.taufik.gitser.data.model.repository.RepositoryResponse
-import com.taufik.gitser.data.model.search.Search
-import com.taufik.gitser.data.model.search.SearchResponse
+import com.taufik.gitser.data.response.detail.DetailResponse
+import com.taufik.gitser.data.response.detail.RepositoryResponse
+import com.taufik.gitser.data.response.search.Search
+import com.taufik.gitser.data.response.search.SearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

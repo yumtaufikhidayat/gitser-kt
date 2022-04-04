@@ -1,9 +1,9 @@
 package com.taufik.gitser.ui.activity.settings
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.taufik.gitser.data.model.settings.Reminder
+import androidx.appcompat.app.AppCompatActivity
+import com.taufik.gitser.data.response.settings.Reminder
 import com.taufik.gitser.databinding.ActivitySettingsBinding
 import com.taufik.gitser.preferences.ReminderPreferences
 import com.taufik.gitser.receiver.AlarmReceiver

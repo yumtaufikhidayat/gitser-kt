@@ -60,12 +60,12 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
         )
 
         viewModel.setListOfRepository(username)
-        viewModel.getListOfRepository().observe(viewLifecycleOwner, {
+        viewModel.getListOfRepository().observe(viewLifecycleOwner) {
             if (it != null) {
                 repositoryAdapter.setRepositoryList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
     private fun showLoading(state: Boolean) {

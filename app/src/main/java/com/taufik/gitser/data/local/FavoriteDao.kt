@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.db
+package com.taufik.gitser.data.local
 
 import android.database.Cursor
 import androidx.lifecycle.LiveData

@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.profile.ProfilePagerAdapter
-import com.taufik.gitser.data.model.detail.DetailResponse
+import com.taufik.gitser.data.response.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.profile.ProfileViewModel
 import com.taufik.gitser.databinding.ActivityProfileBinding
 import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo

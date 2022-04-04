@@ -1,7 +1,7 @@
 package com.taufik.consumerapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.consumerapp.databinding.ActivityMainBinding
@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.setFavoriteUser(this)
-        viewModel.getFavoriteUser().observe(this, {
+        viewModel.getFavoriteUser().observe(this) {
             if (it != null) {
                 adapter.setSearchUserList(it)
             }
-        })
+        }
     }
 }

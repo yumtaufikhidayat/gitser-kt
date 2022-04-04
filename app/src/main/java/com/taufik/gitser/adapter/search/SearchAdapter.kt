@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.taufik.gitser.data.model.search.Search
+import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
 import com.taufik.gitser.utils.Utils.loadImage

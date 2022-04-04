@@ -15,7 +15,6 @@ import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.taufik.gitser.R
 import es.dmoral.toasty.Toasty
-import java.lang.Exception
 
 class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener {
 

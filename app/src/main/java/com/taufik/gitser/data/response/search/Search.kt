@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.model.search
+package com.taufik.gitser.data.response.search
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

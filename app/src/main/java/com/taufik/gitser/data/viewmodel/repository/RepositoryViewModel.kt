@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.taufik.gitser.api.ApiClient
-import com.taufik.gitser.data.model.repository.RepositoryResponse
+import com.taufik.gitser.data.response.detail.RepositoryResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

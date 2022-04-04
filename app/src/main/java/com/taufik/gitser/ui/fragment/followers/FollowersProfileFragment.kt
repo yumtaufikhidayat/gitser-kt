@@ -60,12 +60,12 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
             .get(FollowersViewModel::class.java)
 
         viewModel.setListOfFollowers(username)
-        viewModel.getListOfFollowers().observe(viewLifecycleOwner, {
+        viewModel.getListOfFollowers().observe(viewLifecycleOwner) {
             if (it != null) {
                 searchAdapter.setSearchUserList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
     private fun showLoading(state: Boolean) {

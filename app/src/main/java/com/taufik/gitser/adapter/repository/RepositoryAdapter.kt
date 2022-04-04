@@ -6,9 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.taufik.gitser.data.model.repository.RepositoryResponse
+import com.taufik.gitser.data.response.detail.RepositoryResponse
 import com.taufik.gitser.databinding.ItemRepositoryBinding
-import java.lang.Exception
 import kotlin.math.roundToInt
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.MyViewHolder>(){

@@ -6,10 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.taufik.gitser.api.ApiClient
-import com.taufik.gitser.data.db.Favorite
-import com.taufik.gitser.data.db.FavoriteDao
-import com.taufik.gitser.data.db.UserDatabase
-import com.taufik.gitser.data.model.detail.DetailResponse
+import com.taufik.gitser.data.local.Favorite
+import com.taufik.gitser.data.local.FavoriteDao
+import com.taufik.gitser.data.local.UserDatabase
+import com.taufik.gitser.data.response.detail.DetailResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,7 +1,7 @@
 package com.taufik.gitser.preferences
 
 import android.content.Context
-import com.taufik.gitser.data.model.settings.Reminder
+import com.taufik.gitser.data.response.settings.Reminder
 
 class ReminderPreferences(context: Context) {
 

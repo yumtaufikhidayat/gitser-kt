@@ -1,13 +1,13 @@
 package com.taufik.gitser.ui.activity.favorite
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.adapter.search.SearchAdapter
-import com.taufik.gitser.data.db.Favorite
-import com.taufik.gitser.data.model.search.Search
+import com.taufik.gitser.data.local.Favorite
+import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.data.viewmodel.favorite.FavoriteViewModel
 import com.taufik.gitser.databinding.ActivityFavoriteBinding
 

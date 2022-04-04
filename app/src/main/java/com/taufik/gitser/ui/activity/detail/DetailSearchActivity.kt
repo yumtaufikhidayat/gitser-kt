@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
-import com.taufik.gitser.data.model.detail.DetailResponse
-import com.taufik.gitser.data.model.search.Search
+import com.taufik.gitser.data.response.detail.DetailResponse
+import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.data.viewmodel.detail.DetailViewModel
 import com.taufik.gitser.databinding.ActivityDetailSearchBinding
 import com.taufik.gitser.utils.Utils.isNetworkEnabled

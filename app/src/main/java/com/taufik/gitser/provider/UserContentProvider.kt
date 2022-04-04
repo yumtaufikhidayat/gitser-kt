@@ -5,8 +5,8 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import com.taufik.gitser.data.db.FavoriteDao
-import com.taufik.gitser.data.db.UserDatabase
+import com.taufik.gitser.data.local.FavoriteDao
+import com.taufik.gitser.data.local.UserDatabase
 
 class UserContentProvider : ContentProvider() {
 
