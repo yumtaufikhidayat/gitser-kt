@@ -8,8 +8,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayoutMediator
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
 import com.taufik.gitser.data.response.detail.DetailResponse
@@ -214,10 +216,12 @@ class DetailSearchActivity : AppCompatActivity() {
     }
 
     private fun setViewPager() {
-        val pagerAdapter = PagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
+            val pagerAdapter = PagerAdapter(this@DetailSearchActivity, bundle)
             viewPagerDetailSearch.adapter = pagerAdapter
-            tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
+            TabLayoutMediator(tabLayoutDetailSearch, viewPagerDetailSearch) { tabs, position ->
+                tabs.text = resources.getString(tabTitles[position])
+            }.attach()
         }
     }
 
@@ -257,5 +261,12 @@ class DetailSearchActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_DATA = "com.taufik.gitser.ui.activity.detail.EXTRA_DATA"
+
+        @StringRes
+        private val tabTitles = intArrayOf(
+            R.string.tvFollowing,
+            R.string.tvFollowers,
+            R.string.tvRepository
+        )
     }
 }

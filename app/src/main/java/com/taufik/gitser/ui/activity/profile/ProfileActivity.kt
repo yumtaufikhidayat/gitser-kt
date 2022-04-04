@@ -8,9 +8,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayoutMediator
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.profile.ProfilePagerAdapter
 import com.taufik.gitser.data.response.detail.DetailResponse
@@ -144,10 +146,12 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setViewPager() {
-        val profilePageAdapter = ProfilePagerAdapter(this, supportFragmentManager, bundle)
         binding.apply {
+            val profilePageAdapter = ProfilePagerAdapter(this@ProfileActivity, bundle)
             viewPagerProfile.adapter = profilePageAdapter
-            tabLayoutProfile.setupWithViewPager(viewPagerProfile)
+            TabLayoutMediator(tabLayoutProfile, viewPagerProfile) {tabs, position ->
+                tabs.text = resources.getString(tabTitles[position])
+            }.attach()
         }
     }
 
@@ -197,5 +201,12 @@ class ProfileActivity : AppCompatActivity() {
 
     companion object{
         const val PROFILE_USERNAME = "yumtaufikhidayat"
+
+        @StringRes
+        private val tabTitles = intArrayOf(
+            R.string.tvFollowing,
+            R.string.tvFollowers,
+            R.string.tvRepository
+        )
     }
 }

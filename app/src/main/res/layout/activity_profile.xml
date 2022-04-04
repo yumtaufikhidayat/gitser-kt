@@ -277,7 +277,7 @@
             app:tabIconTint="@color/color"
             app:layout_constraintTop_toBottomOf="@id/imgLink"/>
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerProfile"
             android:layout_width="match_parent"
             android:layout_height="0dp"
