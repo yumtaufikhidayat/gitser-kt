@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/no_connection_error.xml" value="0.22" />
         <entry key="app/src/main/res/layout/shimmer_detail.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/shimmer_item_user.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/toolbar_custom.xml" value="0.1" />
       </map>
     </option>
   </component>
