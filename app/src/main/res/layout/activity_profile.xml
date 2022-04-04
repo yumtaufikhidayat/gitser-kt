@@ -15,6 +15,14 @@
         android:orientation="vertical"
         android:background="@android:color/white">
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/layoutDetailVisibility"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:constraint_referenced_ids="llFirstLayer, llSecondLayer, imgLocation, tvProfileLocation,
+            imgCompany, tvProfileCompany, imgLink, tvProfileLink, tabLayoutProfile, viewPagerProfile"/>
+
         <LinearLayout
             android:id="@+id/llFirstLayer"
             android:layout_width="match_parent"
@@ -70,18 +78,6 @@
                         app:layout_constraintEnd_toEndOf="@id/tvProfileName"
                         app:layout_constraintTop_toBottomOf="@id/tvProfileName"
                         app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <ToggleButton
-                        android:id="@+id/toggleFavorite"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:textOn=""
-                        android:textOff=""
-                        android:background="@drawable/favorite_toggle"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        app:layout_constraintBottom_toBottomOf="@id/imgProfile"
-                        app:layout_constraintEnd_toEndOf="@id/imgProfile"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -288,6 +284,29 @@
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/tabLayoutProfile"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLoadingProfile"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include layout="@layout/shimmer_detail"/>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/layoutNoConnectionVisibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:constraint_referenced_ids="layoutNoConnection"/>
+
+        <include
+            android:id="@+id/layoutNoConnection"
+            layout="@layout/layout_no_network"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

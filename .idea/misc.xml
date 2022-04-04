@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/second_layer.xml" value="0.1215" />
         <entry key="app/src/main/res/layout/activity_detail_search.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/bottom_sheet_profile_info.xml" value="0.22" />

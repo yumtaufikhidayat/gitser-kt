@@ -289,7 +289,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.constraintlayout.widget.Group
-            android:id="@+id/viewDetailVisibility"
+            android:id="@+id/layoutDetailVisibility"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"

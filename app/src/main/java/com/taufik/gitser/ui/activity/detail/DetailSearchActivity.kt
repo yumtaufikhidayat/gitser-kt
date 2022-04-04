@@ -64,13 +64,13 @@ class DetailSearchActivity : AppCompatActivity() {
         binding.apply {
             if (isShow) {
                 layoutNoConnectionVisibility.visibility = View.VISIBLE
-                viewDetailVisibility.visibility = View.GONE
+                layoutDetailVisibility.visibility = View.GONE
                 layoutNoConnection.btnRetry.setOnClickListener {
                     checkConnectionEnabled()
                 }
             } else {
                 layoutNoConnectionVisibility.visibility = View.GONE
-                viewDetailVisibility.visibility = View.VISIBLE
+                layoutDetailVisibility.visibility = View.VISIBLE
             }
         }
     }
@@ -88,6 +88,18 @@ class DetailSearchActivity : AppCompatActivity() {
         supportActionBar?.apply {
             title = dataParcel.login
             setDisplayHomeAsUpEnabled(true)
+        }
+    }
+
+    private fun showLoading(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                shimmerLoadingDetail.visibility = View.VISIBLE
+                layoutDetailVisibility.visibility = View.GONE
+            } else {
+                shimmerLoadingDetail.visibility = View.GONE
+                layoutDetailVisibility.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -206,18 +218,6 @@ class DetailSearchActivity : AppCompatActivity() {
         binding.apply {
             viewPagerDetailSearch.adapter = pagerAdapter
             tabLayoutDetailSearch.setupWithViewPager(viewPagerDetailSearch)
-        }
-    }
-
-    private fun showLoading(isShow: Boolean) {
-        binding.apply {
-            if (isShow) {
-                shimmerLoadingDetail.visibility = View.VISIBLE
-                viewDetailVisibility.visibility = View.GONE
-            } else {
-                shimmerLoadingDetail.visibility = View.GONE
-                viewDetailVisibility.visibility = View.VISIBLE
-            }
         }
     }
 

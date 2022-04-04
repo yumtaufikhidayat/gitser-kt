@@ -17,6 +17,7 @@ import com.taufik.gitser.data.model.detail.DetailResponse
 import com.taufik.gitser.data.viewmodel.profile.ProfileViewModel
 import com.taufik.gitser.databinding.ActivityProfileBinding
 import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo
+import com.taufik.gitser.utils.Utils.isNetworkEnabled
 import com.taufik.gitser.utils.Utils.loadImage
 import com.taufik.gitser.utils.Utils.makeLinks
 import es.dmoral.toasty.Toasty
@@ -34,59 +35,109 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setInitData()
-        initActionBar()
-        setViewModel()
-        setViewPager()
+        checkConnectionEnabled()
     }
 
-    private fun setInitData() {
-        username = PROFILE_USERNAME
+    private fun checkConnectionEnabled() {
+        if (isNetworkEnabled(this)) {
+            showNoNetworkConnection(false)
+            initActionBar()
+            showDetailData()
+            setViewPager()
+        } else {
+            showNoNetworkConnection(true)
+            supportActionBar?.apply {
+                title = ""
+                setDisplayHomeAsUpEnabled(true)
+            }
+        }
+    }
+
+    private fun showNoNetworkConnection(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                layoutNoConnectionVisibility.visibility = View.VISIBLE
+                layoutDetailVisibility.visibility = View.GONE
+                layoutNoConnection.btnRetry.setOnClickListener {
+                    checkConnectionEnabled()
+                }
+            } else {
+                layoutNoConnectionVisibility.visibility = View.GONE
+                layoutDetailVisibility.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun initActionBar() {
-
         supportActionBar?.apply {
             title = "Profil"
             setDisplayHomeAsUpEnabled(true)
         }
     }
 
-    private fun setViewModel() {
+    private fun showLoading(isShow: Boolean) {
         binding.apply {
+            if (isShow) {
+                shimmerLoadingProfile.visibility = View.VISIBLE
+                layoutDetailVisibility.visibility = View.GONE
+            } else {
+                shimmerLoadingProfile.visibility = View.GONE
+                layoutDetailVisibility.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showDetailData() {
+        showLoading(true)
+        binding.apply {
+            username = PROFILE_USERNAME
             bundle = Bundle()
             bundle.putString(PROFILE_USERNAME, username)
 
             viewModel = ViewModelProvider(this@ProfileActivity, ViewModelProvider.NewInstanceFactory())[ProfileViewModel::class.java]
-            viewModel.setProfile(username)
-            viewModel.getProfile().observe(this@ProfileActivity) {
-                data = it
-                if (it != null) {
-                    imgProfile.loadImage(it.avatarUrl)
-                    tvProfileName.text = it.name
-                    tvProfileUsername.text = it.login
-                    tvFollowingProfile.text = it.following.toString()
-                    tvFollowersProfile.text = it.followers.toString()
-                    tvRepositoryProfile.text = it.publicRepos.toString()
-                    tvProfileLocation.text = it.location
-                    tvProfileCompany.text = it.company
+            viewModel.apply {
+                setProfile(username)
+                getProfile().observe(this@ProfileActivity) {
+                    data = it
+                    if (isNetworkEnabled(this@ProfileActivity)) {
+                        if (it != null) {
+                            imgProfile.loadImage(it.avatarUrl)
+                            tvProfileName.text = it.name
+                            tvProfileUsername.text = it.login
+                            tvFollowingProfile.text = it.following.toString()
+                            tvFollowersProfile.text = it.followers.toString()
+                            tvRepositoryProfile.text = it.publicRepos.toString()
+                            tvProfileLocation.text = it.location
+                            tvProfileCompany.text = it.company
 
-                    val link = it.blog
-                    tvProfileLink.text = link
-                    tvProfileLink.makeLinks(Pair(it.blog, View.OnClickListener {
-                        try {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-                            startActivity(Intent.createChooser(intent, "Open with:"))
-                        } catch (e: Exception) {
-                            Toasty.warning(
-                                this@ProfileActivity,
-                                "Silakan install browser terlebih dulu.",
-                                Toast.LENGTH_SHORT,
-                                true
-                            ).show()
-                            Log.e("errorLink", "setViewModel: ${e.localizedMessage}")
+                            val link = it.blog
+                            tvProfileLink.text = link
+                            tvProfileLink.makeLinks(Pair(it.blog, View.OnClickListener {
+                                try {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                                    startActivity(Intent.createChooser(intent, "Open with:"))
+                                } catch (e: Exception) {
+                                    Toasty.warning(
+                                        this@ProfileActivity,
+                                        "Silakan install browser terlebih dulu.",
+                                        Toast.LENGTH_SHORT,
+                                        true
+                                    ).show()
+                                    Log.e("errorLink", "showDetailData: ${e.localizedMessage}")
+                                }
+                            }))
                         }
-                    }))
+                        showNoNetworkConnection(false)
+                        showLoading(false)
+                    } else {
+                        if (isNetworkEnabled(this@ProfileActivity)) {
+                            showNoNetworkConnection(false)
+                            showLoading(false)
+                        } else {
+                            showNoNetworkConnection(true)
+                            showLoading(false)
+                        }
+                    }
                 }
             }
         }
