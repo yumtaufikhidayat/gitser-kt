@@ -12,6 +12,10 @@ import retrofit2.http.Query
 
 interface Api {
 
+    @GET(UrlEndpoint.ALL_USERS)
+    @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
+    fun getAllUsers() : Call<ArrayList<Search>>
+
     @GET(UrlEndpoint.SEARCH_USERS)
     @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
     fun searchUsers(
@@ -24,15 +28,15 @@ interface Api {
         @Path("username") username: String
     ): Call<DetailResponse>
 
-    @GET(UrlEndpoint.FOLLOWERS_URL)
-    @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
-    fun getFollowersUsers(
-        @Path("username") username: String
-    ): Call<ArrayList<Search>>
-
     @GET(UrlEndpoint.FOLLOWING_URL)
     @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
     fun getFollowingUsers(
+        @Path("username") username: String
+    ): Call<ArrayList<Search>>
+
+    @GET(UrlEndpoint.FOLLOWERS_URL)
+    @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
+    fun getFollowersUsers(
         @Path("username") username: String
     ): Call<ArrayList<Search>>
 
@@ -41,8 +45,4 @@ interface Api {
     fun getRepository(
         @Path("username") username: String
     ): Call<ArrayList<RepositoryResponse>>
-
-    @GET(UrlEndpoint.ALL_USERS)
-    @Headers("Authorization: token ${UrlEndpoint.GITHUB_TOKEN_PAT}")
-    fun getAllUsers() : Call<ArrayList<Search>>
 }

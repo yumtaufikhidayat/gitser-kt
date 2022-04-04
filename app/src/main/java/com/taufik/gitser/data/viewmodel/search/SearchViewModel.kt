@@ -7,16 +7,20 @@ import androidx.lifecycle.ViewModel
 import com.taufik.gitser.api.ApiClient
 import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.data.response.search.SearchResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SearchViewModel : ViewModel() {
 
-    val listUsers = MutableLiveData<ArrayList<Search>>()
+    private val listUsers = MutableLiveData<ArrayList<Search>>()
 
     fun setSearchUsers(query: String) {
-        ApiClient.apiInstance
+        CoroutineScope(Dispatchers.IO).launch {
+            ApiClient.apiInstance
                 .searchUsers(query)
                 .enqueue(object : Callback<SearchResponse> {
                     override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
@@ -30,6 +34,7 @@ class SearchViewModel : ViewModel() {
                         Log.e("errorRetrofit", "onFailure: ${t.localizedMessage}")
                     }
                 })
+        }
     }
 
     fun getSearchUsers(): LiveData<ArrayList<Search>> {
