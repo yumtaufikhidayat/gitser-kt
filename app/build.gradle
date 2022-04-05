@@ -13,8 +13,8 @@ android {
         applicationId "com.taufik.gitser"
         minSdkVersion 23
         targetSdkVersion 32
-        versionCode 16
-        versionName "1.6"
+        versionCode 17
+        versionName "1.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GITHUB_TOKEN_PAT", github_token_pat)
