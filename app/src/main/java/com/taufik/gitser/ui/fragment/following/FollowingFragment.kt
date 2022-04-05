@@ -36,7 +36,7 @@ class FollowingFragment : Fragment() {
 
         setArgument()
         setAdapter()
-        setViewModel()
+        setData()
     }
 
     private fun setArgument() {
@@ -54,7 +54,7 @@ class FollowingFragment : Fragment() {
         }
     }
 
-    private fun setViewModel() {
+    private fun setData() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
         viewModel.apply {

@@ -26,7 +26,7 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
 
         setArgument()
         setAdapter()
-        setViewModel()
+        setData()
     }
 
     private fun setArgument() {
@@ -45,7 +45,7 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
         }
     }
 
-    private fun setViewModel() {
+    private fun setData() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
         viewModel.apply {

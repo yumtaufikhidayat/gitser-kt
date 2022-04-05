@@ -29,7 +29,7 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
 
         setAdapter()
 
-        setViewModel()
+        setData()
     }
 
     private fun setArguments() {
@@ -49,7 +49,7 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
         }
     }
 
-    private fun setViewModel() {
+    private fun setData() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
         viewModel.apply {

@@ -35,7 +35,7 @@ class RepositoryFragment : Fragment() {
 
         setArguments()
         setAdapter()
-        setViewModel()
+        setData()
     }
 
     private fun setArguments() {
@@ -54,7 +54,7 @@ class RepositoryFragment : Fragment() {
         }
     }
 
-    private fun setViewModel() {
+    private fun setData() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
         viewModel.apply {

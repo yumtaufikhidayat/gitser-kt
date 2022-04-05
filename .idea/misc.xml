@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/item_user_shimmer.xml" value="0.18" />
         <entry key="app/src/main/res/layout/layout_no_data.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/layout_no_network.xml" value="0.1828125" />
+        <entry key="app/src/main/res/layout/layout_no_reposiotry.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/network_error.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/no_connection_error.xml" value="0.22" />
         <entry key="app/src/main/res/layout/shimmer_detail.xml" value="0.1828125" />
