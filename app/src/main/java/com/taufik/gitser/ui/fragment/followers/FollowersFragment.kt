@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.following.FollowersViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
@@ -35,7 +36,7 @@ class FollowersFragment : Fragment() {
 
         setArgument()
         setAdapter()
-        setViewModel()
+        setData()
     }
 
     private fun setArgument() {
@@ -53,14 +54,19 @@ class FollowersFragment : Fragment() {
         }
     }
 
-    private fun setViewModel() {
+    private fun setData() {
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowersViewModel::class.java]
         viewModel.apply {
             setListOfFollowers(username)
             getListOfFollowers().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    searchAdapter.setSearchUserList(it)
+                    if (it.size != 0) {
+                        searchAdapter.setSearchUserList(it)
+                        showNoData(false)
+                    } else {
+                        showNoData(true)
+                    }
                     showLoading(false)
                 }
             }
@@ -75,6 +81,17 @@ class FollowersFragment : Fragment() {
             } else {
                 shimmerLoading.visibility = View.GONE
                 rvFollows.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNoData(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                viewNoDataVisibility.visibility = View.VISIBLE
+                layoutNoData.tvNoDataDesc.text = getString(R.string.tvNoFollowers)
+            } else {
+                viewNoDataVisibility.visibility = View.GONE
             }
         }
     }

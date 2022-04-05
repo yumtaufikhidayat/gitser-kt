@@ -52,7 +52,12 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
             setListOfFollowing(username)
             getListOfFollowing().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    searchAdapter.setSearchUserList(it)
+                    if (it.size != 0) {
+                        searchAdapter.setSearchUserList(it)
+                        showNoData(false)
+                    } else {
+                        showNoData(true)
+                    }
                     showLoading(false)
                 }
             }
@@ -67,6 +72,17 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
             } else {
                 shimmerLoading.visibility = View.GONE
                 rvFollows.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNoData(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                viewNoDataVisibility.visibility = View.VISIBLE
+                layoutNoData.tvNoDataDesc.text = getString(R.string.tvNoFollowing)
+            } else {
+                viewNoDataVisibility.visibility = View.GONE
             }
         }
     }

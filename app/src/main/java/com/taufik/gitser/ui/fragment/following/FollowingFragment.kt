@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.followers.FollowingViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
@@ -60,7 +61,12 @@ class FollowingFragment : Fragment() {
             setListOfFollowing(username)
             getListOfFollowing().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    searchAdapter.setSearchUserList(it)
+                    if (it.size != 0) {
+                        searchAdapter.setSearchUserList(it)
+                        showNoData(false)
+                    } else {
+                        showNoData(true)
+                    }
                     showLoading(false)
                 }
             }
@@ -75,6 +81,17 @@ class FollowingFragment : Fragment() {
             } else {
                 shimmerLoading.visibility = View.GONE
                 rvFollows.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNoData(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                viewNoDataVisibility.visibility = View.VISIBLE
+                layoutNoData.tvNoDataDesc.text = getString(R.string.tvNoFollowing)
+            } else {
+                viewNoDataVisibility.visibility = View.GONE
             }
         }
     }

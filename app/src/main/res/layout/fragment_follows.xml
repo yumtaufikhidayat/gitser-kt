@@ -26,4 +26,15 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/viewNoDataVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="layoutNoData"/>
+
+    <include
+        android:id="@+id/layoutNoData"
+        layout="@layout/layout_no_data"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

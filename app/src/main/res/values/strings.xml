@@ -36,4 +36,6 @@
     <string name="tvNoResult">Tidak ada hasil…</string>
     <string name="tvLetsSearchUserDesc">Kamu belum mencari pengguna…</string>
     <string name="tvRetry">Coba Lagi</string>
+    <string name="tvNoFollowers">Pengguna tidak memiliki pengikut</string>
+    <string name="tvNoFollowing">Pengguna tidak mengikuti siapapun</string>
 </resources>

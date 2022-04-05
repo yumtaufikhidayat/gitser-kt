@@ -308,7 +308,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialiconsoutlined/no_accounts/outline_no_accounts_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialiconsoutlined/do_not_disturb_on_total_silence/outline_do_not_disturb_on_total_silence_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -319,7 +319,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="800066" />
-                            <entry key="outputName" value="ic_no_data" />
+                            <entry key="outputName" value="ic_no_repository" />
                           </map>
                         </option>
                       </PersistentState>
