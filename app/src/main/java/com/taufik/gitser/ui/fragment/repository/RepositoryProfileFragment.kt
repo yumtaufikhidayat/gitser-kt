@@ -56,7 +56,12 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
             setListOfRepository(username)
             getListOfRepository().observe(viewLifecycleOwner) {
                 if (it != null) {
-                    repositoryAdapter.setRepositoryList(it)
+                    if (it.size != 0) {
+                        repositoryAdapter.setRepositoryList(it)
+                        showNoData(false)
+                    } else {
+                        showNoData(true)
+                    }
                     showLoading(false)
                 }
             }
@@ -71,6 +76,16 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
             } else {
                 shimmerLoading.visibility = View.GONE
                 rvRepos.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun showNoData(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                viewNoRepositoryVisibility.visibility = View.VISIBLE
+            } else {
+                viewNoRepositoryVisibility.visibility = View.GONE
             }
         }
     }
