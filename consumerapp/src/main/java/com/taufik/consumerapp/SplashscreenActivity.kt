@@ -10,6 +10,7 @@ import com.taufik.consumerapp.databinding.ActivitySplashscreenBinding
 class SplashscreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashscreenBinding
     private lateinit var handler: Handler
+    private val splashTime = 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class SplashscreenActivity : AppCompatActivity() {
         handler.postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }, 1000)
+            finish()
+        }, splashTime)
     }
 }

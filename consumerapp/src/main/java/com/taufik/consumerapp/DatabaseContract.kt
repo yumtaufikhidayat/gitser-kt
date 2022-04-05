@@ -5,8 +5,8 @@ import android.provider.BaseColumns
 
 object DatabaseContract {
 
-    const val AUTHORITY = "com.taufik.gitser"
-    const val SCHEME = "content"
+    private const val AUTHORITY = "com.taufik.gitser"
+    private const val SCHEME = "content"
 
     class FavoriteUserColumn : BaseColumns {
         companion object{

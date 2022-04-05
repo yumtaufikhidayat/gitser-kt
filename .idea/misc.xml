@@ -26,6 +26,9 @@
         <entry key="app/src/main/res/layout/shimmer_detail.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/shimmer_item_user.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/toolbar_custom.xml" value="0.1" />
+        <entry key="consumerapp/src/main/res/layout/activity_main.xml" value="0.17962962962962964" />
+        <entry key="consumerapp/src/main/res/layout/activity_splashscreen.xml" value="0.1828125" />
+        <entry key="consumerapp/src/main/res/layout/item_user.xml" value="0.1828125" />
       </map>
     </option>
   </component>

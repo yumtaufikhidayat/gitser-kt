@@ -17,11 +17,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     }
 
     inner class MyViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(search: Search) {
-
             binding.apply {
-
                 Glide.with(itemView)
                     .load(search.avatarUrl)
                     .placeholder(R.color.purple_500)
@@ -38,7 +35,6 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
         val pos = listUsers[position]
         holder.bind(pos)
     }
