@@ -47,11 +47,11 @@ This application is a simple Github user search app using Kotlin. Built using th
 
 #### Programming Language
 - Language Name : Kotlin
-- Version : 1.4.30
+- Version : 1.6.20
 
 #### IDE (Integrated Development Environment)
 - IDE Name : Android Studio
-- Version : 4.1.2
+- Version : Android Studio Bumblebee | 2021.1.1 Patch 2
 
 #### Java Build Tools
 - Java Build Tools : Gradle
