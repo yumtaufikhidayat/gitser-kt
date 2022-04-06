@@ -36,13 +36,13 @@ This application is a simple Github user search app using Kotlin. Built using th
 
 ### Hardware
 - CPU : Intel© Core™ i3-6006U CPU @ 2.0GHz
-- Memory : 2 x 4 GB RAM
+- Memory : 2 x 8 GB RAM
 - Graphics : Intel HD Graphics 520
 
 ### Software
 #### Operating System
 - OS Name : Linux Mint (based on Ubuntu 20.04 LTS)
-- Version : 20.1
+- Version : 20.3
 - Platform : 64 bit
 
 #### Programming Language
@@ -55,11 +55,11 @@ This application is a simple Github user search app using Kotlin. Built using th
 
 #### Java Build Tools
 - Java Build Tools : Gradle
-- Android Gradle Plugin Version : 4.1.2
-- Android Gradle : 6.5
+- Android Gradle Plugin : 7.1.2
+- Android Gradle : 7.2
 
 #### SDK Version and SDK Tools
-- Target SDK Version : 30
+- Target SDK Version : 32
 - Min SDK Version : 23
 - Android SDK Tools : 26.1.1
 
@@ -79,23 +79,23 @@ This application is a simple Github user search app using Kotlin. Built using th
 ##### By Third Parties
 - Material design
 
-        - implementation 'com.google.android.material:material:1.3.0'
+        - implementation 'com.google.android.material:material:1.5.0'
 
 - Network
 
         - implementation 'com.squareup.retrofit2:retrofit:2.9.0'
         - implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-        - implementation 'com.squareup.okhttp3:okhttp:3.14.9'
-        - implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+        - implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+        - implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
 
 - View Model
 
         - implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-        - implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+        - implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
 
 - Glide
 
-        - implementation 'com.github.bumptech.glide:glide:4.11.0'
+        - implementation 'com.github.bumptech.glide:glide:4.13.1'
 
 - Circle image
 
@@ -107,7 +107,7 @@ This application is a simple Github user search app using Kotlin. Built using th
 
 - Room DB
 
-        - def room_version = '2.2.6'
+        - def room_version = '2.4.2'
         - implementation "androidx.room:room-runtime:$room_version"
         - implementation "androidx.room:room-ktx:$room_version"
         - testImplementation "androidx.room:room-testing:$room_version"
@@ -115,10 +115,13 @@ This application is a simple Github user search app using Kotlin. Built using th
 
 - Coroutine
 
-        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
-        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
+        - implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
 
 - Shared Preferences
 
-        - implementation 'androidx.preference:preference-ktx:1.1.1'
+        - implementation 'androidx.preference:preference-ktx:1.2.0'
 
+- Shimmer
+
+        - implementation 'com.facebook.shimmer:shimmer:0.5.0'
