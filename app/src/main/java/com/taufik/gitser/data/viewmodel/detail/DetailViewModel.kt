@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.taufik.gitser.api.ApiClient
-import com.taufik.gitser.data.local.Favorite
+import com.taufik.gitser.data.local.FavoriteEntity
 import com.taufik.gitser.data.local.FavoriteDao
 import com.taufik.gitser.data.local.UserDatabase
 import com.taufik.gitser.data.response.detail.DetailResponse
@@ -55,12 +55,13 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         return user
     }
 
-    fun addToFavorite(id: Int, username: String, avatarUrl: String) {
+    fun addToFavorite(id: Int, username: String, avatarUrl: String, htmlUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val user = Favorite(
-                    id,
-                    username,
-                    avatarUrl
+            val user = FavoriteEntity(
+                id,
+                username,
+                avatarUrl,
+                htmlUrl
             )
 
             userDao?.addUserToFavorite(user)

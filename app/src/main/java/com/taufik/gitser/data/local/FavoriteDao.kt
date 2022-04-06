@@ -10,10 +10,10 @@ import androidx.room.Query
 interface FavoriteDao {
 
     @Insert
-    suspend fun addUserToFavorite(favorite: Favorite)
+    suspend fun addUserToFavorite(favoriteEntity: FavoriteEntity)
 
     @Query("SELECT * FROM favorite_user")
-    fun getFavoriteUser(): LiveData<List<Favorite>>
+    fun getFavoriteUser(): LiveData<List<FavoriteEntity>>
 
     @Query("SELECT count(*) FROM favorite_user WHERE favorite_user.id = :id")
     suspend fun checkUserFavorite(id: Int): Int

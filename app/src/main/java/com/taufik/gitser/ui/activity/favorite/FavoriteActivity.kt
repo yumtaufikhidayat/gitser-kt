@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.adapter.search.SearchAdapter
-import com.taufik.gitser.data.local.Favorite
+import com.taufik.gitser.data.local.FavoriteEntity
 import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.data.viewmodel.favorite.FavoriteViewModel
 import com.taufik.gitser.databinding.ActivityFavoriteBinding
@@ -59,13 +59,14 @@ class FavoriteActivity : AppCompatActivity() {
         }
     }
 
-    private fun mapList(users: List<Favorite>): ArrayList<Search> {
+    private fun mapList(users: List<FavoriteEntity>): ArrayList<Search> {
         val listOfUsers = ArrayList<Search>()
         for (user in users) {
             val userMapped = Search (
                 user.id,
                 user.login,
-                user.avatarUrl
+                user.avatarUrl,
+                user.htmlUrl
             )
             listOfUsers.add(userMapped)
         }

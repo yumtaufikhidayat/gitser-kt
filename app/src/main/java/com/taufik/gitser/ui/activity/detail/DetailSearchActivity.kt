@@ -192,7 +192,8 @@ class DetailSearchActivity : AppCompatActivity() {
                     viewModel.addToFavorite(
                         dataParcel.id,
                         dataParcel.login,
-                        dataParcel.avatarUrl
+                        dataParcel.avatarUrl,
+                        dataParcel.htmlUrl
                     )
                     Toasty.success(
                         this@DetailSearchActivity,

@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "favorite_user")
-data class Favorite(
+data class FavoriteEntity(
     @PrimaryKey
     val id: Int,
     val login: String,
-    val avatarUrl: String
+    val avatarUrl: String,
+    val htmlUrl: String
 ): Serializable

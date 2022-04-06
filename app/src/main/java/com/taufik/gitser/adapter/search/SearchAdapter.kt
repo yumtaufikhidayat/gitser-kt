@@ -25,6 +25,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
             binding.apply {
                 imgUserProfile.loadImage(search.avatarUrl)
                 tvUsernameProfile.text = search.login
+                tvProfileUrl.text = search.htmlUrl
             }
         }
     }
