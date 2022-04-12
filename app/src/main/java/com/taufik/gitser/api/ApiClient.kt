@@ -20,8 +20,8 @@ object ApiClient {
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(interceptor)
         .connectTimeout(timeOutTime, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
-        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(timeOutTime, TimeUnit.SECONDS)
+        .readTimeout(timeOutTime, TimeUnit.SECONDS)
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
