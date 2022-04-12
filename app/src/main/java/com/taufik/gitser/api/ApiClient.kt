@@ -1,5 +1,6 @@
 package com.taufik.gitser.api
 
+import com.taufik.gitser.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,10 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
+
     private const val timeOutTime = 30L
 
-    private val interceptor = HttpLoggingInterceptor()
-        .setLevel(HttpLoggingInterceptor.Level.BODY)
+    private val interceptor = if (BuildConfig.DEBUG) {
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    } else {
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+    }
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(interceptor)
