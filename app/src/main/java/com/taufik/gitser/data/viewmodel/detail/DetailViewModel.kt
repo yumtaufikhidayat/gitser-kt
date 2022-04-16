@@ -55,13 +55,13 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         return user
     }
 
-    fun addToFavorite(id: Int, username: String, avatarUrl: String, htmlUrl: String) {
+    fun addToFavorite(id: Int, username: String, avatarUrl: String, type: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val user = FavoriteEntity(
                 id,
                 username,
                 avatarUrl,
-                htmlUrl
+                type
             )
 
             userDao?.addUserToFavorite(user)

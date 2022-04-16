@@ -10,5 +10,5 @@ data class FavoriteEntity(
     val id: Int,
     val login: String,
     val avatarUrl: String,
-    val htmlUrl: String
+    val type: String
 ): Serializable

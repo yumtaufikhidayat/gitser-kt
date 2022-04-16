@@ -193,8 +193,9 @@ class DetailSearchActivity : AppCompatActivity() {
                         dataParcel.id,
                         dataParcel.login,
                         dataParcel.avatarUrl,
-                        dataParcel.htmlUrl
+                        dataParcel.type
                     )
+
                     Toasty.success(
                         this@DetailSearchActivity,
                         "Ditambahkan ke favorit",
