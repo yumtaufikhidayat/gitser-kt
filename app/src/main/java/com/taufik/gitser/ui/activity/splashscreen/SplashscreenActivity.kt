@@ -25,7 +25,6 @@ class SplashscreenActivity : AppCompatActivity() {
     }
 
     private fun setSplashscreen() {
-
         handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             val intent = Intent(this, MainActivity::class.java)
