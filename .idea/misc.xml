@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/bottom_sheet_profile_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_follows.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/fragment_repository.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/item_user.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_user.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/item_user_shimmer.xml" value="0.18" />
         <entry key="app/src/main/res/layout/layout_no_data.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/layout_no_network.xml" value="0.1828125" />
