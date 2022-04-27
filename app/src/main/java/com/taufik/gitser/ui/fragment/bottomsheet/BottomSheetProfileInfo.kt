@@ -59,10 +59,11 @@ class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener
         val email = "yumtaufik1997@gmail.com"
         tvProfileInfoEmail.makeLinks(Pair(email, View.OnClickListener {
             try {
-                val intentEmail = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null))
-                intentEmail.putExtra(Intent.EXTRA_EMAIL, email)
-                intentEmail.putExtra(Intent.EXTRA_SUBJECT, "")
-                intentEmail.putExtra(Intent.EXTRA_TEXT, "")
+                val intentEmail = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null)).apply {
+                    putExtra(Intent.EXTRA_EMAIL, email)
+                    putExtra(Intent.EXTRA_SUBJECT, "")
+                    putExtra(Intent.EXTRA_TEXT, "")
+                }
                 startActivity(Intent.createChooser(intentEmail, "Send email"))
             } catch (e: Exception) {
                 Toasty.error(requireContext(), "Silakan install aplikasi email terlebih dulu", Toast.LENGTH_SHORT).show()

@@ -177,9 +177,10 @@ class ProfileActivity : AppCompatActivity() {
             R.id.nav_share_profile -> {
                 try {
                     val body = "Visit this awesome user \n${data.htmlUrl}"
-                    val shareIntent = Intent(Intent.ACTION_SEND)
-                    shareIntent.type = "text/plain"
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, body)
+                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_TEXT, body)
+                    }
                     startActivity(Intent.createChooser(shareIntent, "Share with:"))
                 } catch (e: Exception) {
                     Log.e("shareFailed", "onOptionsItemSelected: ${e.localizedMessage}")
