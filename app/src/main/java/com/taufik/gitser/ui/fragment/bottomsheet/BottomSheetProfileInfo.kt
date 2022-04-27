@@ -55,8 +55,7 @@ class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener
     }
 
     private fun developerEmail() {
-
-        val email = "yumtaufik1997@gmail.com"
+        val email = "yumtaufikhidayat@gmail.com"
         tvProfileInfoEmail.makeLinks(Pair(email, View.OnClickListener {
             try {
                 val intentEmail = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null)).apply {
