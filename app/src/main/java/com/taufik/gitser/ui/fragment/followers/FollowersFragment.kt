@@ -47,7 +47,8 @@ class FollowersFragment : Fragment() {
     private fun setAdapter() {
         searchAdapter = SearchAdapter()
         binding.apply {
-            with(rvFollows) {setHasFixedSize(true)
+            with(rvFollows) {
+                setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireActivity())
                 adapter = searchAdapter
             }
