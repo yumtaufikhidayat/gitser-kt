@@ -54,7 +54,7 @@ class FavoriteActivity : AppCompatActivity() {
         viewModel.getFavoriteUser()?.observe(this) {
             if (it != null) {
                 val list = mapList(it)
-                searchdapter.setSearchUserList(list)
+                searchdapter.submitList(list)
             }
         }
     }

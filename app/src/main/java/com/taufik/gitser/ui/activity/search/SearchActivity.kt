@@ -162,7 +162,7 @@ class SearchActivity : AppCompatActivity() {
                                     getString(R.string.tvShowing),
                                     it.size.toString()
                                 )
-                                searchAdapter.setSearchUserList(it)
+                                searchAdapter.submitList(it)
                                 showLoading(false)
                                 showEmptyResult(false)
                             } else {

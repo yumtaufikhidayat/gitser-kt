@@ -62,7 +62,7 @@ class RepositoryFragment : Fragment() {
             getListOfRepository().observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
-                        repositoryAdapter.setRepositoryList(it)
+                        repositoryAdapter.submitList(it)
                         showNoData(false)
                     } else {
                         showNoData(true)

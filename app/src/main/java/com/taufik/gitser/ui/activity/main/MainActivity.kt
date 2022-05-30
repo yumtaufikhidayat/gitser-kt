@@ -8,8 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -24,7 +24,7 @@ import com.taufik.gitser.utils.Utils.isNetworkEnabled
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
     private var doubleBackToExitPressedOnce = false
     private val delayTime = 2000L
@@ -85,11 +85,10 @@ class MainActivity : AppCompatActivity() {
                 adapter = searchAdapter
             }
 
-            viewModel = ViewModelProvider(this@MainActivity, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
             viewModel.setAllUsers()
             viewModel.getAllUsers().observe(this@MainActivity) {
                 if (it != null) {
-                    searchAdapter.setSearchUserList(it)
+                    searchAdapter.submitList(it)
                     showNoNetworkConnection(false)
                     showLoading(false)
                 }
@@ -111,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
