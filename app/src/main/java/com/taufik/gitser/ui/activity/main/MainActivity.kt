@@ -24,8 +24,9 @@ import com.taufik.gitser.utils.Utils.isNetworkEnabled
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
+
+    private val viewModel: MainViewModel by viewModels()
     private var doubleBackToExitPressedOnce = false
     private val delayTime = 2000L
 
@@ -40,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
-            showNoNetworkConnection(false)
-            setData()
+            initView()
+            initObserver()
         } else {
             showNoNetworkConnection(true)
         }
@@ -67,30 +68,32 @@ class MainActivity : AppCompatActivity() {
                     checkConnectionEnabled()
                 }
             } else {
-                shimmerLoadingMain.visibility = View.VISIBLE
-                rvMain.visibility = View.VISIBLE
-                swipeRefreshMain.isRefreshing = true
                 layoutNoConnectionVisibility.visibility = View.GONE
             }
         }
     }
 
-    private fun setData() {
+    private fun initView() {
         searchAdapter = SearchAdapter()
-        showLoading(true)
         binding.apply {
             with(rvMain) {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 setHasFixedSize(true)
                 adapter = searchAdapter
             }
+        }
+    }
 
-            viewModel.setAllUsers()
-            viewModel.getAllUsers().observe(this@MainActivity) {
+    private fun initObserver() {
+        viewModel.apply {
+            isLoading.observe(this@MainActivity) {
+                showLoading(it)
+            }
+
+            listAllUsers.observe(this@MainActivity) {
                 if (it != null) {
-                    searchAdapter.submitList(it)
                     showNoNetworkConnection(false)
-                    showLoading(false)
+                    searchAdapter.submitList(it)
                 }
             }
         }

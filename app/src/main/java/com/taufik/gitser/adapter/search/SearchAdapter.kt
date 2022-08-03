@@ -13,15 +13,11 @@ import com.taufik.gitser.utils.Utils.loadImage
 
 class SearchAdapter: ListAdapter<Search, SearchAdapter.SearchViewHolder>(SearchDiffCallback) {
 
-    private val listUsers = ArrayList<Search>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) = holder.bind(getItem(position))
-
-    override fun getItemCount(): Int = listUsers.size
 
     inner class SearchViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(search: Search) = with(binding) {
@@ -38,10 +34,8 @@ class SearchAdapter: ListAdapter<Search, SearchAdapter.SearchViewHolder>(SearchD
         }
     }
 
-    companion object {
-        object SearchDiffCallback : DiffUtil.ItemCallback<Search>() {
-            override fun areItemsTheSame(oldItem: Search, newItem: Search): Boolean = oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: Search, newItem: Search): Boolean = oldItem == newItem
-        }
+    object SearchDiffCallback : DiffUtil.ItemCallback<Search>() {
+        override fun areItemsTheSame(oldItem: Search, newItem: Search): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Search, newItem: Search): Boolean = oldItem == newItem
     }
 }

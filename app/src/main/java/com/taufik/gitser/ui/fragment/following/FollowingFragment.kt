@@ -62,7 +62,7 @@ class FollowingFragment : Fragment() {
             getListOfFollowing().observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
-                        searchAdapter.setSearchUserList(it)
+                        searchAdapter.submitList(it)
                         showNoData(false)
                     } else {
                         showNoData(true)
