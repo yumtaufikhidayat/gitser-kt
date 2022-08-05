@@ -50,6 +50,7 @@ class DetailSearchActivity : AppCompatActivity() {
             getParcelableData()
             setBundleData()
             initActionBar()
+            initObserver()
             showDetailData()
             setViewPager()
             saveToFavorite()
@@ -93,6 +94,12 @@ class DetailSearchActivity : AppCompatActivity() {
         }
     }
 
+    private fun initObserver() {
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+    }
+
     private fun showLoading(isShow: Boolean) {
         binding.apply {
             if (isShow) {
@@ -106,11 +113,10 @@ class DetailSearchActivity : AppCompatActivity() {
     }
 
     private fun showDetailData() {
-        showLoading(true)
         binding.apply {
             viewModel.apply {
                 setDetailSearch(dataParcel.login)
-                getDetailSearch().observe(this@DetailSearchActivity) {
+                userDetail.observe(this@DetailSearchActivity) {
                     if (isNetworkEnabled(this@DetailSearchActivity)) {
                         if (it != null) {
                             data = it
@@ -148,19 +154,15 @@ class DetailSearchActivity : AppCompatActivity() {
                                 }
                             }))
                             showNoNetworkConnection(false)
-                            showLoading(false)
                         } else {
                             if (isNetworkEnabled(this@DetailSearchActivity)) {
                                 showNoNetworkConnection(false)
-                                showLoading(false)
                             } else {
                                 showNoNetworkConnection(true)
-                                showLoading(false)
                             }
                         }
                     } else {
                         showNoNetworkConnection(true)
-                        showLoading(false)
                     }
                 }
             }

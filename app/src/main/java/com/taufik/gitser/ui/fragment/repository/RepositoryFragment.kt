@@ -34,6 +34,7 @@ class RepositoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setArguments()
+        initObserver()
         setAdapter()
         setData()
     }
@@ -41,6 +42,12 @@ class RepositoryFragment : Fragment() {
     private fun setArguments() {
         val argument = arguments
         username = argument?.getString(DetailSearchActivity.EXTRA_DATA).toString()
+    }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setAdapter() {
@@ -58,7 +65,7 @@ class RepositoryFragment : Fragment() {
         showLoading(true)
         viewModel.apply {
             setListOfRepository(username)
-            getListOfRepository().observe(viewLifecycleOwner) {
+            listOfRepository.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
                         repositoryAdapter.submitList(it)
@@ -66,7 +73,6 @@ class RepositoryFragment : Fragment() {
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }

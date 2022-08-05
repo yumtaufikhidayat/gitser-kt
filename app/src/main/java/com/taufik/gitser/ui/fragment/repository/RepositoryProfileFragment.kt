@@ -1,17 +1,18 @@
 package com.taufik.gitser.ui.fragment.repository
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.taufik.gitser.R
 import com.taufik.gitser.adapter.repository.RepositoryAdapter
 import com.taufik.gitser.data.viewmodel.repository.RepositoryViewModel
 import com.taufik.gitser.databinding.FragmentRepositoryBinding
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 
-class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
+class RepositoryProfileFragment : Fragment() {
 
     private var _binding: FragmentRepositoryBinding? = null
     private val binding get() = _binding!!
@@ -20,19 +21,35 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
     private lateinit var repositoryAdapter: RepositoryAdapter
     private lateinit var username: String
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View{
+        _binding = FragmentRepositoryBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setArguments()
-        _binding = FragmentRepositoryBinding.bind(view)
+        initObserver()
         setAdapter()
         setData()
     }
 
     private fun setArguments() {
-
         val argument = arguments
         username = argument?.getString(ProfileActivity.PROFILE_USERNAME).toString()
     }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+    }
+
+
 
     private fun setAdapter() {
         repositoryAdapter = RepositoryAdapter()
@@ -46,10 +63,9 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
     }
 
     private fun setData() {
-        showLoading(true)
         viewModel.apply {
             setListOfRepository(username)
-            getListOfRepository().observe(viewLifecycleOwner) {
+            listOfRepository.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
                         repositoryAdapter.submitList(it)
@@ -57,7 +73,6 @@ class RepositoryProfileFragment : Fragment(R.layout.fragment_repository) {
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }

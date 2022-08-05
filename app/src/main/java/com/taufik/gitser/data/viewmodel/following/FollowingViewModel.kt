@@ -1,4 +1,4 @@
-package com.taufik.gitser.data.viewmodel.main
+package com.taufik.gitser.data.viewmodel.following
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,23 +10,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class FollowingViewModel : ViewModel() {
 
     private val apiConfig = ApiClient.apiInstance
 
-    private val _listAllUsers = MutableLiveData<ArrayList<Search>>()
-    val listAllUsers: LiveData<ArrayList<Search>> = _listAllUsers
+    private val _listOfFollowing = MutableLiveData<ArrayList<Search>>()
+    val listOfFollowing: LiveData<ArrayList<Search>> = _listOfFollowing
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    init {
-        setAllUsers()
-    }
-
-    private fun setAllUsers() {
+    fun setListOfFollowing(username: String) {
         _isLoading.value = true
-        apiConfig.getAllUsers()
+        apiConfig.getFollowingUsers(username)
             .enqueue(object : Callback<ArrayList<Search>> {
                 override fun onResponse(
                     call: Call<ArrayList<Search>>,
@@ -34,13 +30,15 @@ class MainViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         _isLoading.value = false
-                        _listAllUsers.postValue(response.body())
+                        _listOfFollowing.postValue(response.body())
                     }
+
+                    Log.e("followingSuccess", "onResponse: ${response.body()}")
                 }
 
                 override fun onFailure(call: Call<ArrayList<Search>>, t: Throwable) {
-                    _isLoading.value = false
-                    Log.e("mainFailed", "onFailure: ${t.localizedMessage}")
+                    _isLoading.value = true
+                    Log.e("followingFailed", "onFailure: ${t.localizedMessage}")
                 }
             })
     }

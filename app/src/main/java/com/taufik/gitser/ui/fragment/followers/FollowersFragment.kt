@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
-import com.taufik.gitser.data.viewmodel.following.FollowersViewModel
+import com.taufik.gitser.data.viewmodel.followers.FollowersViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
 
@@ -35,6 +35,7 @@ class FollowersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setArgument()
+        initObserver()
         setAdapter()
         setData()
     }
@@ -42,6 +43,12 @@ class FollowersFragment : Fragment() {
     private fun setArgument() {
         val argument = arguments
         username = argument?.getString(DetailSearchActivity.EXTRA_DATA).toString()
+    }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setAdapter() {
@@ -56,10 +63,9 @@ class FollowersFragment : Fragment() {
     }
 
     private fun setData() {
-        showLoading(true)
         viewModel.apply {
             setListOfFollowers(username)
-            getListOfFollowers().observe(viewLifecycleOwner) {
+            listOfFollowers.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
                         searchAdapter.submitList(it)
@@ -67,7 +73,6 @@ class FollowersFragment : Fragment() {
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }

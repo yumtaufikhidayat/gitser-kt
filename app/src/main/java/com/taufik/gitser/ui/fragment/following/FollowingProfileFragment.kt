@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
-import com.taufik.gitser.data.viewmodel.followers.FollowingViewModel
+import com.taufik.gitser.data.viewmodel.following.FollowingViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 
@@ -25,6 +25,7 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
         _binding = FragmentFollowsBinding.bind(view)
 
         setArgument()
+        initObserver()
         setAdapter()
         setData()
     }
@@ -32,6 +33,12 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
     private fun setArgument() {
         val argument = arguments
         username = argument?.getString(ProfileActivity.PROFILE_USERNAME).toString()
+    }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setAdapter() {
@@ -46,10 +53,9 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun setData() {
-        showLoading(true)
         viewModel.apply {
             setListOfFollowing(username)
-            getListOfFollowing().observe(viewLifecycleOwner) {
+            listOfFollowing.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
                         searchAdapter.submitList(it)
@@ -57,7 +63,6 @@ class FollowingProfileFragment : Fragment(R.layout.fragment_follows) {
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }
