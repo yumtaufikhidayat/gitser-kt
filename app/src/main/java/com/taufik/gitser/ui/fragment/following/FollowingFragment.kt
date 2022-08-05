@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -18,7 +18,7 @@ class FollowingFragment : Fragment() {
     private var _binding: FragmentFollowsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FollowingViewModel
+    private val viewModel: FollowingViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var username: String
 
@@ -56,7 +56,6 @@ class FollowingFragment : Fragment() {
 
     private fun setData() {
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[FollowingViewModel::class.java]
         viewModel.apply {
             setListOfFollowing(username)
             getListOfFollowing().observe(viewLifecycleOwner) {

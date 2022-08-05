@@ -47,15 +47,17 @@
 
                     <TextView
                         android:id="@+id/tvNameDetailSearch"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
+                        android:textAlignment="center"
                         android:textColor="@android:color/black"
                         tools:text="@string/tvProfile"
-                        app:layout_constraintStart_toStartOf="@id/imgProfileDetailSearch"
-                        app:layout_constraintEnd_toEndOf="@id/imgProfileDetailSearch"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/imgProfileDetailSearch"/>
 
                     <TextView
@@ -64,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:text="@string/tvUsername"
+                        android:layout_marginBottom="16dp"
                         app:layout_constraintStart_toStartOf="@id/tvNameDetailSearch"
                         app:layout_constraintEnd_toEndOf="@id/tvNameDetailSearch"
                         app:layout_constraintTop_toBottomOf="@id/tvNameDetailSearch"
@@ -292,6 +295,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
+            tools:visibility="visible"
             app:constraint_referenced_ids="llFirstLayer, llSecondLayer, imgLocation,
                  imgCompany, imgLink, tvLocationDetailSearch, tvCompanyDetailSearch, tvLinkDetailSearch,
                  tabLayoutDetailSearch, viewPagerDetailSearch"/>
@@ -312,7 +316,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            tools:visibility="visible"
+
             app:constraint_referenced_ids="layoutNoConnection"/>
 
         <include

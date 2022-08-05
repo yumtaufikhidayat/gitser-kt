@@ -3,7 +3,7 @@ package com.taufik.gitser.ui.fragment.followers
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -16,7 +16,7 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
     private var _binding: FragmentFollowsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FollowersViewModel
+    private val viewModel: FollowersViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var username: String
 
@@ -47,7 +47,6 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
 
     private fun setData() {
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowersViewModel::class.java)
         viewModel.apply {
             setListOfFollowers(username)
             getListOfFollowers().observe(viewLifecycleOwner) {

@@ -8,9 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
@@ -30,7 +30,7 @@ import kotlinx.coroutines.withContext
 class DetailSearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailSearchBinding
-    private lateinit var viewModel: DetailViewModel
+    private val viewModel: DetailViewModel by viewModels()
     private lateinit var bundle: Bundle
     private lateinit var dataParcel: Search
     private lateinit var data: DetailResponse
@@ -108,15 +108,14 @@ class DetailSearchActivity : AppCompatActivity() {
     private fun showDetailData() {
         showLoading(true)
         binding.apply {
-            viewModel = ViewModelProvider(this@DetailSearchActivity)[DetailViewModel::class.java]
             viewModel.apply {
                 setDetailSearch(dataParcel.login)
                 getDetailSearch().observe(this@DetailSearchActivity) {
-                    data = it
                     if (isNetworkEnabled(this@DetailSearchActivity)) {
                         if (it != null) {
+                            data = it
                             imgProfileDetailSearch.loadImage(it.avatarUrl)
-                            tvNameDetailSearch.text = it.name
+                            tvNameDetailSearch.text = if (it.name.isNullOrEmpty()) "-" else it.name
                             tvUsernameDetailSearch.text = it.login
                             tvFollowingDetailSearch.text = it.following.toString()
                             tvFollowersDetailSearch.text = it.followers.toString()
