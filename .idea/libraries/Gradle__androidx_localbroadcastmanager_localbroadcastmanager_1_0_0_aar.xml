@@ -11,8 +11,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc5eb874db99913a71de71b2f6877f14/transformed/localbroadcastmanager-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e95176459f52cb2303a2da0976baea84/transformed/localbroadcastmanager-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b094f8067be914e58bfc795f0de704b8/transformed/localbroadcastmanager-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b094f8067be914e58bfc795f0de704b8/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b094f8067be914e58bfc795f0de704b8/transformed/localbroadcastmanager-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/550850e384cf41d158e9d04077714864/transformed/localbroadcastmanager-1.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/550850e384cf41d158e9d04077714864/transformed/localbroadcastmanager-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/550850e384cf41d158e9d04077714864/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
