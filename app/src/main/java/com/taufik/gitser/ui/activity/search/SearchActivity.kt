@@ -7,9 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -21,8 +21,9 @@ import es.dmoral.toasty.Toasty
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
-    private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
+
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +44,22 @@ class SearchActivity : AppCompatActivity() {
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
             showNoNetworkConnection(false)
+            initObserver()
             setAdapter()
         } else {
             showNoNetworkConnection(true)
+        }
+    }
+
+    private fun initObserver() {
+        viewModel.apply {
+            listUsers.observe(this@SearchActivity) {
+                searchAdapter.submitList(it)
+            }
+
+            isLoading.observe(this@SearchActivity) {
+                showLoading(it)
+            }
         }
     }
 
@@ -59,8 +73,6 @@ class SearchActivity : AppCompatActivity() {
                     checkConnectionEnabled()
                 }
             } else {
-                shimmerLoadingSearch.visibility = View.VISIBLE
-                rvSearchUsers.visibility = View.VISIBLE
                 layoutNoConnectionVisibility.visibility = View.GONE
             }
         }
@@ -68,7 +80,6 @@ class SearchActivity : AppCompatActivity() {
 
     private fun setAdapter() {
         searchAdapter = SearchAdapter()
-        showLoading(false)
         binding.apply {
             with(rvSearchUsers) {
                 layoutManager = LinearLayoutManager(this@SearchActivity)
@@ -148,12 +159,10 @@ class SearchActivity : AppCompatActivity() {
 
     private fun showSearchData(query: String) {
         binding.apply {
-            showLoading(true)
             showEmptyResult(false)
-            viewModel = ViewModelProvider(this@SearchActivity, ViewModelProvider.NewInstanceFactory())[SearchViewModel::class.java]
             viewModel.apply {
                 setSearchUsers(query)
-                getSearchUsers().observe(this@SearchActivity) {
+                listUsers.observe(this@SearchActivity) {
                     if (isNetworkEnabled(this@SearchActivity)) {
                         if (it != null) {
                             if (it.size != 0) {
@@ -163,12 +172,10 @@ class SearchActivity : AppCompatActivity() {
                                     it.size.toString()
                                 )
                                 searchAdapter.submitList(it)
-                                showLoading(false)
                                 showEmptyResult(false)
                             } else {
                                 if (isNetworkEnabled(this@SearchActivity)) {
                                     showNoNetworkConnection(false)
-                                    showLoading(false)
                                     showEmptyResult(true)
                                 } else {
                                     viewResultsVisibility.visibility = View.GONE
@@ -177,12 +184,10 @@ class SearchActivity : AppCompatActivity() {
                             }
                         } else {
                             if (isNetworkEnabled(this@SearchActivity)) {
-                                showLoading(false)
                                 showEmptyResult(true)
                                 viewResultsVisibility.visibility = View.GONE
                                 showNoNetworkConnection(false)
                             } else {
-                                showLoading(false)
                                 showEmptyResult(false)
                                 viewResultsVisibility.visibility = View.GONE
                                 showNoNetworkConnection(true)
