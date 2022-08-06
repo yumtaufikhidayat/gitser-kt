@@ -59,7 +59,7 @@ class FavoriteActivity : AppCompatActivity() {
                     )
                 )
                 tvNoConnectionTitle.text = getString(R.string.tvNoFavorite)
-                tvNoConnectionDesc.visibility = View.GONE
+                tvNoConnectionDesc.text = getString(R.string.tvLetsFavorite)
                 btnRetry.visibility = View.GONE
             }
         } else {
