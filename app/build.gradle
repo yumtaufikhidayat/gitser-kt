@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.taufik.gitser"
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 32
         versionCode 110
         versionName "1.10"
 
