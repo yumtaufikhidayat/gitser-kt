@@ -19,4 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/layoutNoFavoriteVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="layoutNoFavorite"/>
+
+    <include
+        android:id="@+id/layoutNoFavorite"
+        layout="@layout/layout_no_network"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

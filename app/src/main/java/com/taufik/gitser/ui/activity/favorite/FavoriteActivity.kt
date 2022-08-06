@@ -2,9 +2,12 @@ package com.taufik.gitser.ui.activity.favorite
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.local.FavoriteEntity
 import com.taufik.gitser.data.response.search.Search
@@ -14,7 +17,7 @@ import com.taufik.gitser.databinding.ActivityFavoriteBinding
 class FavoriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
-    private lateinit var viewModel: FavoriteViewModel
+    private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var searchdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,13 +27,12 @@ class FavoriteActivity : AppCompatActivity() {
 
         initActionBar()
         setAdapter()
-        setViewModel()
         setData()
     }
 
     private fun initActionBar() {
         supportActionBar?.apply {
-            title = "Favorit"
+            title = getString(R.string.tvFavorite)
             setDisplayHomeAsUpEnabled(true)
         }
     }
@@ -46,15 +48,35 @@ class FavoriteActivity : AppCompatActivity() {
         }
     }
 
-    private fun setViewModel() {
-        viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
+    private fun showNoFavorite(isShow: Boolean) = with(binding) {
+        if (isShow) {
+            layoutNoFavoriteVisibility.visibility = View.VISIBLE
+            layoutNoFavorite.apply {
+                imgNoNetworkConnection.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@FavoriteActivity,
+                        R.drawable.ic_no_repository
+                    )
+                )
+                tvNoConnectionTitle.text = getString(R.string.tvNoFavorite)
+                tvNoConnectionDesc.visibility = View.GONE
+                btnRetry.visibility = View.GONE
+            }
+        } else {
+            layoutNoFavoriteVisibility.visibility = View.GONE
+        }
     }
 
     private fun setData() {
         viewModel.getFavoriteUser()?.observe(this) {
             if (it != null) {
-                val list = mapList(it)
-                searchdapter.submitList(list)
+                if (it.isNotEmpty()) {
+                    val list = mapList(it)
+                    searchdapter.submitList(list)
+                    showNoFavorite(false)
+                } else {
+                    showNoFavorite(true)
+                }
             }
         }
     }

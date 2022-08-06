@@ -36,7 +36,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun initActionBar() {
         supportActionBar?.apply {
-            title = "Cari"
+            title = getString(R.string.tvSearch)
             setDisplayHomeAsUpEnabled(true)
         }
     }

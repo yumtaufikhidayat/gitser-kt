@@ -40,4 +40,5 @@
     <string name="tvNoFollowing">Pengguna tidak mengikuti siapapun</string>
     <string name="tvNoRepository">Pengguna tidak memiliki repositori</string>
     <string name="tvUserType">User type</string>
+    <string name="tvNoFavorite">Tidak ada data tersimpan…</string>
 </resources>
