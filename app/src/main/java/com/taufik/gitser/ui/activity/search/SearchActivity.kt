@@ -117,8 +117,18 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    private fun showNoSearch(isShow: Boolean) = with(binding) {
+        if (isShow) {
+            shimmerLoadingSearch.visibility = View.GONE
+            layoutNoSearchVisibility.visibility = View.VISIBLE
+        } else {
+            layoutNoSearchVisibility.visibility = View.GONE
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         checkConnectionEnabled()
+        showNoSearch(true)
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
@@ -131,6 +141,7 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     when {
                         query.isNotEmpty() -> {
+                            showNoSearch(false)
                             showSearchData(query)
                             clearFocus()
                         }

@@ -71,8 +71,20 @@
         tools:visibility="visible"
         app:constraint_referenced_ids="layoutNoConnection"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/layoutNoSearchVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="layoutNoSearch"/>
+
     <include
         android:id="@+id/layoutNoConnection"
         layout="@layout/layout_no_network"/>
+
+    <include
+        android:id="@+id/layoutNoSearch"
+        layout="@layout/layout_no_search"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
