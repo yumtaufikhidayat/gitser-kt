@@ -3,9 +3,11 @@ package com.taufik.gitser.adapter.search
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.taufik.gitser.R
 import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.databinding.ItemUserBinding
 import com.taufik.gitser.ui.activity.detail.DetailSearchActivity
@@ -24,6 +26,18 @@ class SearchAdapter: ListAdapter<Search, SearchAdapter.SearchViewHolder>(SearchD
             imgUserProfile.loadImage(search.avatarUrl)
             tvUsernameProfile.text = search.login
             tvProfileType.text = search.type
+
+            when (search.type) {
+                "User" -> {
+                    imgUserType.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.bg_user_type))
+                }
+
+                "Organization" -> {
+                    imgUserType.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.bg_organization_type))
+                }
+
+                else -> imgUserType.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.bg_other_type))
+            }
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailSearchActivity::class.java).apply {
