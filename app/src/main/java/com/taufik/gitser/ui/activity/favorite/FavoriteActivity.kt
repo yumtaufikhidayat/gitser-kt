@@ -62,6 +62,7 @@ class FavoriteActivity : AppCompatActivity() {
                 tvNoConnectionDesc.text = getString(R.string.tvLetsFavorite)
                 btnRetry.visibility = View.GONE
             }
+            rvFavorite.visibility = View.GONE
         } else {
             layoutNoFavoriteVisibility.visibility = View.GONE
         }
