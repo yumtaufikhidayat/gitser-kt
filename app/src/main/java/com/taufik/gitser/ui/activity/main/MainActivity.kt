@@ -1,6 +1,7 @@
 package com.taufik.gitser.ui.activity.main
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
             initView()
+            checkOrientation()
             initObserver()
         } else {
             showNoNetworkConnection(true)
@@ -96,6 +99,14 @@ class MainActivity : AppCompatActivity() {
                     searchAdapter.submitList(it)
                 }
             }
+        }
+    }
+
+    private fun checkOrientation() = with(binding) {
+        rvMain.layoutManager = if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(this@MainActivity, 2)
+        } else {
+            LinearLayoutManager(this@MainActivity)
         }
     }
 

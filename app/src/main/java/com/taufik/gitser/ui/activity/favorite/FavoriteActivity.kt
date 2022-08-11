@@ -1,11 +1,13 @@
 package com.taufik.gitser.ui.activity.favorite
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -27,6 +29,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         initActionBar()
         setAdapter()
+        checkOrientation()
         setData()
     }
 
@@ -45,6 +48,14 @@ class FavoriteActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@FavoriteActivity)
                 adapter = searchdapter
             }
+        }
+    }
+
+    private fun checkOrientation() = with(binding) {
+        rvFavorite.layoutManager = if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(this@FavoriteActivity, 2)
+        } else {
+            LinearLayoutManager(this@FavoriteActivity)
         }
     }
 
