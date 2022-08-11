@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/bg_organization_type.xml" value="0.102" />
         <entry key="app/src/main/res/drawable/bg_other_type.xml" value="0.102" />
         <entry key="app/src/main/res/drawable/bg_user_type.xml" value="0.102" />
+        <entry key="app/src/main/res/layout/activity_detail_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_favorite.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.1796875" />
