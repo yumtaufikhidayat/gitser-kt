@@ -44,6 +44,7 @@ class SearchActivity : AppCompatActivity() {
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
             showNoNetworkConnection(false)
+            showNoSearch(true)
             initObserver()
             setAdapter()
         } else {
@@ -128,7 +129,6 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         checkConnectionEnabled()
-        showNoSearch(true)
         val inflater = menuInflater
         inflater.inflate(R.menu.search_menu, menu)
 
