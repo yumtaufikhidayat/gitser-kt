@@ -1,6 +1,7 @@
 package com.taufik.gitser.ui.activity.main
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,8 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
@@ -24,8 +26,9 @@ import com.taufik.gitser.utils.Utils.isNetworkEnabled
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
     private lateinit var searchAdapter: SearchAdapter
+
+    private val viewModel: MainViewModel by viewModels()
     private var doubleBackToExitPressedOnce = false
     private val delayTime = 2000L
 
@@ -40,8 +43,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkConnectionEnabled() {
         if (isNetworkEnabled(this)) {
-            showNoNetworkConnection(false)
-            setData()
+            initView()
+            checkOrientation()
+            initObserver()
         } else {
             showNoNetworkConnection(true)
         }
@@ -67,33 +71,42 @@ class MainActivity : AppCompatActivity() {
                     checkConnectionEnabled()
                 }
             } else {
-                shimmerLoadingMain.visibility = View.VISIBLE
-                rvMain.visibility = View.VISIBLE
-                swipeRefreshMain.isRefreshing = true
                 layoutNoConnectionVisibility.visibility = View.GONE
             }
         }
     }
 
-    private fun setData() {
+    private fun initView() {
         searchAdapter = SearchAdapter()
-        showLoading(true)
         binding.apply {
             with(rvMain) {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 setHasFixedSize(true)
                 adapter = searchAdapter
             }
+        }
+    }
 
-            viewModel = ViewModelProvider(this@MainActivity, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
-            viewModel.setAllUsers()
-            viewModel.getAllUsers().observe(this@MainActivity) {
+    private fun initObserver() {
+        viewModel.apply {
+            isLoading.observe(this@MainActivity) {
+                showLoading(it)
+            }
+
+            listAllUsers.observe(this@MainActivity) {
                 if (it != null) {
-                    searchAdapter.setSearchUserList(it)
                     showNoNetworkConnection(false)
-                    showLoading(false)
+                    searchAdapter.submitList(it)
                 }
             }
+        }
+    }
+
+    private fun checkOrientation() = with(binding) {
+        rvMain.layoutManager = if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(this@MainActivity, 2)
+        } else {
+            LinearLayoutManager(this@MainActivity)
         }
     }
 
@@ -111,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true

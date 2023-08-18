@@ -3,11 +3,11 @@ package com.taufik.gitser.ui.fragment.followers
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
-import com.taufik.gitser.data.viewmodel.following.FollowersViewModel
+import com.taufik.gitser.data.viewmodel.followers.FollowersViewModel
 import com.taufik.gitser.databinding.FragmentFollowsBinding
 import com.taufik.gitser.ui.activity.profile.ProfileActivity
 
@@ -16,7 +16,7 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
     private var _binding: FragmentFollowsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FollowersViewModel
+    private val viewModel: FollowersViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var username: String
 
@@ -25,6 +25,7 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
         _binding = FragmentFollowsBinding.bind(view)
 
         setArgument()
+        initObserver()
         setAdapter()
         setData()
     }
@@ -32,6 +33,12 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
     private fun setArgument() {
         val argument = arguments
         username = argument?.getString(ProfileActivity.PROFILE_USERNAME).toString()
+    }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setAdapter() {
@@ -46,19 +53,16 @@ class FollowersProfileFragment : Fragment(R.layout.fragment_follows) {
     }
 
     private fun setData() {
-        showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowersViewModel::class.java)
         viewModel.apply {
             setListOfFollowers(username)
-            getListOfFollowers().observe(viewLifecycleOwner) {
+            listOfFollowers.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
-                        searchAdapter.setSearchUserList(it)
+                        searchAdapter.submitList(it)
                         showNoData(false)
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }

@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gitser.iml" filepath="$PROJECT_DIR$/.idea/modules/Gitser.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Gitser.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Gitser.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Gitser.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Gitser.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Gitser.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Gitser.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Gitser.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Gitser.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.adapter.repository.RepositoryAdapter
 import com.taufik.gitser.data.viewmodel.repository.RepositoryViewModel
@@ -17,7 +17,7 @@ class RepositoryFragment : Fragment() {
     private var _binding: FragmentRepositoryBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: RepositoryViewModel
+    private val viewModel: RepositoryViewModel by viewModels()
     private lateinit var repositoryAdapter: RepositoryAdapter
     private lateinit var username: String
 
@@ -34,6 +34,7 @@ class RepositoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setArguments()
+        initObserver()
         setAdapter()
         setData()
     }
@@ -41,6 +42,12 @@ class RepositoryFragment : Fragment() {
     private fun setArguments() {
         val argument = arguments
         username = argument?.getString(DetailSearchActivity.EXTRA_DATA).toString()
+    }
+
+    private fun initObserver() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
     }
 
     private fun setAdapter() {
@@ -56,18 +63,16 @@ class RepositoryFragment : Fragment() {
 
     private fun setData() {
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[RepositoryViewModel::class.java]
         viewModel.apply {
             setListOfRepository(username)
-            getListOfRepository().observe(viewLifecycleOwner) {
+            listOfRepository.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.size != 0) {
-                        repositoryAdapter.setRepositoryList(it)
+                        repositoryAdapter.submitList(it)
                         showNoData(false)
                     } else {
                         showNoData(true)
                     }
-                    showLoading(false)
                 }
             }
         }

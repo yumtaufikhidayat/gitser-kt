@@ -19,6 +19,13 @@ object ApiClient {
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(interceptor)
+        .addInterceptor { chain ->
+            val request = chain.request()
+                .newBuilder()
+                .addHeader("GITHUB_PAT", BuildConfig.GITHUB_TOKEN_PAT)
+                .build()
+            return@addInterceptor chain.proceed(request)
+        }
         .connectTimeout(timeOutTime, TimeUnit.SECONDS)
         .writeTimeout(timeOutTime, TimeUnit.SECONDS)
         .readTimeout(timeOutTime, TimeUnit.SECONDS)

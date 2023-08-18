@@ -3,33 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/bg_rounded_corners.xml" value="0.1215" />
-        <entry key="app/src/main/res/drawable/bg_search.xml" value="0.1385" />
-        <entry key="app/src/main/res/drawable/bg_splashscreen.xml" value="0.1215" />
-        <entry key="app/src/main/res/drawable/bg_user_type.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/first_layer.xml" value="0.1215" />
-        <entry key="app/src/main/res/drawable/second_layer.xml" value="0.1215" />
-        <entry key="app/src/main/res/layout/activity_detail_search.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/bottom_sheet_profile_info.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_follows.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/fragment_repository.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/item_user.xml" value="0.14814814814814814" />
-        <entry key="app/src/main/res/layout/item_user_shimmer.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/layout_no_data.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/layout_no_network.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/layout_no_reposiotry.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/network_error.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/no_connection_error.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/shimmer_detail.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/shimmer_item_user.xml" value="0.1828125" />
-        <entry key="app/src/main/res/layout/toolbar_custom.xml" value="0.1" />
-        <entry key="consumerapp/src/main/res/layout/activity_main.xml" value="0.17962962962962964" />
-        <entry key="consumerapp/src/main/res/layout/activity_splashscreen.xml" value="0.1828125" />
-        <entry key="consumerapp/src/main/res/layout/item_user.xml" value="0.1828125" />
+        <entry key="app/src/main/res/drawable-v24/bg_other_type.xml" value="0.102" />
+        <entry key="app/src/main/res/drawable/bg_organization_type.xml" value="0.102" />
+        <entry key="app/src/main/res/drawable/bg_other_type.xml" value="0.102" />
+        <entry key="app/src/main/res/drawable/bg_user_type.xml" value="0.102" />
+        <entry key="app/src/main/res/layout/activity_detail_search.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_favorite.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/layout/item_user.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/layout_no_connection.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/layout_no_network.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/layout_no_repository.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/layout_no_search.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/shimmer_item_user.xml" value="0.1796875" />
       </map>
     </option>
   </component>
