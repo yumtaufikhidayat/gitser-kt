@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/consumerapp/Gitser.consumerapp.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.Gitser.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.Gitser.app.androidTest.iml" />
     </modules>
   </component>
 </project>
