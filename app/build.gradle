@@ -6,15 +6,15 @@ plugins {
 }
 
 android {
-    compileSdk 33
-    buildToolsVersion "30.0.3"
+    namespace "com.taufik.gitser"
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.taufik.gitser"
-        minSdkVersion 23
+        minSdkVersion 28
         targetSdkVersion 33
-        versionCode 110
-        versionName "1.10"
+        versionCode 111
+        versionName "1.11"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GITHUB_TOKEN_PAT", github_token_pat)
@@ -29,14 +29,15 @@ android {
 
     buildFeatures{
         viewBinding true
+        buildConfig true
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
@@ -44,21 +45,21 @@ dependencies {
 
     // Core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     
     // UI
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // Network
-    def okHttpVersion = '4.10.0'
+    def okHttpVersion = '4.11.0'
     def retrofitVersion = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
@@ -67,37 +68,38 @@ dependencies {
 
     // View Model
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 
     // Circle image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     // Toasty
-    implementation 'com.github.GrenderG:Toasty:1.5.0'
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
 
     // Room DB
-    def room_version = '2.4.3'
+    def room_version = '2.5.2'
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     // Coroutine
-    def coroutineVersion = '1.6.1'
+    def coroutineVersion = '1.7.3'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
 
     // Shared preferences
-    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
 
     // Shimmer layout
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // Android KTX
-    def androidKtxVersion = '1.5.1'
+    def androidKtxVersion = '1.7.2'
+    def fragmentKtxVersion = '1.5.7'
     implementation "androidx.activity:activity-ktx:$androidKtxVersion"
-    implementation "androidx.fragment:fragment-ktx:$androidKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 }
