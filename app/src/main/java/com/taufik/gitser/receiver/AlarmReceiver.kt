@@ -64,17 +64,15 @@ class AlarmReceiver : BroadcastReceiver() {
             .setChannelId(CHANNEL_ID)
             .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.gitser_kt_logo))
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_HIGH
-            )
+        val channel = NotificationChannel(
+            CHANNEL_ID,
+            CHANNEL_NAME,
+            NotificationManager.IMPORTANCE_HIGH
+        )
 
-            channel.enableVibration(true)
-            builder.setChannelId(CHANNEL_ID)
-            notificationManager.createNotificationChannel(channel)
-        }
+        channel.enableVibration(true)
+        builder.setChannelId(CHANNEL_ID)
+        notificationManager.createNotificationChannel(channel)
 
         val notification = builder.build()
         notificationManager.notify(ID_REPEATING, notification)
@@ -99,7 +97,7 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
         calendar.set(Calendar.SECOND, 0)
 
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, PendingIntent.FLAG_IMMUTABLE)
 
         alarmManager?.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
@@ -116,7 +114,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         val requestCode = ID_REPEATING
-        val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_IMMUTABLE)
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)
 
