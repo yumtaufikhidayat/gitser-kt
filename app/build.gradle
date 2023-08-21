@@ -99,7 +99,7 @@ dependencies {
 
     // Android KTX
     def androidKtxVersion = '1.7.2'
-    def fragmentKtxVersion = '1.5.7'
+    def fragmentKtxVersion = '1.6.1'
     implementation "androidx.activity:activity-ktx:$androidKtxVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 }
