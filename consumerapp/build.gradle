@@ -90,4 +90,10 @@ dependencies {
 
     // Shared preferences
     implementation 'androidx.preference:preference-ktx:1.2.1'
+
+    // Android KTX
+    def androidKtxVersion = '1.7.2'
+    def fragmentKtxVersion = '1.6.1'
+    implementation "androidx.activity:activity-ktx:$androidKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 }
