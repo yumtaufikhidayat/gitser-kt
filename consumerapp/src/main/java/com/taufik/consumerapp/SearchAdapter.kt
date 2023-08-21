@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.taufik.consumerapp.databinding.ItemUserBinding
+import com.taufik.gitser.R
+import com.taufik.gitser.databinding.ItemUserBinding
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
 

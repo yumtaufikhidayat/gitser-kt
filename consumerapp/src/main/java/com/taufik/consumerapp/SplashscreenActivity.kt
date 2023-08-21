@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.taufik.consumerapp.databinding.ActivitySplashscreenBinding
+import com.taufik.gitser.databinding.ActivitySplashscreenBinding
 
 class SplashscreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashscreenBinding
