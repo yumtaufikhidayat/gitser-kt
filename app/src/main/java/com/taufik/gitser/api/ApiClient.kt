@@ -11,14 +11,14 @@ object ApiClient {
 
     private const val timeOutTime = 30L
 
-    private val interceptor = if (BuildConfig.DEBUG) {
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    } else {
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-    }
+    private val interceptor = if (BuildConfig.DEBUG)
+        HttpLoggingInterceptor.Level.BODY
+    else
+        HttpLoggingInterceptor.Level.NONE
+
 
     private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(interceptor)
+        .addInterceptor(HttpLoggingInterceptor().setLevel(interceptor))
         .addInterceptor { chain ->
             val request = chain.request()
                 .newBuilder()
