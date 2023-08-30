@@ -9,15 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Fix error android ktx not imported.">
-      <change beforePath="$PROJECT_DIR$/consumerapp/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/consumerapp/build.gradle" afterDir="false" />
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Build APK.">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.18.22:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -92,7 +97,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;BundleExportedModule&quot;: &quot;Gitser.consumerapp&quot;,
+    &quot;BundleExportedModule&quot;: &quot;Gitser.app&quot;,
+    &quot;ExportBundle.BundlePathForGitser.app&quot;: &quot;/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/app&quot;,
     &quot;ExportBundle.BundlePathForGitser.consumerapp&quot;: &quot;/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/consumerapp&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -357,7 +363,21 @@
       <option name="project" value="LOCAL" />
       <updated>1692578895418</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update app version.">
+      <created>1692579044324</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692579044324</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Build APK.">
+      <created>1692579075208</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1692579075208</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,6 +399,8 @@
     <MESSAGE value="Update fragment ktx version." />
     <MESSAGE value="Add android ktx libs on consumerapp module." />
     <MESSAGE value="Fix error android ktx not imported." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix error android ktx not imported." />
+    <MESSAGE value="Update app version." />
+    <MESSAGE value="Build APK." />
+    <option name="LAST_COMMIT_MESSAGE" value="Build APK." />
   </component>
 </project>
