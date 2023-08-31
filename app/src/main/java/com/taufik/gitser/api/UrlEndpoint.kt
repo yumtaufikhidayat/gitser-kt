@@ -8,4 +8,6 @@ object UrlEndpoint {
     const val FOLLOWING_URL = "users/{username}/following"
     const val REPOSITORY_URL = "users/{username}/repos"
     const val ALL_USERS = "users"
+    const val QUERY_Q = "q"
+    const val QUERY_USERNAME = "username"
 }
