@@ -9,16 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project.">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/Api.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/Api.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/UrlEndpoint.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/UrlEndpoint.kt" afterDir="false" />
-    </list>
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Change hardcoded query using constant variable." />
     <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name.">
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
-    <list id="0e2ce4e4-61f1-4680-874f-32959edd134b" name="LOCAL" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list id="0e2ce4e4-61f1-4680-874f-32959edd134b" name="LOCAL" comment="Update project." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -409,7 +404,28 @@
       <option name="project" value="LOCAL" />
       <updated>1693434908119</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Update project.">
+      <created>1693521629873</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693521629873</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add query variable.">
+      <created>1693521645445</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1693521645445</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Change hardcoded query using constant variable.">
+      <created>1693521677068</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1693521677068</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,6 +451,8 @@
     <MESSAGE value="Simplify the statement." />
     <MESSAGE value="Update gitignore by adding some extensions." />
     <MESSAGE value="Update project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
+    <MESSAGE value="Add query variable." />
+    <MESSAGE value="Change hardcoded query using constant variable." />
+    <option name="LAST_COMMIT_MESSAGE" value="Change hardcoded query using constant variable." />
   </component>
 </project>
