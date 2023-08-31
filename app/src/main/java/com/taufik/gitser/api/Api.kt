@@ -16,26 +16,26 @@ interface Api {
 
     @GET(UrlEndpoint.SEARCH_USERS)
     fun searchUsers(
-        @Query("q") query: String
+        @Query(UrlEndpoint.QUERY_Q) query: String
     ): Call<SearchResponse>
 
     @GET(UrlEndpoint.DETAIL_PROFILE_URL)
     fun getDetailUsers(
-        @Path("username") username: String
+        @Path(UrlEndpoint.QUERY_USERNAME) username: String
     ): Call<DetailResponse>
 
     @GET(UrlEndpoint.FOLLOWING_URL)
     fun getFollowingUsers(
-        @Path("username") username: String
+        @Path(UrlEndpoint.QUERY_USERNAME) username: String
     ): Call<ArrayList<Search>>
 
     @GET(UrlEndpoint.FOLLOWERS_URL)
     fun getFollowersUsers(
-        @Path("username") username: String
+        @Path(UrlEndpoint.QUERY_USERNAME) username: String
     ): Call<ArrayList<Search>>
 
     @GET(UrlEndpoint.REPOSITORY_URL)
     fun getRepository(
-        @Path("username") username: String
+        @Path(UrlEndpoint.QUERY_USERNAME) username: String
     ): Call<ArrayList<RepositoryResponse>>
 }
