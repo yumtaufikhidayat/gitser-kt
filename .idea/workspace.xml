@@ -9,7 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update gitignore by adding some extensions.">
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project.">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/Api.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/Api.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/UrlEndpoint.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/taufik/gitser/api/UrlEndpoint.kt" afterDir="false" />
+    </list>
+    <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name.">
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    </list>
+    <list id="0e2ce4e4-61f1-4680-874f-32959edd134b" name="LOCAL" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,6 +269,8 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="" />
+      <changelist id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name." />
+      <changelist id="0e2ce4e4-61f1-4680-874f-32959edd134b" name="LOCAL" comment="" />
       <created>1653567771885</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -393,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693434742954</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Update project.">
+      <created>1693434908119</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1693434908119</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix update some libs version and upgrade AGP." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Add notification permission for Android 13 or above." />
     <MESSAGE value="Fix crash caused by notification for Android 13 or above." />
     <MESSAGE value="Update fragment ktx version." />
@@ -419,6 +434,7 @@
     <MESSAGE value="Build APK." />
     <MESSAGE value="Simplify the statement." />
     <MESSAGE value="Update gitignore by adding some extensions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore by adding some extensions." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
