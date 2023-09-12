@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit
 object ApiClient {
 
     private const val timeOutTime = 30L
+    private val timeUnitSecs = TimeUnit.SECONDS
 
     private val interceptor = if (BuildConfig.DEBUG)
         HttpLoggingInterceptor.Level.BODY
     else
         HttpLoggingInterceptor.Level.NONE
-
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().setLevel(interceptor))
@@ -26,9 +26,9 @@ object ApiClient {
                 .build()
             return@addInterceptor chain.proceed(request)
         }
-        .connectTimeout(timeOutTime, TimeUnit.SECONDS)
-        .writeTimeout(timeOutTime, TimeUnit.SECONDS)
-        .readTimeout(timeOutTime, TimeUnit.SECONDS)
+        .connectTimeout(timeOutTime, timeUnitSecs)
+        .writeTimeout(timeOutTime, timeUnitSecs)
+        .readTimeout(timeOutTime, timeUnitSecs)
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
