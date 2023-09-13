@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Create variable for TimeUnit.SECONDS.">
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name.">
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
@@ -83,6 +84,17 @@
         </option>
       </RecentBranches>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/app/build.gradle">
+      <ranges>
+        <range start1="15" end1="17" start2="15" end2="17" changelist="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" />
+        <range start1="47" end1="48" start2="47" end2="48" changelist="948e09c2-15e0-4684-8a67-18ca5538e76c" />
+        <range start1="68" end1="69" start2="68" end2="69" changelist="948e09c2-15e0-4684-8a67-18ca5538e76c" />
+        <range start1="70" end1="71" start2="70" end2="71" changelist="948e09c2-15e0-4684-8a67-18ca5538e76c" />
+        <range start1="73" end1="74" start2="73" end2="74" changelist="948e09c2-15e0-4684-8a67-18ca5538e76c" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -448,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694487725300</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Update project.">
+      <created>1694608511679</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1694608511679</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,8 +494,8 @@
     <MESSAGE value="Update gitignore by adding some extensions." />
     <MESSAGE value="Add query variable." />
     <MESSAGE value="Change hardcoded query using constant variable." />
-    <MESSAGE value="Update project." />
     <MESSAGE value="Create variable for TimeUnit.SECONDS." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create variable for TimeUnit.SECONDS." />
+    <MESSAGE value="Update project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
   </component>
 </project>
