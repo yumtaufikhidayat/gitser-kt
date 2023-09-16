@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project." />
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name.">
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
@@ -481,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694758406850</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Update project.">
+      <created>1694758550981</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1694758550981</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
