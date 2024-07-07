@@ -7,14 +7,14 @@ plugins {
 
 android {
     namespace "com.taufik.gitser"
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.taufik.gitser"
         minSdkVersion 28
-        targetSdkVersion 33
-        versionCode 111
-        versionName "1.11"
+        targetSdkVersion 34
+        versionCode 113
+        versionName "1.13"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GITHUB_TOKEN_PAT", github_token_pat)
@@ -45,8 +45,8 @@ dependencies {
 
     // Core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     
     // UI
@@ -55,12 +55,12 @@ dependencies {
 
     // Testing
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     // Network
-    def okHttpVersion = '4.11.0'
-    def retrofitVersion = '2.9.0'
+    def okHttpVersion = '4.12.0'
+    def retrofitVersion = '2.11.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
@@ -68,7 +68,7 @@ dependencies {
 
     // Lifecycle Extension
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.6.2"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.8.3"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.16.0'
@@ -80,14 +80,14 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.5.2'
 
     // Room DB
-    def room_version = '2.5.2'
+    def room_version = '2.6.1'
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     // Coroutine
-    def coroutineVersion = '1.7.3'
+    def coroutineVersion = '1.8.1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
 
@@ -98,8 +98,8 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     // Android KTX
-    def androidKtxVersion = '1.7.2'
-    def fragmentKtxVersion = '1.6.1'
+    def androidKtxVersion = '1.9.0'
+    def fragmentKtxVersion = '1.8.1'
     implementation "androidx.activity:activity-ktx:$androidKtxVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 }
