@@ -4,19 +4,35 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splashscreen.xml">
+        <config>
+          <theme>@style/ActionBarTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_profile_info.xml">
+        <config>
+          <theme>@style/Theme.Gitser</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/consumerapp/src/main/res/layout/activity_splashscreen.xml">
+        <config>
+          <theme>@style/Theme.AppCompat.Light.NoActionBar</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Update project.">
+    <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Feat: update local project.">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
     </list>
-    <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Update app version code and version name.">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Feat: update local project.">
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <list id="0e2ce4e4-61f1-4680-874f-32959edd134b" name="LOCAL" comment="Update project." />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +43,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.18.10:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -38,20 +54,21 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Gitser" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
   <component name="GenerateSignedApkSettings">
-    <option name="EXPORT_PRIVATE_KEY" value="false" />
     <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/gitser_kt.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
@@ -64,6 +81,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "yumtaufikhidayat"
+  }
+}]]></component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
@@ -90,28 +113,40 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/yumtaufikhidayat/gitser-kt.git",
+    "accountId": "3b4b7970-bd59-4104-9444-6ee3ded873de"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="29haSevb2xrxuzUQDMGQjWwp1UB" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Android App.app.executor": "Run",
     "BundleExportedModule": "Gitser.app",
-    "ExportBundle.BundlePathForGitser.app": "/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/app",
+    "ExportBundle.BundlePathForGitser.app": "/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app",
     "ExportBundle.BundlePathForGitser.consumerapp": "/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/consumerapp",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app/src/main/res/drawable",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
@@ -120,9 +155,17 @@
   "keyToStringList": {
     "ExportApk.BuildVariants": [
       "release"
+    ],
+    "kotlin-gradle-user-dirs": [
+      "/Users/yumtaufikhidayat/.gradle"
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    </key>
+  </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Gitser.app.main" />
@@ -139,7 +182,6 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -206,7 +248,6 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -514,7 +555,71 @@
       <option name="project" value="LOCAL" />
       <updated>1694825534476</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Feat: add new ic_launcher_background.xml file.">
+      <option name="closed" value="true" />
+      <created>1720320481691</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320481691</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Feat: remove package that unsupported on new AGP version.">
+      <option name="closed" value="true" />
+      <created>1720320507222</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320507222</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Feat: update app version.">
+      <option name="closed" value="true" />
+      <created>1720320615890</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320615890</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Feat: upgrade AGP version to 8.5.0.">
+      <option name="closed" value="true" />
+      <created>1720320648362</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320648362</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Feat: update local project.">
+      <option name="closed" value="true" />
+      <created>1720320663151</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320663151</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Feat: update app version and targetSdkVersion.">
+      <option name="closed" value="true" />
+      <created>1720320758015</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320758015</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Feat: remove Github token PAT.">
+      <option name="closed" value="true" />
+      <created>1720320776016</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320776016</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Feat: update local project.">
+      <option name="closed" value="true" />
+      <created>1720320787902</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1720320787902</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -544,6 +649,13 @@
     <MESSAGE value="Create variable for TimeUnit.SECONDS." />
     <MESSAGE value="Update core ktx version, java8 lifecycle extension version, and glide version." />
     <MESSAGE value="Update project." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update project." />
+    <MESSAGE value="Feat: add new ic_launcher_background.xml file." />
+    <MESSAGE value="Feat: remove package that unsupported on new AGP version." />
+    <MESSAGE value="Feat: update app version." />
+    <MESSAGE value="Feat: upgrade AGP version to 8.5.0." />
+    <MESSAGE value="Feat: update app version and targetSdkVersion." />
+    <MESSAGE value="Feat: remove Github token PAT." />
+    <MESSAGE value="Feat: update local project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: update local project." />
   </component>
 </project>
