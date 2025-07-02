@@ -3,7 +3,11 @@ package com.taufik.gitser.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
-import android.text.*
+import android.text.Selection
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View

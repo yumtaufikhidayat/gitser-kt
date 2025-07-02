@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,11 +23,12 @@ import com.taufik.gitser.ui.activity.profile.ProfileActivity
 import com.taufik.gitser.ui.activity.search.SearchActivity
 import com.taufik.gitser.ui.activity.settings.SettingsActivity
 import com.taufik.gitser.utils.Utils.isNetworkEnabled
+import com.taufik.gitser.utils.enableWindowInsets
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var searchAdapter: SearchAdapter
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val searchAdapter by lazy {  SearchAdapter() }
 
     private val viewModel: MainViewModel by viewModels()
     private var doubleBackToExitPressedOnce = false
@@ -34,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        enableWindowInsets(window, binding.root)
         setContentView(binding.root)
 
         checkConnectionEnabled()
@@ -77,7 +80,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        searchAdapter = SearchAdapter()
         binding.apply {
             with(rvMain) {
                 layoutManager = LinearLayoutManager(this@MainActivity)
