@@ -1,25 +1,9 @@
-# Compiled class file
+# ============ GENERAL =============
 *.class
-
-# Log file
 *.log
-
-# Lock file
 *.lock
-
-# Bin file
 *.bin
-
-# Iml file
-*.iml
-
-# BlueJ files
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
@@ -27,6 +11,63 @@
 *.zip
 *.tar.gz
 *.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# ============ OS Specific ============
+.DS_Store
+Thumbs.db
+
+# ============ IDE ============
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ============ BUILD OUTPUT ============
+/build/
+/app/build/
+/consumerapp/build/
+/*.apk
+/*.ap_
+*.aab
+output.json
+
+# ============ GRADLE =============
+.gradle/
+buildOutputCleanup.lock
+file-system.probe
+local.properties
+*.properties
+!gradle.properties # <== masih boleh disimpan
+
+# ============ VERSION CATALOG =============
+.gradle/*/dependencies-accessors/
+.gradle/*/libs.versions.toml*
+
+# ============ ANDROID STUDIO RUN ============
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ============ KOTLIN DSL ============
+*.kts~
+*.kts.bak
+.idea/modules.xml
+
+# ============ LOGS & TEMP ============
+*.tmp
+*.swp
+*.swo
+*.orig
+
+# ============ TEST COVERAGE ============
+/coverage/
+*.ec
+
+# ============ MISC =============
+/*.bak
+*.rej
+*~
+
+# Uncomment this if you're uploading to GitHub and want to ignore GitHub Codespaces
+# .devcontainer/

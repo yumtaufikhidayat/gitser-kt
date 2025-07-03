@@ -1,3 +1,0 @@
-include ':consumerapp'
-include ':app'
-rootProject.name = "Gitser"
