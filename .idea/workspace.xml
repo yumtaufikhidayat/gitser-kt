@@ -27,8 +27,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="948e09c2-15e0-4684-8a67-18ca5538e76c" name="Changes" comment="Feat: update local project.">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.aab" afterDir="false" />
     </list>
     <list id="2ba95e7c-9ae7-4b8f-92d9-c39618b39207" name="DON'T COMMIT" comment="Feat: update local project.">
@@ -81,12 +79,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "yumtaufikhidayat"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yumtaufikhidayat&quot;
   }
-}]]></component>
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
@@ -113,54 +111,54 @@
       </RecentBranches>
     </option>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/yumtaufikhidayat/gitser-kt.git",
-    "accountId": "3b4b7970-bd59-4104-9444-6ee3ded873de"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yumtaufikhidayat/gitser-kt.git&quot;,
+    &quot;accountId&quot;: &quot;3b4b7970-bd59-4104-9444-6ee3ded873de&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="29haSevb2xrxuzUQDMGQjWwp1UB" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "BundleExportedModule": "Gitser.app",
-    "ExportBundle.BundlePathForGitser.app": "/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app",
-    "ExportBundle.BundlePathForGitser.consumerapp": "/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/consumerapp",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app/src/main/res/drawable",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;BundleExportedModule&quot;: &quot;Gitser.app&quot;,
+    &quot;ExportBundle.BundlePathForGitser.app&quot;: &quot;/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app&quot;,
+    &quot;ExportBundle.BundlePathForGitser.consumerapp&quot;: &quot;/Users/rizkahidayat/Documents/VersionControl/github/gitser-kt/consumerapp&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yumtaufikhidayat/Documents/VersionControl/github/gitser-kt/app/src/main/res/drawable&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ],
-    "kotlin-gradle-user-dirs": [
-      "/Users/yumtaufikhidayat/.gradle"
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/Users/yumtaufikhidayat/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
@@ -619,7 +617,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720320787902</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Feat: update local project.">
+      <option name="closed" value="true" />
+      <created>1720427008969</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1720427008969</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Feat: update local project.">
+      <option name="closed" value="true" />
+      <created>1720427013335</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1720427013335</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
