@@ -7,13 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: FavoriteViewModel
-    private lateinit var searchAdapter: SearchAdapter
+    private val binding by lazy(LazyThreadSafetyMode.NONE) { ActivityMainBinding.inflate(layoutInflater) }
+    private var viewModel: FavoriteViewModel? = null
+    private val searchAdapter by lazy { SearchAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setAdapter()
@@ -21,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        searchAdapter = SearchAdapter()
         binding.apply {
             with(rvFavorite) {
                 setHasFixedSize(true)
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setData() {
         viewModel = ViewModelProvider(this)[(FavoriteViewModel::class.java)]
-        viewModel.apply {
+        viewModel?.apply {
             setFavoriteUser(this@MainActivity)
             getFavoriteUser().observe(this@MainActivity) {
                 if (it != null) {
