@@ -9,9 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
@@ -23,7 +23,7 @@ import com.taufik.gitser.ui.activity.profile.ProfileActivity
 import com.taufik.gitser.ui.activity.search.SearchActivity
 import com.taufik.gitser.ui.activity.settings.SettingsActivity
 import com.taufik.gitser.utils.Utils.isNetworkEnabled
-import com.taufik.gitser.utils.enableWindowInsets
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,9 +36,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        enableWindowInsets(window, binding.root)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         checkConnectionEnabled()
         setSwipeRefresh()

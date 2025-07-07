@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
@@ -22,11 +23,12 @@ import com.taufik.gitser.ui.fragment.bottomsheet.BottomSheetProfileInfo
 import com.taufik.gitser.utils.Utils.isNetworkEnabled
 import com.taufik.gitser.utils.Utils.loadImage
 import com.taufik.gitser.utils.Utils.makeLinks
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 import es.dmoral.toasty.Toasty
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityProfileBinding
+    private val binding by lazy { ActivityProfileBinding.inflate(layoutInflater) }
     private lateinit var viewModel: ProfileViewModel
     private lateinit var bundle: Bundle
     private lateinit var username: String
@@ -34,8 +36,10 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         checkConnectionEnabled()
     }
