@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.taufik.gitser.BuildConfig
 import com.taufik.gitser.R
 import es.dmoral.toasty.Toasty
 
@@ -20,6 +21,7 @@ class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener
 
     private lateinit var tvProfileInfoEmail: TextView
     private lateinit var tvProfileInfoGithubUrl: TextView
+    private lateinit var tvAppVersion: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +36,10 @@ class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener
 
         tvProfileInfoEmail = view.findViewById(R.id.tvProfileInfoEmail)
         tvProfileInfoGithubUrl = view.findViewById(R.id.tvProfileInfoGithubUrl)
+        tvAppVersion = view.findViewById(R.id.tvAppVersion)
 
         setInitOnClick()
+        setAppVersion()
     }
 
     override fun getTheme(): Int {
@@ -82,6 +86,11 @@ class BottomSheetProfileInfo : BottomSheetDialogFragment(), View.OnClickListener
                 Log.e("errorProject", "developerProject: ${e.localizedMessage}")
             }
         }))
+    }
+
+    private fun setAppVersion() {
+        val appVersion = "v${BuildConfig.VERSION_NAME}"
+        tvAppVersion.text = appVersion
     }
 
     private fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>){
