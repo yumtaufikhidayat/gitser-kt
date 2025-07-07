@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -65,7 +65,7 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     testImplementation(libs.room.testing)
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
 
     implementation(libs.glide)
     implementation(libs.circleimageview)
