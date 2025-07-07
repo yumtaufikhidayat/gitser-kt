@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
@@ -15,17 +16,20 @@ import com.taufik.gitser.data.local.FavoriteEntity
 import com.taufik.gitser.data.response.search.Search
 import com.taufik.gitser.data.viewmodel.favorite.FavoriteViewModel
 import com.taufik.gitser.databinding.ActivityFavoriteBinding
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 
 class FavoriteActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityFavoriteBinding
+    private val binding by lazy { ActivityFavoriteBinding.inflate(layoutInflater) }
     private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var searchdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         initActionBar()
         setAdapter()

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.PagerAdapter
@@ -21,6 +22,7 @@ import com.taufik.gitser.databinding.ActivityDetailSearchBinding
 import com.taufik.gitser.utils.Utils.isNetworkEnabled
 import com.taufik.gitser.utils.Utils.loadImage
 import com.taufik.gitser.utils.Utils.makeLinks
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +31,7 @@ import kotlinx.coroutines.withContext
 
 class DetailSearchActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetailSearchBinding
+    private val binding by lazy { ActivityDetailSearchBinding.inflate(layoutInflater) }
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var bundle: Bundle
     private lateinit var dataParcel: Search
@@ -38,8 +40,10 @@ class DetailSearchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         checkConnectionEnabled()
     }
