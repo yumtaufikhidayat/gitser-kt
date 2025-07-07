@@ -2,28 +2,36 @@ package com.taufik.gitser.utils
 
 import android.view.View
 import android.view.Window
+import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
-fun enableWindowInsets(
+fun applyEdgeToEdgeInsets(
     window: Window,
-    bindingRoot: View,
-    left: Int? = null,
-    right: Int? = null,
-    bottom: Int? = null,
-    top: Int? = null,
-) {
-    ViewCompat.setOnApplyWindowInsetsListener(bindingRoot) { view, windowInsets ->
-        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+    root: View,
+    consumeInsets: Boolean = true,
+    onInsetsApplied: (View, WindowInsetsCompat, Insets) -> Unit = { view, _, insets ->
         view.setPadding(
-            left ?: insets.left,
-            top ?: insets.top,
-            right ?: insets.right,
-            bottom ?: insets.bottom
+            insets.left,
+            insets.top,
+            insets.right,
+            insets.bottom
         )
-        val windowInsetsController = WindowCompat.getInsetsController(window, view)
-        windowInsetsController.isAppearanceLightStatusBars = false
-        windowInsets
+    }
+) {
+    ViewCompat.setOnApplyWindowInsetsListener(root) { view, windowInsets ->
+        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+        onInsetsApplied(view, windowInsets, insets)
+
+        val controller = WindowCompat.getInsetsController(window, view)
+        controller.isAppearanceLightStatusBars = true
+        controller.isAppearanceLightNavigationBars = true
+
+        if (consumeInsets) {
+            WindowInsetsCompat.CONSUMED
+        } else {
+            windowInsets
+        }
     }
 }
