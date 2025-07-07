@@ -153,7 +153,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.apply {
             val profilePageAdapter = ProfilePagerAdapter(this@ProfileActivity, bundle)
             viewPagerProfile.adapter = profilePageAdapter
-            TabLayoutMediator(tabLayoutProfile, viewPagerProfile) {tabs, position ->
+            TabLayoutMediator(tabLayoutProfile, viewPagerProfile) { tabs, position ->
                 tabs.text = resources.getString(tabTitles[position])
             }.attach()
         }
