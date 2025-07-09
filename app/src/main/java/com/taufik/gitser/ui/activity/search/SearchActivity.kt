@@ -10,25 +10,29 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.taufik.gitser.R
 import com.taufik.gitser.adapter.search.SearchAdapter
 import com.taufik.gitser.data.viewmodel.search.SearchViewModel
 import com.taufik.gitser.databinding.ActivitySearchBinding
 import com.taufik.gitser.utils.Utils.isNetworkEnabled
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 import es.dmoral.toasty.Toasty
 
 class SearchActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySearchBinding
+    private val binding by lazy { ActivitySearchBinding.inflate(layoutInflater) }
     private lateinit var searchAdapter: SearchAdapter
 
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         initActionBar()
         checkConnectionEnabled()
