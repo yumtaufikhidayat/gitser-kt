@@ -7,19 +7,24 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.taufik.gitser.databinding.ActivitySplashscreenBinding
 import com.taufik.gitser.ui.activity.main.MainActivity
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 
 class SplashscreenActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashscreenBinding
-    private lateinit var handler: Handler
+    private val binding by lazy { ActivitySplashscreenBinding.inflate(layoutInflater) }
     private val splashTime = 1000L
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
+
         setSplashscreen()
         setAppVersion()
     }
