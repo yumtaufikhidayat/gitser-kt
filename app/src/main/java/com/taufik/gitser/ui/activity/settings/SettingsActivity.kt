@@ -3,21 +3,25 @@ package com.taufik.gitser.ui.activity.settings
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.taufik.gitser.data.response.settings.Reminder
 import com.taufik.gitser.databinding.ActivitySettingsBinding
 import com.taufik.gitser.preferences.ReminderPreferences
 import com.taufik.gitser.receiver.AlarmReceiver
+import com.taufik.gitser.utils.applyEdgeToEdgeInsets
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySettingsBinding
+    private val binding by lazy { ActivitySettingsBinding.inflate(layoutInflater) }
     private lateinit var reminder: Reminder
     private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        applyEdgeToEdgeInsets(window, binding.root)
 
         initActionBar()
         setReminderPreferences()
